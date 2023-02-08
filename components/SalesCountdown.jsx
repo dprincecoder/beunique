@@ -9,14 +9,13 @@ const SalesCountdown = () => {
   const salesDateTime = NOW_IN_MS + HOURS_IN_MS;
   
   return (
-    <section className="font-inter bg-black text-white w-[100%] overflow-hidden flex flex-col items-center justify-center px-4 py-8  text-[12px] md:text-[14px] lg2:text-[16px] space-y-2 sm3:space-y-0 sm3:flex-row">
-      {/* items-center justify-center sm2:flex-row sm2:flex-wrap sm2:justify-between
-      sm2:px-6 */}
+    <section className="font-inter bg-black text-white w-[100%] overflow-hidden flex flex-col items-center justify-center px-4 py-8  text-[12px] md:text-[14px] lg2:text-[16px] space-y-4 sm3:space-y-0 sm3:flex-row">
+      
       <section className="w-fit text-center sm3:w-fit ">
         New year offer for new customers
       </section>
 
-      <section className="w-fit text-center sm3:w-fit  mx-6 border-y-2 border-x-0 sm3:border-y-0 sm3:border-x-2 px-6 border-[#707070]">
+      <section className="w-fit text-center sm3:w-fit  mx-6 border-y-2 border-x-0 sm3:border-y-0 sm3:border-x-2 px-6 py-2 border-[#707070]">
         <Countdown targetDate={salesDateTime} />
       </section>
 

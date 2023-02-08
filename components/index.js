@@ -4,6 +4,5 @@ export { default as Layout } from "./Layout";
 export { default as Announcements } from "./Announcements";
 export { default as AnnouncementSlider } from "./AnnouncementSlider";
 export { default as Navigation } from "./Navigation";
-export { default as DateTimeDisplay } from "./DateTimeDisplay";
 export { default as Countdown } from "./Countdown";
 export { default as SalesCountdown } from "./SalesCountdown";
