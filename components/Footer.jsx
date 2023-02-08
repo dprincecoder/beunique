@@ -2,10 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/logo_white.png";
-import twitter from "@/public/social_icons/twitter.png";
-import instagram from "@/public/social_icons/instagram.png";
-import linkedin from "@/public/social_icons/linkedin.png";
-import facebook from "@/public/social_icons/facebook.png";
+
+import { BsTwitter, BsInstagram, BsLinkedin, BsFacebook } from "react-icons/bs";
 
 const Footer = () => {
   return (
@@ -62,16 +60,16 @@ const Footer = () => {
         </section>
         <section className="w-fit flex flex-row items-center space-x-4 sm:space-x-6 mb-4 sm:mb-0">
           <Link href="https://twitter.com">
-            <Image src={twitter} alt="Twitter" width={20} height={20} />
+            <BsTwitter size={20} />
           </Link>
           <Link href="https://instagram.com">
-            <Image src={instagram} alt="Instagram" width={20} height={20} />
+            <BsInstagram size={20} />
           </Link>
           <Link href="https://linkedin.com">
-            <Image src={linkedin} alt="LinkedIn" width={20} height={20} />
+            <BsLinkedin size={20} />
           </Link>
           <Link href="https://facebook.com">
-            <Image src={facebook} alt="Facebook" width={20} height={20} />
+            <BsFacebook size={20} />
           </Link>
         </section>
       </section>
