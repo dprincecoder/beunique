@@ -14,8 +14,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="grid place-items-center">
-        <h1 className='text-4xl'>BeUnique</h1>
+      <main className="grid place-items-center py-32">
+        <h1 className='text-4xl font-bold font-anybody'>BeUnique</h1>
       </main>
     </>
   )
