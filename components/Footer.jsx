@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="w-full flex flex-col items-start sm:grid sm:place-items-center p-7 m-0 z-30 bg-black text-white dark:text-white">
       <section className="w-full flex flex-col items-start sm:items-center">
-        <section className="w-fit mb-6">
+        <section className="w-fit my-6">
           <Link href="/">
             <Image src={Logo} alt="BeUnique" width={176} height={29} />
           </Link>
@@ -59,16 +59,28 @@ const Footer = () => {
           &copy; 2023 Beunique. All rights reserved
         </section>
         <section className="w-fit flex flex-row items-center space-x-4 sm:space-x-6 mb-4 sm:mb-0">
-          <Link href="https://twitter.com">
+          <Link
+            href="https://twitter.com"
+            className="text-white hover:text-[#ACB2BE] cursor-pointer duration-300"
+          >
             <BsTwitter size={20} />
           </Link>
-          <Link href="https://instagram.com">
+          <Link
+            href="https://instagram.com"
+            className="text-white hover:text-[#ACB2BE] cursor-pointer duration-300"
+          >
             <BsInstagram size={20} />
           </Link>
-          <Link href="https://linkedin.com">
+          <Link
+            href="https://linkedin.com"
+            className="text-white hover:text-[#ACB2BE] cursor-pointer duration-300"
+          >
             <BsLinkedin size={20} />
           </Link>
-          <Link href="https://facebook.com">
+          <Link
+            href="https://facebook.com"
+            className="text-white hover:text-[#ACB2BE] cursor-pointer duration-300"
+          >
             <BsFacebook size={20} />
           </Link>
         </section>
