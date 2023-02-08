@@ -92,7 +92,8 @@ export default function Home() {
               Shop Now
             </Link>
           </section>
-          <section className="w-[100%] sm2:w-[50%] md:w-[40%] p-5 py-32 sm2:py-10 m-0 flex flex-col items-center justify-end bg-home_hero4b bg-no-repeat bg-cover bg-center text-white dark:text-white h-full">
+
+          <section className="w-[100%] sm2:w-[50%] md:w-[40%] p-5 py-32 sm2:py-10 m-0 flex flex-col items-center justify-center sm2:justify-end bg-home_hero4b bg-no-repeat bg-cover bg-center text-white dark:text-white h-full bg-red-500">
             <h2 className="text-4xl font-bold font-notoSans mb-6 text-center">
               Shop for exquisite long gowns
             </h2>
@@ -105,8 +106,8 @@ export default function Home() {
           </section>
         </section>
 
-        <section className="w-full p-0 m-0 flex flex-row flex-wrap items-center justify-between text-white dark:text-white">
-          <section className="w-[24%] grid place-items-center text-center">
+        <section className="w-full p-0 m-0 flex flex-row flex-wrap items-center justify-between text-white dark:text-white space-y-2 sm3:space-y-0">
+          <section className="w-[48%] sm3:w-[24%]  grid place-items-center text-center">
             <Image src={main_hero5a} alt="Beunique Product" />
             <Link
               href="/"
@@ -115,7 +116,7 @@ export default function Home() {
               Shop Short Gowns
             </Link>
           </section>
-          <section className="w-[24%] grid place-items-center text-center">
+          <section className="w-[48%] sm3:w-[24%]  grid place-items-center text-center">
             <Image src={main_hero5b} alt="Beunique Product" />
             <Link
               href="/"
@@ -124,7 +125,7 @@ export default function Home() {
               Shop Two Piece
             </Link>
           </section>
-          <section className="w-[24%] grid place-items-center text-center">
+          <section className="w-[48%] sm3:w-[24%]  grid place-items-center text-center">
             <Image src={main_hero5c} alt="Beunique Product" />
             <Link
               href="/"
@@ -133,7 +134,7 @@ export default function Home() {
               Shop Jumpsuit
             </Link>
           </section>
-          <section className="w-[24%] grid place-items-center text-center">
+          <section className="w-[48%] sm3:w-[24%]  grid place-items-center text-center">
             <Image src={main_hero5d} alt="Beunique Product" />
             <Link
               href="/"
