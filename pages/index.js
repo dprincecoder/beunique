@@ -30,7 +30,7 @@ export default function Home() {
       </Head>
 
       <section className="w-full flex flex-col items-center justify-center p-0 m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
-        {/* {salesTimerOn && <SalesCountdown />} */}
+        {salesTimerOn && <SalesCountdown />}
 
         <section className="w-full p-5 py-32 m-0 grid place-items-center bg-home_hero bg-no-repeat bg-cover bg-center text-white dark:text-white">
           <section className="mx-auto w-[95%] sm:w-[80%] sm3:w-[60%] flex flex-col items-center md:grid md:place-items-center text-center">
