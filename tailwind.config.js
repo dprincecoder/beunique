@@ -13,8 +13,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ["var(--inter-font)", ...fontFamily.sans],
-        anybody: ["var(--anybody-font)", ...fontFamily.sans],
+        inter: ["Inter", ...fontFamily.sans],
+        anybody: ["Anybody", ...fontFamily.sans],
       },
 
       backgroundImage: {
@@ -39,5 +39,6 @@ module.exports = {
   },
   plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 };
+
 
 

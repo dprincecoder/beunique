@@ -84,8 +84,6 @@ const Navigation = () => {
     }
   };
 
-  console.log(searchInput);
-
   return (
     <section className="w-full grid place-items-center py-4 px-6 m-0 z-30 bg-white text-black dark:bg-white dark:text-black font-inter">
       <section className="w-full">
@@ -97,7 +95,7 @@ const Navigation = () => {
           </section>
 
           <section className="w-fit md:w-[70%] md2:w-[60%] flex flex-row items-center justify-between">
-            <section className="w-[60%] text-[#ACB2BE] rounded-full border-2 border-[#ACB2BE] flex-row p-1 font-inter hidden md:flex">
+            <section className="w-[60%] text-[#667085] rounded-full border-[1px] border-[#667085] flex-row p-1 font-inter hidden md:flex bg-[#f2f4f7]">
               <SearchNormal1 size={25} className="" />
               <form onSubmit={() => handleSubmit()} className="w-[85%] ">
                 <input
@@ -106,7 +104,7 @@ const Navigation = () => {
                   placeholder="Search"
                   value={searchInput ? searchInput : ""}
                   onChange={(e) => setSearchInput(e.target.value)}
-                  className="w-full ml-4 placeholder-black border-none outline-none hover:outline-none focus:outline-none"
+                  className="w-full ml-4 placeholder-[#344054] placeholder:font-semibold placeholder:text-[14px] border-none outline-none hover:outline-none focus:outline-none bg-[#f2f4f7]"
                 />
               </form>
             </section>
@@ -134,7 +132,7 @@ const Navigation = () => {
           </section>
         </section>
 
-        <section className="w-full flex flex-row flex-wrap items-start justify-start space-x-0 md:space-x-3 md2:space-x-6 font-medium text-[12px] md:text-[14px] lg2:text-[16px]">
+        <section className="w-full flex flex-row flex-wrap items-start justify-start space-x-0 md:space-x-3 md2:space-x-6 text-[14px] font-semibold">
           {categories &&
             categories.map((cat) => (
               <Link

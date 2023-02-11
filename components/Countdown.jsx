@@ -45,12 +45,12 @@ const Countdown = ({ targetDate }) => {
 
     return (
       <section className="grid place-items-center">
-        <span className="text-xl text-red-500 font-semibold mb-2">
+        <h3 className="text-xl text-red-500 font-semibold mb-2">
           Expired!!!
-        </span>
-        <span className="text-[14px]">
+        </h3>
+        <p className="text-[14px]">
           Please select a future date and time.
-        </span>
+        </p>
       </section>
     );
   };
@@ -64,10 +64,10 @@ const Countdown = ({ targetDate }) => {
             : "flex flex-row items-end"
         }
       >
-        <section className="font-semibold text-3xl font-notoSans">
+        <h2 className="text-[30px] font-anybody">
           {value ? value : 0}
-        </section>
-        <section className="text-[16px]">{type ? type : ""}</section>
+        </h2>
+        <p className="text-[14px] mb-[6px]">{type ? type : ""}</p>
       </section>
     );
   };
@@ -80,7 +80,7 @@ const Countdown = ({ targetDate }) => {
       typeof seconds === "number"
     ) {
       return (
-        <section className="flex flex-row items-end justify-center space-x-3">
+        <section className="flex flex-row items-end justify-center space-x-3 w-full">
           {days > 0 && (
             <section className="w-fit flex items-end">
               <DateTimeDisplay
@@ -88,7 +88,7 @@ const Countdown = ({ targetDate }) => {
                 type={"Days"}
                 isDanger={days <= 3}
               />
-              <section className="ml-2">:</section>
+              <span className="ml-2">:</span>
             </section>
           )}
 
@@ -99,7 +99,7 @@ const Countdown = ({ targetDate }) => {
                 type={"hrs"}
                 isDanger={hours <= 3}
               />
-              <section className="ml-2">:</section>
+              <span className="ml-2">:</span>
             </section>
           ) : (
             <section className="w-fit flex items-end">
@@ -108,7 +108,7 @@ const Countdown = ({ targetDate }) => {
                 type={"hr"}
                 isDanger={hours <= 3}
               />
-              <section className="ml-2">:</section>
+              <span className="ml-2">:</span>
             </section>
           )}
 
@@ -119,7 +119,7 @@ const Countdown = ({ targetDate }) => {
                 type={"mins"}
                 isDanger={hours <= 3}
               />
-              <section className="ml-2">:</section>
+              <span className="ml-2">:</span>
             </section>
           ) : (
             <section>
@@ -149,6 +149,7 @@ const Countdown = ({ targetDate }) => {
   } else {
     return (
       <ShowCounter
+        className=""
         days={days}
         hours={hours}
         minutes={minutes}

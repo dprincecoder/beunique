@@ -8,7 +8,7 @@ import main_hero5c from "../public/page_imgs/main_hero5c.jpg";
 import main_hero5d from "../public/page_imgs/main_hero5d.jpg";
 
 import { useAppContext } from "@/context/AppContext";
-import { SalesCountdown } from "@/components";
+import { NewStockSlider, SalesCountdown } from "@/components";
 
 export default function Home() {
   const { isSidebarOpen, salesTimerOn } = useAppContext();
@@ -30,50 +30,56 @@ export default function Home() {
       </Head>
 
       <section className="w-full flex flex-col items-center justify-center p-0 m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
-        {salesTimerOn && <SalesCountdown />}
+        {/* {salesTimerOn && <SalesCountdown />} */}
 
         <section className="w-full p-5 py-32 m-0 grid place-items-center bg-home_hero bg-no-repeat bg-cover bg-center text-white dark:text-white">
-          <section className="mx-auto w-[95%] sm:w-[80%] sm3:w-[60%] md2:w-[40%] flex flex-col items-center md:grid md:place-items-center text-center">
-            <h1 className="text-2xl sm3:text-4xl font-bold font-notoSans ">
+          <section className="mx-auto w-[95%] sm:w-[80%] sm3:w-[60%] flex flex-col items-center md:grid md:place-items-center text-center">
+            <h1 className="font-bold text-[60px] font-anybody">
               shop for unique and affordable outfits
             </h1>
-            <p className="my-6">
+            <p className="mt-2 mb-6 text-[24px] font-inter">
               Buy quality and well fitted female outfits with a large variety of
               categories at affordable price
             </p>
             <Link
               href="/"
-              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300"
+              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300 text-[20px] font-semibold font-inter"
             >
               Start shopping
             </Link>
           </section>
         </section>
 
-        <section className="w-full p-5 py-32 m-0 flex flex-col items-center bg-home_hero2 bg-no-repeat bg-cover bg-center text-white dark:text-white">
+        <section className="w-full p-5 py-16 m-0 flex flex-col items-center bg-home_hero2 bg-no-repeat bg-cover bg-center text-white dark:text-white">
           <section className="w-[70%] sm2:w-[40%] flex flex-col items-end text-right sm2:mr-32">
-            <h2 className="text-4xl font-bold font-notoSans ">
+            <h2 className="font-bold text-[48px] font-anybody">
               New <br />
               Season <br />
               slaying
             </h2>
-            <p className="my-6">Starting at ₦10, 000</p>
+            <p className="mt-3 mb-6 font-inter">
+              Starting at{" "}
+              <span className="text-[18px] font-semibold">₦10, 000</span>
+            </p>
             <Link
               href="/"
-              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300 w-fit"
+              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300 w-fit text-[20px] font-semibold font-inter"
             >
               Shop Now
             </Link>
           </section>
         </section>
 
-        <section className="w-full p-5 py-32 pr-16 m-0 flex flex-col items-end bg-home_hero3 bg-no-repeat bg-cover bg-center text-white dark:text-white">
+        <section className="w-full p-5 py-16 pr-16 m-0 flex flex-col items-end bg-home_hero3 bg-no-repeat bg-cover bg-center text-white dark:text-white">
           <section className="w-[70%] sm2:w-[40%] flex flex-col items-end text-right sm2:mr-36">
-            <h2 className="text-4xl font-bold font-notoSans ">Short Dress</h2>
-            <p className="my-6">Starting at ₦10, 000</p>
+            <h2 className="font-bold text-[48px] font-anybody">Short Dress</h2>
+            <p className="mt-3 mb-6 font-inter">
+              Starting at{" "}
+              <span className="text-[18px] font-semibold">₦10, 000</span>
+            </p>
             <Link
               href="/"
-              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300"
+              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300 text-[20px] font-semibold font-inter"
             >
               Shop Now
             </Link>
@@ -81,25 +87,25 @@ export default function Home() {
         </section>
 
         <section className="w-full p-0 m-0 flex flex-col sm2:flex-row items-center justify-center text-white dark:text-white sm2:h-[400px] flex-wrap">
-          <section className="w-[100%] sm2:w-[50%] md:w-[60%] p-5 py-32 sm2:py-10 m-0 sm2:flex sm2:flex-col sm2:items-center sm2:justify-end bg-home_hero4a bg-no-repeat bg-cover bg-center text-white dark:text-white h-full text-center">
-            <h2 className="text-4xl font-bold font-notoSans mb-6">
+          <section className="w-[100%] sm2:w-[50%] p-5 py-16 sm2:py-10 m-0 sm2:flex sm2:flex-col sm2:items-center sm2:justify-end bg-home_hero4a bg-no-repeat bg-cover bg-center text-white dark:text-white h-full text-center">
+            <h2 className="text-[36px] font-bold font-anybody mb-6">
               Amazing Jumpsuits
             </h2>
             <Link
               href="/"
-              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300"
+              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300 text-[20px] font-semibold font-anybody"
             >
               Shop Now
             </Link>
           </section>
 
-          <section className="w-[100%] sm2:w-[50%] md:w-[40%] p-5 py-32 sm2:py-10 m-0 flex flex-col items-center justify-center sm2:justify-end bg-home_hero4b bg-no-repeat bg-cover bg-center text-white dark:text-white h-full bg-red-500">
-            <h2 className="text-4xl font-bold font-notoSans mb-6 text-center">
+          <section className="w-[100%] sm2:w-[50%] p-5 py-16 sm2:py-10 m-0 flex flex-col items-center justify-center sm2:justify-end bg-home_hero4b bg-no-repeat bg-cover bg-center text-white dark:text-white h-full">
+            <h2 className="text-[36px] font-bold font-anybody mb-6 text-center">
               Shop for exquisite long gowns
             </h2>
             <Link
               href="/"
-              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300"
+              className="bg-white hover:bg-black text-black hover:text-white px-4 py-2 border-0 outline-none focus:outline-none rounded-md cursor-pointer duration-300 text-[20px] font-semibold font-anybody"
             >
               Shop Now
             </Link>
@@ -108,50 +114,43 @@ export default function Home() {
 
         <section className="w-full p-0 m-0 flex flex-row flex-wrap items-center justify-between text-white dark:text-white space-y-2 sm3:space-y-0">
           <section className="w-[48%] sm3:w-[24%]  grid place-items-center text-center">
-            <Image src={main_hero5a} alt="Beunique Product" />
-            <Link
-              href="/"
-              className="bg-black text-white hover:text-[#ACB2BE] px-4 py-1 border-0 outline-none focus:outline-none cursor-pointer duration-300 w-full"
-            >
-              Shop Short Gowns
+            <Link href="/">
+              <Image src={main_hero5a} alt="Beunique Product" />
+              <button className="bg-black text-white hover:text-[#ACB2BE] px-4 py-1 border-0 outline-none focus:outline-none cursor-pointer duration-300 w-full">
+                Shop Short Gowns
+              </button>
             </Link>
           </section>
           <section className="w-[48%] sm3:w-[24%]  grid place-items-center text-center">
-            <Image src={main_hero5b} alt="Beunique Product" />
-            <Link
-              href="/"
-              className="bg-black text-white hover:text-[#ACB2BE] px-4 py-1 border-0 outline-none focus:outline-none cursor-pointer duration-300 w-full"
-            >
-              Shop Two Piece
+            <Link href="/">
+              <Image src={main_hero5b} alt="Beunique Product" />
+              <button className="bg-black text-white hover:text-[#ACB2BE] px-4 py-1 border-0 outline-none focus:outline-none cursor-pointer duration-300 w-full">
+                Shop Two Piece
+              </button>
             </Link>
           </section>
           <section className="w-[48%] sm3:w-[24%]  grid place-items-center text-center">
-            <Image src={main_hero5c} alt="Beunique Product" />
-            <Link
-              href="/"
-              className="bg-black text-white hover:text-[#ACB2BE] px-4 py-1 border-0 outline-none focus:outline-none cursor-pointer duration-300 w-full"
-            >
-              Shop Jumpsuit
+            <Link href="/">
+              <Image src={main_hero5c} alt="Beunique Product" />
+              <button className="bg-black text-white hover:text-[#ACB2BE] px-4 py-1 border-0 outline-none focus:outline-none cursor-pointer duration-300 w-full">
+                Shop Jumpsuit
+              </button>
             </Link>
           </section>
           <section className="w-[48%] sm3:w-[24%]  grid place-items-center text-center">
-            <Image src={main_hero5d} alt="Beunique Product" />
-            <Link
-              href="/"
-              className="bg-black text-white hover:text-[#ACB2BE] px-4 py-1 border-0 outline-none focus:outline-none cursor-pointer duration-300 w-full"
-            >
-              Shop Long Gown
+            <Link href="/">
+              <Image src={main_hero5d} alt="Beunique Product" />
+              <button className="bg-black text-white hover:text-[#ACB2BE] px-4 py-1 border-0 outline-none focus:outline-none cursor-pointer duration-300 w-full">
+                Shop Long Gown
+              </button>
             </Link>
           </section>
         </section>
 
         <section className="w-[95%] p-5 m-0 my-6 flex flex-col items-start">
-          <h2 className="text-2xl font-semibold font-notoSans text-left mb-8">
-            New Stock
-          </h2>
-          <p className="font-semibold w-full text-center text-red-600">
-            Slider is under construction...
-          </p>
+          <h2 className="text-2xl font-semibold text-left mb-6">New Stock</h2>
+
+          <NewStockSlider />
         </section>
 
         <section className="w-[100%] bg-[#f2f4f7] overflow-hidden flex flex-col space-y-4 py-8 items-center justify-center sm2:flex-row sm2:flex-wrap sm2:justify-between sm2:px-6">
