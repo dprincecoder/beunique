@@ -148,7 +148,7 @@ export default function Home() {
         </section>
 
         <section className="w-[95%] p-5 m-0 my-6 flex flex-col items-start">
-          <h2 className="text-2xl font-semibold text-left mb-6">New Stock</h2>
+          <h2 className="text-[24px] font-anybody font-semibold text-left mb-6">New Stock</h2>
 
           <NewStockSlider />
         </section>

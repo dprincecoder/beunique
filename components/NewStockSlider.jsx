@@ -26,7 +26,6 @@ const NewStockSlider = () => {
     scrollLeftArr.push(slider.scrollLeft);
     setScrollLeftVal(slider.scrollLeft);
     // console.log(slider.scrollLeft);
-    
   };
 
   const slideRight = () => {
@@ -39,7 +38,7 @@ const NewStockSlider = () => {
   // console.log(scrollLeftArr);
 
   return (
-    <section className=" w-[100%]  relative">
+    <section className="w-[100%] relative">
       <ArrowLeft2
         variant="Linear"
         size={40}
@@ -55,9 +54,8 @@ const NewStockSlider = () => {
 
       <section
         id="slider"
-        className=" rounded-md w-[75%] sm2:w-[85%] md2:w-[92%] p-0 m-0 mx-auto whitespace-nowrap overflow-x-scroll space-x-3 scrollbar-none"
+        className="rounded-md w-[75%] sm2:w-[85%] md2:w-[92%] p-0 m-0 mx-auto whitespace-nowrap overflow-x-scroll space-x-3 scrollbar-none"
       >
-        {/* flex flex-row items-center justify-between  */}
         {initialSlider &&
           initialSlider.length > 0 &&
           initialSlider.map((slide, i) => (

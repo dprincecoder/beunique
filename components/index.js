@@ -8,3 +8,4 @@ export { default as Countdown } from "./Countdown";
 export { default as SalesCountdown } from "./SalesCountdown";
 export { default as NewStockSlider } from "./NewStockSlider";
 export { default as ProductCard } from "./ProductCard";
+export { default as RadioButton } from "./RadioButton";

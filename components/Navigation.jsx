@@ -70,6 +70,10 @@ const Navigation = () => {
     }
   }, [router.isReady, currUrl, router.route]);
 
+  useEffect(() => {}, []);
+
+  // console.log(currUrl);
+
   // const handleChange = (e) => {
   //   setSearchInput({
   //     [e.target.id]: e.target.value.trim(),
@@ -85,7 +89,7 @@ const Navigation = () => {
   };
 
   return (
-    <section className="w-full grid place-items-center py-4 px-6 m-0 z-30 bg-white text-black dark:bg-white dark:text-black font-inter">
+    <section className="w-full grid place-items-center py-4 px-6 m-0 z-30 bg-white text-black dark:bg-white dark:text-black font-inter border-[1px] border-[#eaecf0]">
       <section className="w-full">
         <section className="w-full mb-5 flex flex-row justify-between items-center">
           <section className="w-fit">
@@ -137,7 +141,7 @@ const Navigation = () => {
             categories.map((cat) => (
               <Link
                 href={cat.slug}
-                className="block w-fit px-4 py-[5px] md:px-0 md:py-1"
+                className={`block w-fit px-4 py-[5px] md:px-0 md:py-1 ${cat.active && "text-red-600"} hover:text-red-600`}
                 key={cat.id}
               >
                 {cat.name}

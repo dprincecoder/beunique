@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
 }
 
@@ -31,4 +29,21 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.show {
+  border: none !important;
+}
+
+#filterAccordionBtn, #priceRangeBtn {
+  border: none !important;
+  border-bottom: none !important;
+}
+
+#filterAccordionBtn::after, #priceRangeBtn::after {
+  display: none;
+}
+
+#sortBody, #priceRangeBody {
+  border: none;
 }
