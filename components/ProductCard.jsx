@@ -71,7 +71,7 @@ const ProductCard = ({ product }) => {
         </button>
 
         <section
-          className={`bg-white rounded-full font-inter text-[14px] text-black w-[35px] h-[35px] mx-auto grid cursor-pointer absolute bottom-[15px] right-[15px] duration-300 place-items-center ${
+          className={`bg-white rounded-full font-inter text-[14px] text-black w-[35px] h-[35px] mx-auto grid cursor-pointer absolute bottom-[15px] right-[15px] duration-300 place-items-center md:hidden ${
             selectSizeOpen.productId && selectSizeOpen.isSelectSizeOpen
               && "hidden"
           }`}
