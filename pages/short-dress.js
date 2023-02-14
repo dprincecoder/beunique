@@ -450,8 +450,8 @@ const ShortDress = () => {
 
             <section className="w-[95%] mx-auto md:w-[72%] lg2:w-[77%] flex flex-col items-center justify-center relative">
               <div
-                class={`accordion accordion-flush border-none hidden md:hidden w-[70%] sm2:w-[50%] absolute top-[10px] left-[50%] md:top-[15px] max-h-screen md:left-[50%] -translate-x-[50%] space-y-2 py-6 bg-white duration-300 z-30 rounded-lg ${
-                  mobileFilterOpen && "block"
+                class={`accordion accordion-flush border-none md:hidden w-[70%] sm2:w-[50%] absolute top-[10px] left-[50%] md:top-[15px] max-h-screen md:left-[50%] -translate-x-[50%] space-y-2 py-6 bg-white duration-300 z-30 rounded-lg ${
+                  mobileFilterOpen ? "block" : "hidden"
                 }`}
                 id="filterAccordion2"
               >
