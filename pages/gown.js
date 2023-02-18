@@ -59,7 +59,7 @@ const sizes = [
   { id: 6, size: "xxl", selected: false },
 ];
 
-const ShortDress = () => {
+const Gown = () => {
   const { isSidebarOpen, salesTimerOn } = useAppContext();
 
   const [sortOption, setSortOption] = useState(sortOptions[0]);
@@ -122,7 +122,7 @@ const ShortDress = () => {
   return (
     <>
       <Head>
-        <title>BeUnique | Short Dresses</title>
+        <title>BeUnique | Gown</title>
         <meta
           name="description"
           content="The most unique and affordable ecommerce store for females"
@@ -139,13 +139,13 @@ const ShortDress = () => {
             </span>
             <ArrowRight2 variant="Linear" size={16} className="" />
             <span className="font-inter text-[14px] text-black font-medium">
-              <Link href="/short-dress">Short Dress</Link>
+              <Link href="/gown">Gown</Link>
             </span>
           </section>
 
           <section className="flex items-center justify-between w-full">
             <h2 className="font-anybody text-[30px] font-bold dark:text-black w-fit">
-              Short Dress
+              Gown
             </h2>
 
             <section
@@ -702,4 +702,4 @@ const ShortDress = () => {
   );
 };
 
-export default ShortDress;
+export default Gown;

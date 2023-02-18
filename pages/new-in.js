@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -59,7 +59,7 @@ const sizes = [
   { id: 6, size: "xxl", selected: false },
 ];
 
-const ShortDress = () => {
+const NewIn = () => {
   const { isSidebarOpen, salesTimerOn } = useAppContext();
 
   const [sortOption, setSortOption] = useState(sortOptions[0]);
@@ -119,10 +119,21 @@ const ShortDress = () => {
     setSize(sizes2.find((ft) => ft.selected === true));
   };
 
+  const [newinProducts, setNewinProducts] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== null || typeof window !== "undefined") {
+      if (newinProducts === null) {
+        const nips = allProducts.filter((ft) => ft.is_new === true);
+        setNewinProducts(nips);
+      }
+    }
+  }, []);
+
   return (
     <>
       <Head>
-        <title>BeUnique | Short Dresses</title>
+        <title>BeUnique | New In</title>
         <meta
           name="description"
           content="The most unique and affordable ecommerce store for females"
@@ -139,13 +150,13 @@ const ShortDress = () => {
             </span>
             <ArrowRight2 variant="Linear" size={16} className="" />
             <span className="font-inter text-[14px] text-black font-medium">
-              <Link href="/short-dress">Short Dress</Link>
+              <Link href="/new-in">New In</Link>
             </span>
           </section>
 
           <section className="flex items-center justify-between w-full">
             <h2 className="font-anybody text-[30px] font-bold dark:text-black w-fit">
-              Short Dress
+              New In
             </h2>
 
             <section
@@ -676,9 +687,9 @@ const ShortDress = () => {
               </div>
 
               <section className="w-full flex flex-col sm:flex-row sm:flex-wrap items-start gap-4">
-                {allProducts &&
-                  allProducts.length > 0 &&
-                  allProducts.map((prod, i) => (
+                {newinProducts &&
+                  newinProducts.length > 0 &&
+                  newinProducts.map((prod, i) => (
                     <ProductCard product={prod} key={i} />
                   ))}
               </section>
@@ -702,4 +713,4 @@ const ShortDress = () => {
   );
 };
 
-export default ShortDress;
+export default NewIn;

@@ -36,7 +36,7 @@ export const allProducts = [
     price: "23,000.00",
     sizes: ["xs", "s"],
     img: "../public/page_imgs/main_hero5a.jpg",
-    is_new: true,
+    is_new: false,
     is_favourite: true,
   },
   {
@@ -56,7 +56,7 @@ export const allProducts = [
     price: "23,000.00",
     sizes: ["lg", "xl"],
     img: "../public/page_imgs/main_hero5a.jpg",
-    is_new: true,
+    is_new: false,
     is_favourite: true,
   },
   {
@@ -76,7 +76,7 @@ export const allProducts = [
     price: "23,000.00",
     sizes: ["s"],
     img: "../public/page_imgs/main_hero5a.jpg",
-    is_new: true,
+    is_new: false,
     is_favourite: true,
   },
   {

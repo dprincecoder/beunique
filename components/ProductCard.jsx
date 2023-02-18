@@ -47,9 +47,9 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <section className="w-[95%] h-auto sm2:w-[195px] sm2:h-[410px] md:w-[273px] md:h-[500px] relative inline-block mx-auto sm2:mx-0 group duration-300">
+    <section className="w-full h-auto sm2:w-[195px] sm2:h-[410px] md:w-[273px] md:h-[500px] relative inline-block mx-auto sm2:mx-0 group duration-300">
       {product.is_new && (
-        <span className="font-inter text-white bg-black rounded-full px-3 py-1 text-[14px] absolute top-3 left-3">
+        <span className="font-inter text-white bg-black rounded-full px-3 py-1 text-[14px] absolute top-3 left-3 z-50">
           New!
         </span>
       )}
@@ -72,8 +72,9 @@ const ProductCard = ({ product }) => {
 
         <section
           className={`bg-white rounded-full font-inter text-[14px] text-black w-[35px] h-[35px] mx-auto grid cursor-pointer absolute bottom-[15px] right-[15px] duration-300 place-items-center md:hidden ${
-            selectSizeOpen.productId && selectSizeOpen.isSelectSizeOpen
-              && "hidden"
+            selectSizeOpen.productId &&
+            selectSizeOpen.isSelectSizeOpen &&
+            "hidden"
           }`}
           onClick={() => handleSelectSizeOpen(product.id)}
         >
