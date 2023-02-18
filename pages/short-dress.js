@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useAppContext } from "../context/AppContext";
-import { NewStockSlider, ProductCard, RadioButton } from "../components";
+import { Footer, Header, NewStockSlider, ProductCard, RadioButton } from "../components";
 import { ArrowRight2, ArrowDown2, Filter, TickCircle } from "iconsax-react";
 import { allProducts } from "@/data/allProducts";
 import { Listbox, Transition } from "@headlessui/react";
@@ -131,7 +131,9 @@ const ShortDress = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="w-full flex flex-col items-center justify-center p-0 px-[40px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
+      <Header />
+
+      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[40px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
         <section className="w-full mx-auto bg-white dark:bg-white">
           <section className="flex items-center justify-start my-4 space-x-2">
             <span className="font-inter text-[14px] text-[#34405]">
@@ -691,13 +693,15 @@ const ShortDress = () => {
         </section>
 
         <section className="w-full p-0 m-0 my-6 flex flex-col items-start">
-          <h2 className="text-[24px] font-anybody font-semibold text-left mb-6">
+          <h2 className="text-[24px] font-anybody font-semibold text-left mb-3">
             New Stock
           </h2>
 
           <NewStockSlider />
         </section>
       </section>
+
+      <Footer />
     </>
   );
 };

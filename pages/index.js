@@ -8,7 +8,7 @@ import main_hero5c from "../public/page_imgs/main_hero5c.jpg";
 import main_hero5d from "../public/page_imgs/main_hero5d.jpg";
 
 import { useAppContext } from "@/context/AppContext";
-import { NewStockSlider, SalesCountdown } from "@/components";
+import { Footer, Header, NewStockSlider, SalesCountdown } from "@/components";
 
 export default function Home() {
   const { isSidebarOpen, salesTimerOn } = useAppContext();
@@ -28,6 +28,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Header />
 
       <section className="w-full flex flex-col items-center justify-center p-0 m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
         {salesTimerOn && <SalesCountdown />}
@@ -148,7 +150,9 @@ export default function Home() {
         </section>
 
         <section className="w-[95%] p-5 m-0 my-6 flex flex-col items-start">
-          <h2 className="text-[24px] font-anybody font-semibold text-left mb-6">New Stock</h2>
+          <h2 className="text-[24px] font-anybody font-semibold text-left mb-3">
+            New Stock
+          </h2>
 
           <NewStockSlider />
         </section>
@@ -185,6 +189,8 @@ export default function Home() {
           </section>
         </section>
       </section>
+
+      <Footer />
     </>
   );
 }

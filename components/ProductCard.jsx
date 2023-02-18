@@ -47,9 +47,9 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <section className="w-full h-auto sm2:w-[195px] sm2:h-[410px] md:w-[273px] md:h-[500px] relative inline-block mx-auto sm2:mx-0 group duration-300">
+    <section className="w-[195px] h-[382px] md:w-[273px] md:h-[534px] relative inline-block group duration-300 bg-white mt-4">
       {product.is_new && (
-        <span className="font-inter text-white bg-black rounded-full px-3 py-1 text-[14px] absolute top-3 left-3 z-50">
+        <span className="font-inter text-[#fcfcfd] bg-black rounded-full px-3 py-1 text-[12px] md:text-[14px] absolute top-[8px] left-[8px] z-50">
           New!
         </span>
       )}
@@ -61,28 +61,28 @@ const ProductCard = ({ product }) => {
           width={273}
           height={440}
           loading="lazy"
-          className="w-full h-auto sm2:w-[195px] sm2:h-[296px] md:w-[273px] md:h-[393px]"
+          className="w-[195px] h-[296px] md:w-[273px] md:h-[440px]"
         />
         <button
-          className="bg-black rounded-lg font-inter text-[14px] text-white px-5 py-2 sm2:w-[60%] hidden md:group-hover:block mx-auto cursor-pointer absolute bottom-[25px] left-[50%] -translate-x-[50%] duration-300 "
+          className="bg-black rounded-lg font-inter text-[14px] text-white px-5 py-2 w-[70%] hidden md:group-hover:block mx-auto cursor-pointer absolute bottom-[25px] left-[50%] -translate-x-[50%] duration-300 "
           onClick={() => handleSelectSizeOpen(product.id)}
         >
           Quick Add
         </button>
 
         <section
-          className={`bg-white rounded-full font-inter text-[14px] text-black w-[35px] h-[35px] mx-auto grid cursor-pointer absolute bottom-[15px] right-[15px] duration-300 place-items-center md:hidden ${
+          className={`bg-white rounded-full font-inter text-[14px] text-black w-[40px] h-[40px] mx-auto grid cursor-pointer absolute bottom-[8px] right-[8px] duration-300 place-items-center md:hidden ${
             selectSizeOpen.productId &&
             selectSizeOpen.isSelectSizeOpen &&
             "hidden"
           }`}
           onClick={() => handleSelectSizeOpen(product.id)}
         >
-          <Bag2 variant="Linear" size={25} />
+          <Bag2 variant="Linear" size={28} />
         </section>
 
         <section
-          className={`absolute bottom-[15px] left-[50%] md:bottom-[25px] md:left-[50%] -translate-x-[50%] duration-300 bg-white w-fit sm2:w-[90%] md:w-[70%] rounded-lg font-inter p-4 text-black ${
+          className={`absolute bottom-[15px] left-[50%] md:bottom-[25px] md:left-[50%] -translate-x-[50%] duration-300 bg-white w-[75%] rounded-lg font-inter p-4 text-black ${
             selectSizeOpen.productId && selectSizeOpen.isSelectSizeOpen
               ? "block"
               : "hidden"
@@ -146,15 +146,15 @@ const ProductCard = ({ product }) => {
         </section>
       </section>
 
-      <section className="w-full flex items-start justify-between mt-4">
+      <section className="w-full flex items-start justify-between mt-2 md:mt-4">
         <section className="whitespace-normal">
-          <h3 className="text-[14px]">{product.name}</h3>
+          <h3 className="text-[12px] md:text-[14px]">{product.name}</h3>
           {/* <p className="">{product.desc}</p> */}
-          <p className="text-[17px] font-anybody font-bold mt-3">
+          <p className="text-[20px] font-anybody font-bold mt-2 md:mt-4">
             {product.price}
           </p>
         </section>
-        <Heart variant="Linear" size={25} className="text-black ml-6" />
+        <Heart variant="Linear" size={24} className="text-black ml-6" />
       </section>
     </section>
   );
