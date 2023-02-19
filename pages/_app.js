@@ -4,13 +4,13 @@ import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import "@/styles/globals.css";
 import { Layout } from "../components";
+import dynamic from "next/dynamic";
+
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-  
   useEffect(() => {
     const use = async () => {
       (await import("tw-elements")).default;
-      // (await import("js-cookie")).default;
     };
     use();
   }, []);

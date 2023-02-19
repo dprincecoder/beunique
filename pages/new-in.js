@@ -215,7 +215,7 @@ const NewIn = () => {
           </section>
         </section>
 
-        <section className="w-full mx-auto bg-white dark:bg-white text-black dark:text-black p-0 m-0 my-4">
+        <section className="w-full mx-auto bg-white dark:bg-white text-black dark:text-black p-0 m-0 my-2">
           <section className=" items-center justify-end space-x-2 p-2 hidden md:flex">
             <span className="text-[14px] text-[#101828] font-medium">
               Sort by
