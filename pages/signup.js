@@ -39,8 +39,8 @@ const Signup = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="w-screen h-screen block p-[16px] md:p-[40px] relative font-inter">
-        <section className="w-full sm2:w-[60%] md2:w-[40%] mt-[8vh] mx-auto flex flex-col items-center relative">
+      <section className="w-screen h-auto block p-[16px] md:p-[40px] relative font-inter overflow-x-hidden overflow-y-scroll  scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
+        <section className="w-full sm2:w-[70%] md2:w-[40%] mt-[8vh] mx-auto flex flex-col items-center relative">
           <section className="w-fit">
             <Link href="/">
               <Image
@@ -90,7 +90,8 @@ const Signup = () => {
 
                 <Eye
                   size={20}
-                  className="text-[#344054] absolute top-[50%] -translate-y-[50%] right-[16px] cursor-pointer" onClick={()=>setShowPassword(!showPassword)}
+                  className="text-[#344054] absolute top-[50%] -translate-y-[50%] right-[16px] cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
                 />
               </label>
 

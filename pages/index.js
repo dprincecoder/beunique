@@ -31,7 +31,7 @@ export default function Home() {
 
       <Header />
 
-      <section className="w-full flex flex-col items-center justify-center p-0 m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
+      <section className="w-full flex flex-col items-center justify-center p-0 m-0 z-30 font-inter scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
         {salesTimerOn && <SalesCountdown />}
 
         <section className="w-full p-5 py-32 m-0 grid place-items-center bg-home_hero bg-no-repeat bg-cover bg-center text-white dark:text-white">
