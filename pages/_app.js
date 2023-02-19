@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
     const use = async () => {
       (await import("tw-elements")).default;
+      // (await import("js-cookie")).default;
     };
     use();
   }, []);
