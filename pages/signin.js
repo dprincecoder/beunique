@@ -6,13 +6,13 @@ import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
 
-const Signup = () => {
-  const [regData, setRegData] = useState({
+const Signin = () => {
+  const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   // const handleChange = (e) => {
   //   console.log(e.target.name);
@@ -30,7 +30,7 @@ const Signup = () => {
   return (
     <>
       <Head>
-        <title>BeUnique | Sign Up</title>
+        <title>BeUnique | Sign In</title>
         <meta
           name="description"
           content="The most unique and affordable ecommerce store for females"
@@ -54,13 +54,11 @@ const Signup = () => {
           </section>
 
           <section className="w-full my-8 flex flex-col items-center space-y-6">
-            <h3 className="text-[18px] font-bold text-left w-full">
-              Create your account
-            </h3>
+            <h3 className="text-[18px] font-bold text-left w-full">Sign In</h3>
 
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="w-full flex flex-col items-center my-0 space-y-4"
+              className="w-full flex flex-col items-center my-0"
             >
               <label
                 htmlFor="email"
@@ -77,7 +75,7 @@ const Signup = () => {
 
               <label
                 htmlFor="password"
-                className="w-full rounded-lg border-[1px] border-[#d0d5dd] relative"
+                className="w-full rounded-lg border-[1px] border-[#d0d5dd] relative mt-4"
               >
                 <input
                   type={showPassword ? "text" : "password"}
@@ -95,30 +93,24 @@ const Signup = () => {
                 />
               </label>
 
+              <p className="font-inter text-[16px] text-[#344054] mt-4 mb-10 w-full text-right">
+                <Link href="/forgot-password">Forgot password</Link>
+              </p>
+
               <button
                 type="submit"
                 className="w-full bg-black text-[#fcfcfd] p-[16px] rounded-lg cursor-pointer duration-300"
               >
-                Create account
+                Sign In
               </button>
             </form>
           </section>
 
           <section className="w-full flex flex-col items-center text-center space-y-8">
-            <p className="font-inter text-[14px] text-[#344054]">
-              By creating account you agree to our{" "}
-              <span className="underline underline-offset-4">
-                Privacy Policy
-              </span>{" "}
-              and{" "}
-              <span className="underline underline-offset-4">
-                Terms & Conditions
-              </span>
-            </p>
             <p className="font-inter text-[16px] text-[#344054]">
-              Already have an account?{" "}
+              Don&apos;t have an account?{" "}
               <span className="font-bold">
-                <Link href="/signin">Sign In</Link>
+                <Link href="/signup">Create account</Link>
               </span>
             </p>
           </section>
@@ -128,4 +120,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;

@@ -4,33 +4,28 @@ import Logo from "@/public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import { Eye } from "iconsax-react";
+import { useRouter } from "next/router";
 
-const Signup = () => {
-  const [regData, setRegData] = useState({
-    email: "",
-    password: "",
-  });
+const ForgotPassword = () => {
+  const router = useRouter();
 
-  const [showPassword, setShowPassword] = useState(false)
-
-  // const handleChange = (e) => {
-  //   console.log(e.target.name);
-  //   setRegData({ ...regData, [e.target.name]: e.target.value });
-  // };
+  const [email, setEmail] = useState("");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    router.push("/forgot-password-sent");
+  };
   // console.log(errors);
 
   return (
     <>
       <Head>
-        <title>BeUnique | Sign Up</title>
+        <title>BeUnique | Forgot Password</title>
         <meta
           name="description"
           content="The most unique and affordable ecommerce store for females"
@@ -54,13 +49,14 @@ const Signup = () => {
           </section>
 
           <section className="w-full my-8 flex flex-col items-center space-y-6">
-            <h3 className="text-[18px] font-bold text-left w-full">
-              Create your account
-            </h3>
+            <p className="font-inter text-[16px] text-[#344054] w-full text-center">
+              Please enter your Beunique account email below, and we&apos;ll
+              send you an email to reset your password.
+            </p>
 
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="w-full flex flex-col items-center my-0 space-y-4"
+              className="w-full flex flex-col items-center space-y-4"
             >
               <label
                 htmlFor="email"
@@ -75,52 +71,13 @@ const Signup = () => {
                 />
               </label>
 
-              <label
-                htmlFor="password"
-                className="w-full rounded-lg border-[1px] border-[#d0d5dd] relative"
-              >
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="password"
-                  id="password"
-                  name="password"
-                  className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none"
-                  {...register("password", { required: true })}
-                />
-
-                <Eye
-                  size={20}
-                  className="text-[#344054] absolute top-[50%] -translate-y-[50%] right-[16px] cursor-pointer"
-                  onClick={() => setShowPassword(!showPassword)}
-                />
-              </label>
-
               <button
                 type="submit"
                 className="w-full bg-black text-[#fcfcfd] p-[16px] rounded-lg cursor-pointer duration-300"
               >
-                Create account
+                Send
               </button>
             </form>
-          </section>
-
-          <section className="w-full flex flex-col items-center text-center space-y-8">
-            <p className="font-inter text-[14px] text-[#344054]">
-              By creating account you agree to our{" "}
-              <span className="underline underline-offset-4">
-                Privacy Policy
-              </span>{" "}
-              and{" "}
-              <span className="underline underline-offset-4">
-                Terms & Conditions
-              </span>
-            </p>
-            <p className="font-inter text-[16px] text-[#344054]">
-              Already have an account?{" "}
-              <span className="font-bold">
-                <Link href="/signin">Sign In</Link>
-              </span>
-            </p>
           </section>
         </section>
       </section>
@@ -128,4 +85,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default ForgotPassword;

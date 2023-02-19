@@ -6,13 +6,14 @@ import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
 
-const Signup = () => {
-  const [regData, setRegData] = useState({
-    email: "",
+const ResetPassword = () => {
+  const [pwdData, setPwdData] = useState({
     password: "",
+    confirm_password: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
 
   // const handleChange = (e) => {
   //   console.log(e.target.name);
@@ -30,7 +31,7 @@ const Signup = () => {
   return (
     <>
       <Head>
-        <title>BeUnique | Sign Up</title>
+        <title>BeUnique | Reset Password</title>
         <meta
           name="description"
           content="The most unique and affordable ecommerce store for females"
@@ -53,35 +54,22 @@ const Signup = () => {
             </Link>
           </section>
 
-          <section className="w-full my-8 flex flex-col items-center space-y-6">
+          <section className="w-full my-8 flex flex-col items-center">
             <h3 className="text-[18px] font-bold text-left w-full">
-              Create your account
+              Reset Password
             </h3>
 
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="w-full flex flex-col items-center my-0 space-y-4"
+              className="w-full flex flex-col items-center my-0"
             >
               <label
-                htmlFor="email"
-                className="w-full rounded-lg border-[1px] border-[#d0d5dd]"
-              >
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none"
-                  {...register("email", { required: true })}
-                />
-              </label>
-
-              <label
                 htmlFor="password"
-                className="w-full rounded-lg border-[1px] border-[#d0d5dd] relative"
+                className="w-full rounded-lg border-[1px] border-[#d0d5dd] relative mt-4"
               >
                 <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="password"
+                  placeholder="New Password"
                   id="password"
                   name="password"
                   className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none"
@@ -95,32 +83,33 @@ const Signup = () => {
                 />
               </label>
 
+              <label
+                htmlFor="confirm_password"
+                className="w-full rounded-lg border-[1px] border-[#d0d5dd] relative mt-4"
+              >
+                <input
+                  type={showPassword2 ? "text" : "password"}
+                  placeholder="Confirm Password"
+                  id="confirm_password"
+                  name="confirm_password"
+                  className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none"
+                  {...register("confirm_password", { required: true })}
+                />
+
+                <Eye
+                  size={20}
+                  className="text-[#344054] absolute top-[50%] -translate-y-[50%] right-[16px] cursor-pointer"
+                  onClick={() => setShowPassword2(!showPassword2)}
+                />
+              </label>
+
               <button
                 type="submit"
-                className="w-full bg-black text-[#fcfcfd] p-[16px] rounded-lg cursor-pointer duration-300"
+                className="w-full bg-black text-[#fcfcfd] p-[16px] rounded-lg cursor-pointer duration-300 mt-8"
               >
-                Create account
+                Reset password
               </button>
             </form>
-          </section>
-
-          <section className="w-full flex flex-col items-center text-center space-y-8">
-            <p className="font-inter text-[14px] text-[#344054]">
-              By creating account you agree to our{" "}
-              <span className="underline underline-offset-4">
-                Privacy Policy
-              </span>{" "}
-              and{" "}
-              <span className="underline underline-offset-4">
-                Terms & Conditions
-              </span>
-            </p>
-            <p className="font-inter text-[16px] text-[#344054]">
-              Already have an account?{" "}
-              <span className="font-bold">
-                <Link href="/signin">Sign In</Link>
-              </span>
-            </p>
           </section>
         </section>
       </section>
@@ -128,4 +117,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default ResetPassword;
