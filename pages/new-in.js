@@ -4,7 +4,13 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useAppContext } from "../context/AppContext";
-import { Footer, Header, NewStockSlider, ProductCard, RadioButton } from "../components";
+import {
+  Footer,
+  Header,
+  NewStockSlider,
+  ProductCard,
+  RadioButton,
+} from "../components";
 import { ArrowRight2, ArrowDown2, Filter, TickCircle } from "iconsax-react";
 import { allProducts } from "@/data/allProducts";
 import { Listbox, Transition } from "@headlessui/react";
@@ -688,7 +694,7 @@ const NewIn = () => {
                 </div>
               </div>
 
-              <section className="w-full flex flex-row flex-wrap items-start justify-start space-x-2 gap-0">
+              <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
                 {newinProducts &&
                   newinProducts.length > 0 &&
                   newinProducts.map((prod, i) => (

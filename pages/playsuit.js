@@ -683,7 +683,7 @@ const Playsuit = () => {
                 </div>
               </div>
 
-              <section className="w-full flex flex-col sm:flex-row sm:flex-wrap items-start gap-4">
+              <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
                 {allProducts &&
                   allProducts.length > 0 &&
                   allProducts.map((prod, i) => (
