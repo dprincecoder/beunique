@@ -77,6 +77,41 @@ const NewIn = () => {
 
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
+  // Template for fetching products from the database
+  // const [productState, setProductState] = useState({
+  //   products: [],
+  //   loading: true,
+  //   error: "",
+  // });
+
+  // const { products, loading, error } = productState;
+
+  // useEffect(() => {
+  //   const fetchNewProducts = async () => {
+  //     try {
+  //       const products = await fetch("url", options);
+  //       setProductState({ products, loading: false });
+  //     } catch (err) {
+  //       setProductState({ loading: false, error: err.message });
+  //     }
+  //   };
+  //   fetchNewProducts();
+  // }, []);
+
+  // Inside the component to be rendered
+
+  // {
+  //   loading ? (
+  //     <LoadingComponent />
+  //   ) : error ? (
+  //     <ErrorComponent />
+  //   ) : (
+  //     <section>list products here</section>
+  //   );
+  // }
+
+  // end
+
   const { register, handleSubmit } = useForm();
 
   const sortOptions2 = [...sortOptions];

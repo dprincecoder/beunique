@@ -72,7 +72,7 @@ const ResetPassword = () => {
                   placeholder="New Password"
                   id="password"
                   name="password"
-                  className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none"
+                  className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none bg-white"
                   {...register("password", { required: true })}
                 />
 
@@ -92,7 +92,7 @@ const ResetPassword = () => {
                   placeholder="Confirm Password"
                   id="confirm_password"
                   name="confirm_password"
-                  className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none"
+                  className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none bg-white"
                   {...register("confirm_password", { required: true })}
                 />
 
