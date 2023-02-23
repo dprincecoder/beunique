@@ -26,6 +26,7 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       const options = {
         method: "POST",
@@ -33,7 +34,7 @@ const Signup = () => {
         body: JSON.stringify(data),
       };
 
-      await fetch("https://54.157.82.169/users/create_users", options)
+      await fetch("http://54.157.82.169/users/create_users", options)
         .then((res) => res.json())
         .then((resData) => {
           if (resData.detail) {

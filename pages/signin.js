@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
+import { toast } from "react-hot-toast";
 
 const Signin = () => {
   const [loginData, setLoginData] = useState({
@@ -25,6 +26,7 @@ const Signin = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       const options = {
         method: "POST",
@@ -32,7 +34,7 @@ const Signin = () => {
         body: JSON.stringify(data),
       };
 
-      await fetch("https://54.157.82.169/users/login", options)
+      await fetch("http://54.157.82.169/users/login", options)
         .then((res) => res.json())
         .then((resData) => {
           if (resData.detail) {
