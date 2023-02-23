@@ -24,7 +24,31 @@ const Signin = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const options = {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(data),
+      };
+
+      await fetch("http://54.157.82.169/users/login", options)
+        .then((res) => res.json())
+        .then((resData) => {
+          if (resData.detail) {
+            toast.error(resData.detail);
+            console.log(resData.detail);
+          } else {
+            toast.success(resData);
+            console.log(resData);
+            // router.push("/signin");
+          }
+        });
+    } catch (err) {
+      console.log(err);
+      // toast.error(err);
+    }
+  };
   // console.log(errors);
 
   return (

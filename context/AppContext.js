@@ -72,6 +72,7 @@ export const AppProvider = ({ children }) => {
         setUserInfo,
         userLoggedIn,
         setUserLoggedIn,
+        priceFormatter,
       }}
     >
       {children}

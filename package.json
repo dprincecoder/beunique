@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.10",
+    "cloudinary": "^1.34.0",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "iconsax-react": "^0.0.8",
