@@ -91,9 +91,9 @@ const Signin = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  name="email"
+                  name="username"
                   className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none bg-white"
-                  {...register("email", { required: true })}
+                  {...register("username", { required: true })}
                 />
               </label>
 
