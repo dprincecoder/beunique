@@ -32,7 +32,7 @@ const Signin = () => {
         body: JSON.stringify(data),
       };
 
-      await fetch("http://54.157.82.169/users/login", options)
+      await fetch("https://54.157.82.169/users/login", options)
         .then((res) => res.json())
         .then((resData) => {
           if (resData.detail) {
