@@ -27,16 +27,28 @@ const Signin = () => {
   } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
+
+    var loginData = new FormData();
+
+    loginData.append("username", data.username);
+    loginData.append("password", data.password);
+
+    // for (var key in item) {
+    //   form_data.append(key, item[key]);
+    // }
+
     try {
       const options = {
         method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { "Content-type": "application/x-www-form-urlencoded" },
+        // body: JSON.stringify(data),
+        body: loginData,
       };
 
       await fetch("http://54.157.82.169/users/login", options)
         .then((res) => res.json())
         .then((resData) => {
+          console.log(resData);
           if (resData.detail) {
             toast.error(resData.detail);
             console.log(resData.detail);

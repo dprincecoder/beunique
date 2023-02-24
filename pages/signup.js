@@ -27,6 +27,7 @@ const Signup = () => {
   } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
+    
     try {
       const options = {
         method: "POST",
