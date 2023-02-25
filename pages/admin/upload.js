@@ -357,7 +357,9 @@ name: "Playsuit",
                     htmlFor="category"
                     className="w-full font-normal text-[14px] text-[#344054] space-y-3 col-span-2"
                   >
-<select {...register("category", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
+<p>Category</p>
+
+<select name="category" {...register("category", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
         <option value="Short Dress">Short Dress</option>
         <option value="Long Dress">Long Dress</option>
         <option value="Two Piece">Two Piece</option>
@@ -365,7 +367,33 @@ name: "Playsuit",
         <option value="Jumpsuit">Jumpsuit</option>
         <option value="Playsuit">Playsuit</option>
       </select>
+
+{errors.category && (
+                      <p className="w-full px-2 py-2.5 text-red-600 font-medium">
+                        Product category is required
+                      </p>
+                    )}
 </label>
+
+<label htmlFor="size" className="w-full font-normal text-[14px] text-[#344054] space-y-3 col-span-2">
+<p>Size</p>
+
+
+<select name="size" {...register("category", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
+        <option value="sm">sm</option>
+        <option value="md">md</option>
+        <option value="lg">lg</option>
+        <option value="xl">xl</option>
+        <option value="xxl">xxl</option>
+      </select>
+
+{errors.size && (
+                      <p className="w-full px-2 py-2.5 text-red-600 font-medium">
+                        Product size is required
+                      </p>
+                    )}
+</label>
+
 
                   <section className="w-full flex items-centerjustify-center space-x-5">
                     <button
