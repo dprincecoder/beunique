@@ -355,7 +355,7 @@ name: "Playsuit",
 
 <label
                     htmlFor="category"
-                    className="w-full font-normal text-[14px] text-[#344054] space-y-3"
+                    className="w-full font-normal text-[14px] text-[#344054] space-y-3 col-span-2"
                   >
 <select {...register("category", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
         <option value="Short Dress">Short Dress</option>
