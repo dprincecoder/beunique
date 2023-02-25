@@ -283,7 +283,7 @@ name: "Playsuit",
                       type="number"
                       placeholder="12000"
                       name="product_price"
-                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none border-none bg-white border-[1px] border-[#d0d5dd]"
+                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                       {...register("product_price", { required: true })}
                     />
                     {errors.product_price && (
@@ -303,7 +303,7 @@ name: "Playsuit",
                       type="text"
                       placeholder="8500"
                       name="sales_price"
-                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none border-none bg-white border-[1px] border-[#d0d5dd]"
+                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                       {...register("sales_price", { required: true })}
                     />
                     {errors.sales_price && (
@@ -323,7 +323,7 @@ name: "Playsuit",
                       type="text"
                       placeholder="4kg"
                       name="weight"
-                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none border-none bg-white border-[1px] border-[#d0d5dd]"
+                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                       {...register("weight", { required: true })}
                     />
                     {errors.weight && (
@@ -343,7 +343,7 @@ name: "Playsuit",
                       type="number"
                       placeholder="5"
                       name="stock"
-                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none border-none bg-white border-[1px] border-[#d0d5dd]"
+                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                       {...register("stock", { required: true })}
                     />
                     {errors.stock && (
@@ -353,8 +353,11 @@ name: "Playsuit",
                     )}
                   </label>
 
-
-<select {...register("category", { required: true })}>
+<label
+                    htmlFor="category"
+                    className="w-full font-normal text-[14px] text-[#344054] space-y-3"
+                  >
+<select {...register("category", { required: true })} w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
         <option value="Short Dress">Short Dress</option>
         <option value="Long Dress">Long Dress</option>
         <option value="Two Piece">Two Piece</option>
@@ -362,6 +365,7 @@ name: "Playsuit",
         <option value="Jumpsuit">Jumpsuit</option>
         <option value="Playsuit">Playsuit</option>
       </select>
+</label>
 
                   <section className="w-full flex items-centerjustify-center space-x-5">
                     <button
