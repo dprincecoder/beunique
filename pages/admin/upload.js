@@ -19,6 +19,8 @@ import {
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
+import Multiselect from "multiselect-react-dropdown";
+import { MdClose } from "react-icons/md";
 
 // import UploadImages from "@/components/UploadImages";
 
@@ -54,39 +56,37 @@ const AdminUpload = () => {
     // setPicture(null);
   };
 
-const categoriesData = [
+  const categoriesData = [
+    {
+      id: 1,
+      name: "Short Dress",
+    },
 
-{
-id: 1,
-name: "Short Dress",
-},
+    {
+      id: 2,
+      name: "Long Dress",
+    },
 
-{
-id: 2,
-name: "Long Dress",
-},
+    {
+      id: 3,
+      name: "Two Piece",
+    },
 
-{
-id: 3,
-name: "Two Piece",
-},
+    {
+      id: 4,
+      name: "Gown",
+    },
 
-{
-id: 4,
-name: "Gown",
-},
+    {
+      id: 5,
+      name: "Jumpsuit",
+    },
 
-{
-id: 5,
-name: "Jumpsuit",
-},
-
-{
-id: 6,
-name: "Playsuit",
-},
-
-]
+    {
+      id: 6,
+      name: "Playsuit",
+    },
+  ];
 
   return (
     <>
@@ -171,7 +171,6 @@ name: "Playsuit",
             onSubmit={handleSubmit(onSubmit)}
             className="w-full h-full flex items-start justify-between"
           >
-              
             <section className="w-[35%] flex flex-col">
               <section className="w-full">
                 <h2 className="font-anybody font-bold text-[24px] text-[#101828]">
@@ -221,7 +220,7 @@ name: "Playsuit",
               </section>
             </section>
 
-            <section className="w-[60%] h-full space-y-6 overflow-y-scroll scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md pr-6">
+            <section className="w-[60%] flex flex-col h-full space-y-6">
               <section className="w-full flex flex-col">
                 <h3 className="font-inter font-semibold text-[18px] text-[#101828] ">
                   Introduction
@@ -272,7 +271,7 @@ name: "Playsuit",
                 <h3 className="font-inter font-semibold text-[18px] text-[#101828]">
                   General
                 </h3>
-                <section className="w-full grid grid-cols-2 gap-4 mt-2">
+                <section className="w-full grid grid-cols-2 gap-4 mt-2 mb-6">
                   <label
                     htmlFor="product_price"
                     className="w-full font-normal text-[14px] text-[#344054] space-y-3"
@@ -353,47 +352,119 @@ name: "Playsuit",
                     )}
                   </label>
 
-<label
+                  <label
                     htmlFor="category"
                     className="w-full font-normal text-[14px] text-[#344054] space-y-3 col-span-2"
                   >
-<p>Category</p>
+                    <p>Category</p>
 
-<select name="category" {...register("category", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
-        <option value="Short Dress">Short Dress</option>
-        <option value="Long Dress">Long Dress</option>
-        <option value="Two Piece">Two Piece</option>
-        <option value="Gown">Gown</option>
-        <option value="Jumpsuit">Jumpsuit</option>
-        <option value="Playsuit">Playsuit</option>
-      </select>
+                    <select
+                      name="category"
+                      {...register("category", { required: true })}
+                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
+                    >
+                      <option value="Short Dress">Short Dress</option>
+                      <option value="Long Dress">Long Dress</option>
+                      <option value="Two Piece">Two Piece</option>
+                      <option value="Gown">Gown</option>
+                      <option value="Jumpsuit">Jumpsuit</option>
+                      <option value="Playsuit">Playsuit</option>
+                    </select>
 
-{errors.category && (
+                    {errors.category && (
                       <p className="w-full px-2 py-2.5 text-red-600 font-medium">
                         Product category is required
                       </p>
                     )}
-</label>
+                  </label>
 
-<label htmlFor="size" className="w-full font-normal text-[14px] text-[#344054] space-y-3 col-span-2">
-<p>Size</p>
+                  <label
+                    htmlFor="size"
+                    className="w-full font-normal text-[14px] text-[#344054] space-y-3 col-span-2"
+                  >
+                    <p>Size</p>
 
+                    <Multiselect
+                      customCloseIcon={<MdClose className="" />}
+                      displayValue="key"
+                      id="css_custom"
+                      onKeyPressFn={function noRefCheck() {}}
+                      onRemove={function noRefCheck() {}}
+                      onSearch={function noRefCheck() {}}
+                      onSelect={function noRefCheck() {}}
+                      options={[
+                        {
+                          cat: "Group 1",
+                          key: "sm",
+                        },
+                        {
+                          cat: "Group 1",
+                          key: "md",
+                        },
+                        {
+                          cat: "Group 1",
+                          key: "lg",
+                        },
+                        {
+                          cat: "Group 1",
+                          key: "xl",
+                        },
+                        {
+                          cat: "Group 1",
+                          key: "xxl",
+                        },
+                      ]}
+                      placeholder="Select"
+                      closeIcon="cancel"
+                      style={{
+                        chips: {
+                          background: "#F2F4F7",
+                          border: "1px solid #d0d5dd",
+                          "border-radius": "4px",
+                          padding: "4px 8px",
+                          "font-size": "14px",
+                          "font-weight": "medium",
+                          color: "#1d2939",
+                        },
+                        multiselectContainer: {
+                          color: "#344054",
+                          outline: "none",
+                        },
 
-<select name="size" {...register("size", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
-        <option value="sm">sm</option>
-        <option value="md">md</option>
-        <option value="lg">lg</option>
-        <option value="xl">xl</option>
-        <option value="xxl">xxl</option>
-      </select>
+                        // w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]
 
-{errors.size && (
+                        searchBox: {
+                          border: "1px solid #d0d5dd",
+                          "border-radius": "4px",
+                          outline: "none",
+                          padding: "8px 16px",
+                        },
+
+                        closeIcon: {
+                          color: "red",
+                          background: "yellow",
+                        },
+                      }}
+                    />
+
+                    {/* <select
+                      name="size"
+                      {...register("size", { required: true })}
+                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
+                    >
+                      <option value="sm">sm</option>
+                      <option value="md">md</option>
+                      <option value="lg">lg</option>
+                      <option value="xl">xl</option>
+                      <option value="xxl">xxl</option>
+                    </select> */}
+
+                    {errors.size && (
                       <p className="w-full px-2 py-2.5 text-red-600 font-medium">
                         Product size is required
                       </p>
                     )}
-</label>
-
+                  </label>
 
                   <section className="w-full flex items-centerjustify-center space-x-5">
                     <button

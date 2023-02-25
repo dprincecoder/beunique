@@ -36,15 +36,25 @@ a {
   border: none !important;
 }
 
-#filterAccordionBtn, #priceRangeBtn {
+#filterAccordionBtn,
+#priceRangeBtn {
   border: none !important;
   border-bottom: none !important;
 }
 
-#filterAccordionBtn::after, #priceRangeBtn::after {
+#filterAccordionBtn::after,
+#priceRangeBtn::after {
   display: none;
 }
 
-#sortBody, #priceRangeBody {
+#sortBody,
+#priceRangeBody {
   border: none;
+}
+
+.icon_cancel,
+.closeIcon {
+  color: "red";
+  background-color: "green";
+  border-color: "blue";
 }
