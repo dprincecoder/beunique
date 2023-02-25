@@ -36,6 +36,9 @@ const Signin = () => {
     loginData.append("username", data.username);
     loginData.append("password", data.password);
 
+
+    console.log(loginData);
+
     // for (var key in item) {
     //   form_data.append(key, item[key]);
     // }
