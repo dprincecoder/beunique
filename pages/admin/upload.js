@@ -32,10 +32,15 @@ const AdminUpload = () => {
     handleSubmit,
     reset,
     formState,
+    setError,
     formState: { errors },
   } = useForm();
 
   const [images, setImages] = useState(null);
+
+  const [sizes, setsizes] = useState([]);
+
+  const sizesArr = ["sm", "md", "lg", "xl", "xxl"];
 
   const imageUploader = () => {};
 
@@ -46,7 +51,39 @@ const AdminUpload = () => {
   const onSubmit = async (data) => {
     const formData = new FormData();
 
-    formData.append("file", data.file[0]);
+    data.sizes = sizes;
+
+    if (sizes.length < 1) {
+      setError(
+        "sizes",
+        { type: "required", message: "Product is size is required" },
+        { shouldFocus: false }
+      );
+    }
+
+    console.log(data);
+
+    formData.append("product_name", data.product_name);
+    formData.append("product_price", data.product_price);
+    formData.append("sizes", data.sizes);
+    formData.append("category", data.category);
+    formData.append("units", data.stock);
+    formData.append("weight", data.weight);
+    formData.append("weight", data.weight);
+    formData.append("description", data.description);
+    formData.append("new_stock", false);
+    formData.append("product_url", data.product_image);
+
+    console.log(formData);
+
+    const res = await fetch("https://beunique.live/admin/add_product", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+
+    // formData.append("file", data.file[0]);
     // const res = await fetch("http://localhost:3001/files", {
     //   method: "POST",
     //   body: formData,
@@ -57,36 +94,15 @@ const AdminUpload = () => {
   };
 
   const categoriesData = [
-    {
-      id: 1,
-      name: "Short Dress",
-    },
-
-    {
-      id: 2,
-      name: "Long Dress",
-    },
-
-    {
-      id: 3,
-      name: "Two Piece",
-    },
-
-    {
-      id: 4,
-      name: "Gown",
-    },
-
-    {
-      id: 5,
-      name: "Jumpsuit",
-    },
-
-    {
-      id: 6,
-      name: "Playsuit",
-    },
+    "Short Dress",
+    "Long Dress",
+    "Two Piece",
+    "Gown",
+    "Jumpsuit",
+    "Playsuit",
   ];
+
+  // console.log(sizes);
 
   return (
     <>
@@ -129,7 +145,7 @@ const AdminUpload = () => {
               <Link href="admin/upload">
                 <button
                   type="button"
-                  class=" px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                  className=" px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                 >
                   <DocumentUpload size={20} className="mr-3" />
                   Upload
@@ -138,7 +154,7 @@ const AdminUpload = () => {
               <Link href="admin/orders">
                 <button
                   type="button"
-                  class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                  className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                 >
                   <ShoppingCart size={20} className="mr-3" />
                   Orders
@@ -207,7 +223,7 @@ const AdminUpload = () => {
                   </section>
                 </label>
                 {errors.product_image && (
-                  <p className="w-full px-2 py-2.5 text-red-600 font-medium">
+                  <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
                     Product image(s) is required
                   </p>
                 )}
@@ -239,12 +255,12 @@ const AdminUpload = () => {
                     className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                     {...register("product_name", { required: true })}
                   />
-                  {errors.product_name && (
-                    <p className="w-full px-2 py-2.5 text-red-600 font-medium">
-                      Product name is required
-                    </p>
-                  )}
                 </label>
+                {errors.product_name && (
+                  <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
+                    Product name is required
+                  </p>
+                )}
 
                 <label
                   htmlFor="description"
@@ -259,12 +275,12 @@ const AdminUpload = () => {
                     className="w-full h-[208px] px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd] overflow-y-scroll scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md"
                     {...register("description", { required: true })}
                   />
-                  {errors.description && (
-                    <p className="w-full px-2 py-2.5 text-red-600 font-medium">
-                      Product description is required
-                    </p>
-                  )}
                 </label>
+                {errors.description && (
+                  <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
+                    Product description is required
+                  </p>
+                )}
               </section>
 
               <section className="w-full">
@@ -285,12 +301,12 @@ const AdminUpload = () => {
                       className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                       {...register("product_price", { required: true })}
                     />
-                    {errors.product_price && (
-                      <p className="w-full px-2 py-2.5 text-red-600 font-medium">
-                        Product price is required
-                      </p>
-                    )}
                   </label>
+                  {errors.product_price && (
+                    <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
+                      Product price is required
+                    </p>
+                  )}
 
                   <label
                     htmlFor="sales_price"
@@ -305,12 +321,12 @@ const AdminUpload = () => {
                       className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                       {...register("sales_price", { required: true })}
                     />
-                    {errors.sales_price && (
-                      <p className="w-full px-2 py-2.5 text-red-600 font-medium">
-                        Sales price is required
-                      </p>
-                    )}
                   </label>
+                  {errors.sales_price && (
+                    <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
+                      Sales price is required
+                    </p>
+                  )}
 
                   <label
                     htmlFor="weight"
@@ -325,12 +341,12 @@ const AdminUpload = () => {
                       className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                       {...register("weight", { required: true })}
                     />
-                    {errors.weight && (
-                      <p className="w-full px-2 py-2.5 text-red-600 font-medium">
-                        Weight is required
-                      </p>
-                    )}
                   </label>
+                  {errors.weight && (
+                    <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
+                      Weight is required
+                    </p>
+                  )}
 
                   <label
                     htmlFor="stock"
@@ -345,12 +361,12 @@ const AdminUpload = () => {
                       className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
                       {...register("stock", { required: true })}
                     />
-                    {errors.stock && (
-                      <p className="w-full px-2 py-2.5 text-red-600 font-medium">
-                        Sales price is required
-                      </p>
-                    )}
                   </label>
+                  {errors.stock && (
+                    <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
+                      Sales price is required
+                    </p>
+                  )}
 
                   <label
                     htmlFor="category"
@@ -370,13 +386,12 @@ const AdminUpload = () => {
                       <option value="Jumpsuit">Jumpsuit</option>
                       <option value="Playsuit">Playsuit</option>
                     </select>
-
-                    {errors.category && (
-                      <p className="w-full px-2 py-2.5 text-red-600 font-medium">
-                        Product category is required
-                      </p>
-                    )}
                   </label>
+                  {errors.category && (
+                    <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
+                      Product category is required
+                    </p>
+                  )}
 
                   <label
                     htmlFor="size"
@@ -385,36 +400,20 @@ const AdminUpload = () => {
                     <p>Size</p>
 
                     <Multiselect
-                      customCloseIcon={<MdClose className="" />}
+                      {...register("sizes")}
+                      customCloseIcon={
+                        <MdClose size={16} className="mt-1 ml-1" />
+                      }
                       displayValue="key"
                       id="css_custom"
+                      isObject={false}
                       onKeyPressFn={function noRefCheck() {}}
-                      onRemove={function noRefCheck() {}}
+                      onRemove={(event) => setsizes(event)}
                       onSearch={function noRefCheck() {}}
-                      onSelect={function noRefCheck() {}}
-                      options={[
-                        {
-                          cat: "Group 1",
-                          key: "sm",
-                        },
-                        {
-                          cat: "Group 1",
-                          key: "md",
-                        },
-                        {
-                          cat: "Group 1",
-                          key: "lg",
-                        },
-                        {
-                          cat: "Group 1",
-                          key: "xl",
-                        },
-                        {
-                          cat: "Group 1",
-                          key: "xxl",
-                        },
-                      ]}
+                      onSelect={(event) => setsizes(event)}
+                      options={sizesArr}
                       placeholder="Select"
+                      required
                       closeIcon="cancel"
                       style={{
                         chips: {
@@ -431,8 +430,6 @@ const AdminUpload = () => {
                           outline: "none",
                         },
 
-                        // w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]
-
                         searchBox: {
                           border: "1px solid #d0d5dd",
                           "border-radius": "4px",
@@ -446,36 +443,24 @@ const AdminUpload = () => {
                         },
                       }}
                     />
-
-                    {/* <select
-                      name="size"
-                      {...register("size", { required: true })}
-                      className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]"
-                    >
-                      <option value="sm">sm</option>
-                      <option value="md">md</option>
-                      <option value="lg">lg</option>
-                      <option value="xl">xl</option>
-                      <option value="xxl">xxl</option>
-                    </select> */}
-
-                    {errors.size && (
-                      <p className="w-full px-2 py-2.5 text-red-600 font-medium">
-                        Product size is required
-                      </p>
-                    )}
                   </label>
+                  {errors.sizes && (
+                    <p className="w-full px-2 py-2.5 text-red-600 font-medium -mt-1">
+                      Product size is required
+                    </p>
+                  )}
 
                   <section className="w-full flex items-centerjustify-center space-x-5">
                     <button
-                      type="button"
-                      class="px-2 py-2.5 bg-white text-[#101828] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px]"
+                      type="reset"
+                      class="px-2 py-2.5 bg-white text-[#101828] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] outline-none border-[1px] border-[#d0d5dd]"
+                      onClick={reset}
                     >
                       Reset
                     </button>
 
                     <button
-                      type="button"
+                      type="submit"
                       class="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px]"
                     >
                       Upload
