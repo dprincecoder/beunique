@@ -18,6 +18,7 @@ import {
 } from "iconsax-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { Listbox, Transition } from "@headlessui/react";
 
 // import UploadImages from "@/components/UploadImages";
 
@@ -52,6 +53,40 @@ const AdminUpload = () => {
     // alert(JSON.stringify(`${res.message}, status: ${res.status}`));
     // setPicture(null);
   };
+
+const categoriesData = [
+
+{
+id: 1,
+name: "Short Dress",
+},
+
+{
+id: 2,
+name: "Long Dress",
+},
+
+{
+id: 3,
+name: "Two Piece",
+},
+
+{
+id: 4,
+name: "Gown",
+},
+
+{
+id: 5,
+name: "Jumpsuit",
+},
+
+{
+id: 6,
+name: "Playsuit",
+},
+
+]
 
   return (
     <>
@@ -136,36 +171,7 @@ const AdminUpload = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="w-full h-full flex items-start justify-between"
           >
-            {/* <label htmlFor="Title">Title: </label>
-            <input
-              defaultValue="test"
-              {...register("example", { required: true })}
-            />
-            {errors.example && <p>This field is required</p>}
-            <br />
-            <br />
-            <br />
-            <label htmlFor="status">Status: </label>
-            <input {...register("exampleRequired", { required: true })} />
-            {errors.exampleRequired && <p>This field is required</p>}
-            <br />
-            <br />
-            <label htmlFor="Image">Image: </label>
-            <input
-              type="file"
-              {...register("file", { required: true })}
-              onChange={onChangePicture}
-            />
-            {errors.file && <p>Please select an image</p>}
-            <br />
-            <br />
-            <img className="image" src={picture && picture} alt="" />
-            <br />
-            <br />
-            <br />
-            <br />
-            <input type="submit" /> */}
-
+              
             <section className="w-[35%] flex flex-col">
               <section className="w-full">
                 <h2 className="font-anybody font-bold text-[24px] text-[#101828]">
@@ -346,6 +352,16 @@ const AdminUpload = () => {
                       </p>
                     )}
                   </label>
+
+
+<select {...register("category", { required: true })}>
+        <option value="Short Dress">Short Dress</option>
+        <option value="Long Dress">Long Dress</option>
+        <option value="Two Piece">Two Piece</option>
+        <option value="Gown">Gown</option>
+        <option value="Jumpsuit">Jumpsuit</option>
+        <option value="Playsuit">Playsuit</option>
+      </select>
 
                   <section className="w-full flex items-centerjustify-center space-x-5">
                     <button
