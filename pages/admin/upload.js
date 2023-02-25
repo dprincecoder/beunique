@@ -379,7 +379,7 @@ name: "Playsuit",
 <p>Size</p>
 
 
-<select name="size" {...register("category", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
+<select name="size" {...register("size", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
         <option value="sm">sm</option>
         <option value="md">md</option>
         <option value="lg">lg</option>
