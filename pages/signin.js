@@ -6,8 +6,11 @@ import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const Signin = () => {
+  const router = useRouter();
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -45,17 +48,17 @@ const Signin = () => {
         body: loginData,
       };
 
-      await fetch("http://54.157.82.169/users/login", options)
+      await fetch("https://beunique.live/users/login", options)
         .then((res) => res.json())
         .then((resData) => {
           console.log(resData);
-          if (resData.detail) {
-            toast.error(resData.detail);
-            console.log(resData.detail);
+
+
+          if (res.includes("Account was successfully created")) {
+            toast.success("Account was successfully created");
+            router.push("/signin");
           } else {
-            toast.success(resData);
-            console.log(resData);
-            // router.push("/signin");
+            toast.error(resData.detail);
           }
         });
     } catch (err) {

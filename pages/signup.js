@@ -6,19 +6,16 @@ import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const Signup = () => {
+  const router = useRouter();
   const [regData, setRegData] = useState({
     email: "",
     password: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
-
-  // const handleChange = (e) => {
-  //   console.log(e.target.name);
-  //   setRegData({ ...regData, [e.target.name]: e.target.value });
-  // };
 
   const {
     register,
@@ -27,7 +24,7 @@ const Signup = () => {
   } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
-    
+
     try {
       const options = {
         method: "POST",
@@ -35,16 +32,16 @@ const Signup = () => {
         body: JSON.stringify(data),
       };
 
-      await fetch("http://54.157.82.169/users/create_users", options)
+      await fetch("https://beunique.live/users/create_users", options)
         .then((res) => res.json())
         .then((resData) => {
-          if (resData.detail) {
-            toast.error(resData.detail);
-            console.log(resData.detail);
+          console.log(resData);
+
+          if (res.includes("Account was successfully created")) {
+            toast.success("Account was successfully created");
+            router.push("/signin");
           } else {
-            toast.success(resData);
-            console.log(resData);
-            // router.push("/signin");
+            toast.error(resData.detail);
           }
         });
     } catch (err) {
