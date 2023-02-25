@@ -357,7 +357,7 @@ name: "Playsuit",
                     htmlFor="category"
                     className="w-full font-normal text-[14px] text-[#344054] space-y-3"
                   >
-<select {...register("category", { required: true })} w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
+<select {...register("category", { required: true })} className="w-full px-[16px] py-[8px] rounded-md placeholder:text-[16px] placeholder:text-[#667085] outline-none bg-white border-[1px] border-[#d0d5dd]" >
         <option value="Short Dress">Short Dress</option>
         <option value="Long Dress">Long Dress</option>
         <option value="Two Piece">Two Piece</option>
