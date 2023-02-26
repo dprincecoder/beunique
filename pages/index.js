@@ -25,7 +25,7 @@ export default function Home() {
         body: data,
       };
 
-      await fetch("https://beunique.live/users/newsletter_subcription", options)
+      await fetch("https://beunique.live/users/newsletter-subcription", options)
         .then((res) => res.json())
         .then((resData) => {
 alert(JSON.stringify(resData));
