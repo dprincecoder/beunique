@@ -22,7 +22,7 @@ export default function Home() {
       const options = {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: data,
+        body: JSON.stringify(data),
       };
 
       await fetch("https://beunique.live/users/newsletter-subscription", options)
