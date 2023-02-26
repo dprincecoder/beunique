@@ -22,7 +22,7 @@ alert(JSON.stringify(data));
       const options = {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify(data),
+        body: data,
       };
 
       await fetch("https://beunique.live/users/newsletter_subcription", options)
