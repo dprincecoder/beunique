@@ -206,7 +206,7 @@ alert(JSON.stringify(resData));
                 placeholder="Enter your email"
                 // value={searchInput}
                 // onChange={(e) => setSearchInput(e.target.value)}
-                {...register("search", { required: true })}
+                {...register("email", { required: true })}
                 className="w-[100%] placeholder-[#ACB2BE] outline-none hover:outline-none focus:outline-none text-black border-[1px] border-[#ACB2BE] bg-white rounded-md px-4 py-2"
               />
               <button className="bg-black hover:bg-white text-white hover:text-black px-4 py-2 border-0 outline-none focus:outline-none hover:border-[1px] hover:border-[#ACB2BE] rounded-md cursor-pointer duration-300 md:ml-6 w-full md:w-fit mt-2 md:mt-0">
