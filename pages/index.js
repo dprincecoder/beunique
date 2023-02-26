@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import Link from "next/link";
 import main_hero5a from "../public/page_imgs/main_hero5a.jpg";
 import main_hero5b from "../public/page_imgs/main_hero5b.jpg";
@@ -23,7 +24,7 @@ export default function Home() {
         body: JSON.stringify(data),
       };
 
-      await fetch("https://54.157.82.169/users/newsletter_subcription", options)
+      await fetch("https://beunique.live/users/newsletter_subcription", options)
         .then((res) => res.json())
         .then((resData) => {
           if (resData.detail) {
