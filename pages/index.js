@@ -28,14 +28,13 @@ export default function Home() {
       await fetch("https://beunique.live/users/newsletter-subscription", options)
         .then((res) => res.json())
         .then((resData) => {
-alert(JSON.stringify(resData));
-          if (resData.detail) {
+
+          if (resData.detail.includes("Email was successfully added to our Newsletter")) {
             toast.success(resData.detail);
-            console.log(resData.detail);
+            
           } else {
-            toast.success(resData);
-            console.log(resData);
-            // router.push("/signin");
+            toast.error(resData.detail);
+       
           }
         });
     } catch (err) {
