@@ -77,7 +77,7 @@ formData.append("product_name", data.product_name);
     formData.append("new_stock", false);
     formData.append("product_url", data.product_image);
 
- alert(JSON.stringify(authtoken));
+ alert(JSON.stringify(window.localStorage.getItem("but")));
 
 
     const res = await fetch("https://beunique.live/admin/add_product", {
