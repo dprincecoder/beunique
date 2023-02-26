@@ -77,16 +77,19 @@ formData.append("product_name", data.product_name);
     formData.append("new_stock", false);
     formData.append("product_url", data.product_image);
 
- alert(JSON.stringify(window.localStorage.getItem("but")));
-
-
+ 
     const res = await fetch("https://beunique.live/admin/add_product", {
    method: "POST",
+    body: formData,
 headers: {"Authorization": `Bearer ${authtoken.access_token}`},
-       body: formData,
+   
      })
        .then((res) => res.json())
      .then((res) => alert(JSON.stringify(res)));
+
+alert(JSON.stringify(window.localStorage.getItem("but")));
+
+
 
     // formData.append("file", data.file[0]);
   };
