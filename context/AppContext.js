@@ -14,11 +14,34 @@ import React, {
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [salesTimerOn, setSalesTimerOn] = useState(true);
   const [isHomeSearchOpen, setIsHomeSearchOpen] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+  const [authtoken, setAuthtoken] = useState(null);
+  const [isToken, setIsToken] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== null || typeof window !== "undefined") {
+      if (window.localStorage.getItem("but")) {
+        setAuthtoken(JSON.parse(window.localStorage.getItem("but")));
+        setIsToken(true);
+
+        if (isToken && authtoken) {
+          setUserLoggedIn(true);
+        }
+      }
+    }
+  }, [userLoggedIn, isToken]);
+
+  const logoutHandler = () => {
+    window.localStorage.removeItem("but");
+    setAuthtoken(null);
+    setIsToken(false);
+    setUserLoggedIn(false);
+  };
 
   // const [globalState, globalDispatch] = useReducer(globalReducer, [], () => ({
   //   cart: Cookies.get("cartItems") ? JSON.parse(Cookies.get("cartItems")) : [],
@@ -73,6 +96,8 @@ export const AppProvider = ({ children }) => {
         userLoggedIn,
         setUserLoggedIn,
         priceFormatter,
+        authtoken,
+        logoutHandler,
       }}
     >
       {children}

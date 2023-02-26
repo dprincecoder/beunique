@@ -21,11 +21,14 @@ import { useForm } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
 import Multiselect from "multiselect-react-dropdown";
 import { MdClose } from "react-icons/md";
+import { useRouter } from "next/router";
 
 // import UploadImages from "@/components/UploadImages";
 
 const AdminUpload = () => {
   const { userLoggedIn, priceFormatter } = useAppContext();
+
+  const router = useRouter();
 
   const {
     register,
@@ -91,8 +94,6 @@ const AdminUpload = () => {
 
     console.log(formData);
   }, [formDataState, formData]);
-
-  console.log(formData);
 
   const categoriesData = [
     "Short Dress",
@@ -175,7 +176,10 @@ const AdminUpload = () => {
             <button
               type="button"
               class="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
-              onClick={() => alert("Logging out...")}
+              onClick={() => {
+                logoutHandler();
+                router.reload(window.location.pathname);
+              }}
             >
               <LogoutCurve size={20} className="mr-3" />
               Logout

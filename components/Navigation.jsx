@@ -10,7 +10,7 @@ import { Menu, Transition } from "@headlessui/react";
 const Navigation = () => {
   const router = useRouter();
 
-  const { isHomeSearchOpen, setIsHomeSearchOpen, userLoggedIn } =
+  const { isHomeSearchOpen, setIsHomeSearchOpen, userLoggedIn, logoutHandler } =
     useAppContext();
 
   const [searchInput, setSearchInput] = useState("");
@@ -71,10 +71,6 @@ const Navigation = () => {
       }
     }
   }, [router.isReady, currUrl, router.route]);
-
-  useEffect(() => {
-    console.log(userLoggedIn);
-  }, []);
 
   // console.log(currUrl);
 
@@ -169,12 +165,57 @@ const Navigation = () => {
               </Menu>
 
               {userLoggedIn ? (
-                <Link
-                  href="/account"
+                <Menu
+                  as="section"
                   className="relative inline-block align-middle text-left"
                 >
-                  <ProfileCircle size={25} className="" />
-                </Link>
+                  <Menu.Button className="p-0 m-0 mt-1">
+                    <ProfileCircle size={25} className="" />
+                  </Menu.Button>
+
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 mt-3 w-[120px] origin-top-right divide-y divide-gray-600 rounded-md bg-white shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <section className="px-2 py-1 ">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link href="/account">
+                              <button
+                                className={`${
+                                  active
+                                    ? "bg-slate-200 text-black"
+                                    : "text-[#344054]"
+                                } group flex w-full items-center rounded-md px-2 py-2 text-[14px]`}
+                              >
+                                Account
+                              </button>
+                            </Link>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                              <button
+                                className={`${
+                                  active
+                                    ? "bg-slate-200 text-black"
+                                    : "text-[#344054]"
+                                } group flex w-full items-center rounded-md px-2 py-2 text-[14px]`}
+                              >
+                                Sign Up
+                              </button>
+                          )}
+                        </Menu.Item>
+                      </section>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               ) : (
                 <Menu
                   as="section"

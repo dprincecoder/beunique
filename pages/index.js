@@ -23,7 +23,7 @@ export default function Home() {
         body: JSON.stringify(data),
       };
 
-      await fetch("https://54.157.82.169/users/newsletter_subcription", options)
+      await fetch("https://beunique.live/users/newsletter_subcription", options)
         .then((res) => res.json())
         .then((resData) => {
           if (resData.detail) {

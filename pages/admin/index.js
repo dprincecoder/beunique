@@ -16,9 +16,12 @@ import {
   Filter,
 } from "iconsax-react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const AdminOverview = () => {
-  const { userLoggedIn, priceFormatter } = useAppContext();
+  const { userLoggedIn, priceFormatter, logoutHandler } = useAppContext();
+
+  const router = useRouter();
 
   return (
     <>
@@ -90,7 +93,10 @@ const AdminOverview = () => {
             <button
               type="button"
               class="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
-              onClick={() => alert("Logging out...")}
+              onClick={() => {
+                logoutHandler();
+                router.reload(window.location.pathname);
+              }}
             >
               <LogoutCurve size={20} className="mr-3" />
               Logout
