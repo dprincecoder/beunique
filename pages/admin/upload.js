@@ -27,7 +27,7 @@ import { MdClose } from "react-icons/md";
 const AdminUpload = () => {
   const { userLoggedIn, priceFormatter, authtoken, } = useAppContext();
 
-console.log(JSON.stringify(authtoken));
+alert(JSON.stringify(authtoken));
 
 
 
