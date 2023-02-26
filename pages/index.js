@@ -201,8 +201,8 @@ alert(JSON.stringify(resData));
               className="w-[100%] sm3:w-[90%] md3:w-[60%] flex flex-col items-center justify-center md:flex-row md:justify-between"
             >
               <input
-                name="email_sub"
-                type="email_sub"
+                name="email"
+                type="email"
                 placeholder="Enter your email"
                 // value={searchInput}
                 // onChange={(e) => setSearchInput(e.target.value)}
