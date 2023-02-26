@@ -17,6 +17,7 @@ export default function Home() {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
+alert(data);
     try {
       const options = {
         method: "POST",
@@ -27,6 +28,7 @@ export default function Home() {
       await fetch("https://beunique.live/users/newsletter_subcription", options)
         .then((res) => res.json())
         .then((resData) => {
+alert(JSON.stringify(resData));
           if (resData.detail) {
             toast.error(resData.detail);
             console.log(resData.detail);
