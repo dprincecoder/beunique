@@ -14,7 +14,7 @@ import { Footer, Header, NewStockSlider, SalesCountdown } from "@/components";
 export default function Home() {
   const { isSidebarOpen, salesTimerOn } = useAppContext();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
 
@@ -28,10 +28,11 @@ export default function Home() {
       await fetch("https://beunique.live/users/newsletter-subscription", options)
         .then((res) => res.json())
         .then((resData) => {
+const res = resData.detail;
 
-          if (resData.detail.includes("Email was successfully added to our Newsletter")) {
+          if (res.includes("Email was successfully added to our Newsletter")) {
             toast.success(resData.detail);
-            
+            reset();
           } else {
             toast.error(resData.detail);
        
