@@ -27,7 +27,7 @@ import { MdClose } from "react-icons/md";
 const AdminUpload = () => {
   const { userLoggedIn, priceFormatter, authtoken, } = useAppContext();
 
-alert(JSON.stringify(authtoken));
+
 
 
 
@@ -77,7 +77,7 @@ formData.append("product_name", data.product_name);
     formData.append("new_stock", false);
     formData.append("product_url", data.product_image);
 
- 
+ alert(JSON.stringify(authtoken));
 
 
     const res = await fetch("https://beunique.live/admin/add_product", {
