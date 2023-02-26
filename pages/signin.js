@@ -8,20 +8,9 @@ import { Eye } from "iconsax-react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
 
-const Signin = () => {
+const Signin = ({ referringUrl }) => {
   const router = useRouter();
-
-  const [loginData, setLoginData] = useState({
-    email: "",
-    password: "",
-  });
-
   const [showPassword, setShowPassword] = useState(false);
-
-  // const handleChange = (e) => {
-  //   console.log(e.target.name);
-  //   setRegData({ ...regData, [e.target.name]: e.target.value });
-  // };
 
   const {
     register,
@@ -29,37 +18,29 @@ const Signin = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
-
-    var loginData = new FormData();
-
-    loginData.append("username", data.username);
-    loginData.append("password", data.password);
-
-
-    console.log(loginData);
-
-    // for (var key in item) {
-    //   form_data.append(key, item[key]);
-    // }
-
     try {
+      var loginData = new FormData();
+
+      loginData.append("username", data.username);
+      loginData.append("password", data.password);
+
       const options = {
         method: "POST",
-        headers: { "Content-type": "application/x-www-form-urlencoded" },
-        // body: JSON.stringify(data),
         body: loginData,
       };
 
       await fetch("https://beunique.live/users/login", options)
         .then((res) => res.json())
         .then((resData) => {
-          console.log(resData);
+          if (resData.access_token) {
+            window.localStorage.setItem("but", JSON.stringify(resData));
+            toast.success("Signed in successfully");
 
-
-          if (res.includes("Account was successfully created")) {
-            toast.success("Account was successfully created");
-            router.push("/signin");
+            if (referringUrl.includes("/signin") === false) {
+              router.push(referringUrl);
+            } else {
+              router.push("/");
+            }
           } else {
             toast.error(resData.detail);
           }
@@ -69,7 +50,6 @@ const Signin = () => {
       // toast.error(err);
     }
   };
-  // console.log(errors);
 
   return (
     <>
@@ -165,3 +145,10 @@ const Signin = () => {
 };
 
 export default Signin;
+
+export async function getServerSideProps({ req }) {
+  const referringUrl = req.headers.referer ? req.headers.referer : null;
+  return {
+    props: { referringUrl }, // will be passed to the page component as props
+  };
+}
