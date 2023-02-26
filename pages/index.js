@@ -17,7 +17,7 @@ export default function Home() {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-
+alert(JSON.stringify(data));
     try {
       const options = {
         method: "POST",
@@ -30,7 +30,7 @@ export default function Home() {
         .then((resData) => {
 alert(JSON.stringify(resData));
           if (resData.detail) {
-            toast.error(resData.detail);
+            toast.success(resData.detail);
             console.log(resData.detail);
           } else {
             toast.success(resData);
