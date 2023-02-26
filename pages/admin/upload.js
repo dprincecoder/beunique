@@ -40,8 +40,7 @@ const AdminUpload = () => {
 
   var formData = new FormData();
 
-  const [formDataState, setFormDataState] = useState(formData);
-
+  
   const [sizes, setsizes] = useState([]);
 
   const sizesArr = ["sm", "md", "lg", "xl", "xxl"];
@@ -55,8 +54,6 @@ const AdminUpload = () => {
   const onSubmit = async (data) => {
     data.sizes = sizes;
 
-    setFormDataState(data);
-
     if (sizes.length < 1) {
       setError(
         "sizes",
@@ -65,34 +62,33 @@ const AdminUpload = () => {
       );
     }
 
-    // const res = await fetch("https://beunique.live/admin/add_product", {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => console.log(res));
+formData.append("product_name", data.product_name);
+    formData.append("product_price", data.product_price);
+    formData.append("sizes", data.sizes);
+    formData.append("category", data.category);
+    formData.append("units", data.stock);
+    formData.append("weight", data.weight);
+    formData.append("sales_price", data.sales_price);
+    formData.append("description", data.description);
+    formData.append("new_stock", false);
+    formData.append("product_url", data.product_image);
+
+ 
+
+
+    const res = await fetch("https://beunique.live/admin/add_product", {
+   method: "POST",
+       body: formData,
+     })
+       .then((res) => res.json())
+     .then((res) => alert(JSON.stringify(res)));
 
     // formData.append("file", data.file[0]);
   };
 
-  useEffect(() => {
-    console.log(formDataState);
 
-    formData.append("product_name", formDataState.product_name);
-    formData.append("product_price", formDataState.product_price);
-    formData.append("sizes", formDataState.sizes);
-    formData.append("category", formDataState.category);
-    formData.append("units", formDataState.stock);
-    formData.append("weight", formDataState.weight);
-    formData.append("weight", formDataState.weight);
-    formData.append("description", formDataState.description);
-    formData.append("new_stock", false);
-    formData.append("product_url", formDataState.product_image);
 
-    console.log(formData);
-  }, [formDataState, formData]);
 
-  console.log(formData);
 
   const categoriesData = [
     "Short Dress",
