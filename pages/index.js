@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import Link from "next/link";
 import main_hero5a from "../public/page_imgs/main_hero5a.jpg";
 import main_hero5b from "../public/page_imgs/main_hero5b.jpg";
@@ -13,7 +14,7 @@ import { Footer, Header, NewStockSlider, SalesCountdown } from "@/components";
 export default function Home() {
   const { isSidebarOpen, salesTimerOn } = useAppContext();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
     try {
@@ -23,16 +24,19 @@ export default function Home() {
         body: JSON.stringify(data),
       };
 
-      await fetch("https://beunique.live/users/newsletter_subcription", options)
+      await fetch(
+        "https://beunique.live/users/newsletter-subscription",
+        options
+      )
         .then((res) => res.json())
         .then((resData) => {
-          if (resData.detail) {
-            toast.error(resData.detail);
-            console.log(resData.detail);
+          const res = resData.detail;
+
+          if (res.includes("Email was successfully added to our Newsletter")) {
+            toast.success(res);
+            reset();
           } else {
-            toast.success(resData);
-            console.log(resData);
-            // router.push("/signin");
+            toast.error(res);
           }
         });
     } catch (err) {
@@ -198,12 +202,12 @@ export default function Home() {
               className="w-[100%] sm3:w-[90%] md3:w-[60%] flex flex-col items-center justify-center md:flex-row md:justify-between"
             >
               <input
-                name="email_sub"
-                type="email_sub"
+                name="email"
+                type="email"
                 placeholder="Enter your email"
                 // value={searchInput}
                 // onChange={(e) => setSearchInput(e.target.value)}
-                {...register("search", { required: true })}
+                {...register("email", { required: true })}
                 className="w-[100%] placeholder-[#ACB2BE] outline-none hover:outline-none focus:outline-none text-black border-[1px] border-[#ACB2BE] bg-white rounded-md px-4 py-2"
               />
               <button className="bg-black hover:bg-white text-white hover:text-black px-4 py-2 border-0 outline-none focus:outline-none hover:border-[1px] hover:border-[#ACB2BE] rounded-md cursor-pointer duration-300 md:ml-6 w-full md:w-fit mt-2 md:mt-0">
