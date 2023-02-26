@@ -25,7 +25,7 @@ import { MdClose } from "react-icons/md";
 // import UploadImages from "@/components/UploadImages";
 
 const AdminUpload = () => {
-  const { userLoggedIn, priceFormatter } = useAppContext();
+  const { userLoggedIn, priceFormatter, authtoken, } = useAppContext();
 
   const {
     register,
@@ -78,6 +78,7 @@ formData.append("product_name", data.product_name);
 
     const res = await fetch("https://beunique.live/admin/add_product", {
    method: "POST",
+headers: {Authorization: `Bearer ${authtoken.access_token}`}
        body: formData,
      })
        .then((res) => res.json())
