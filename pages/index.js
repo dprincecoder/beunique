@@ -31,10 +31,10 @@ export default function Home() {
 const res = resData.detail;
 
           if (res.includes("Email was successfully added to our Newsletter")) {
-            toast.success(resData.detail);
+            toast.success(res);
             reset();
           } else {
-            toast.error(resData.detail);
+            toast.error(res);
        
           }
         });
