@@ -17,7 +17,7 @@ export default function Home() {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-alert(data);
+alert(JSON.stringify(data));
     try {
       const options = {
         method: "POST",
