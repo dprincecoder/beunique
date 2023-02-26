@@ -42,8 +42,6 @@ const AdminUpload = () => {
 
   const [images, setImages] = useState(null);
 
-  var formData = new FormData();
-
   
   const [sizes, setsizes] = useState([]);
 
@@ -66,21 +64,11 @@ const AdminUpload = () => {
       );
     }
 
-formData.append("product_name", data.product_name);
-    formData.append("product_price", data.product_price);
-    formData.append("sizes", data.sizes);
-    formData.append("category", data.category);
-    formData.append("units", data.stock);
-    formData.append("weight", data.weight);
-    formData.append("sales_price", data.sales_price);
-    formData.append("description", data.description);
-    formData.append("new_stock", false);
-    formData.append("product_url", data.product_image);
-
+var formData = new FormData(data);
  
     const res = await fetch("https://beunique.live/admin/add_product", {
        method: "POST",
-       headers: {"Authorization": `Bearer ${authtoken.access_token}`},
+       headers: {"Content-Type": "multipart/form-data", "Authorization": `Bearer ${authtoken.access_token}`},
        body: formData,
      })
        .then((res) => res.json())
