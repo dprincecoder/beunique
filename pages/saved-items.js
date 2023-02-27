@@ -30,7 +30,7 @@ const SavedItems = () => {
 
       <Header />
 
-      <section className="grid place-items-center w-full p-16">
+      <section className="grid place-items-center w-full p-16 text-center">
         {loggedIn ? (
           <h1 className="font-anybody font-bold text-3xl text-[#344054]">
             Saved Items
