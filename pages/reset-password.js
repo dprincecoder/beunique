@@ -50,7 +50,7 @@ const options = {
       };
 
 
-      await fetch("https://beunique.live/users/reset-password", options)
+      await fetch(`https://beunique.live/users/reset-password?token=${token}`, options)
         .then((res) => res.json())
         .then((resData) => {
           alert(JSON.stringify(resData))
