@@ -189,7 +189,7 @@ const AdminOverview = () => {
             </section>
           </>
         ) : (
-          <>
+          <section className="w-full h-screen flex flex-col items-center justify-center">
             <h1 className="font-anybody font-bold text-3xl text-[#344054]">
               Please login to access your account!
             </h1>
@@ -202,7 +202,7 @@ const AdminOverview = () => {
                 Login
               </button>
             </Link>
-          </>
+          </section>
         )}
       </section>
     </>
