@@ -40,7 +40,7 @@ const router = useRouter();
 
 const token = router.query.token;
 
-console.log(token);
+alert(token);
 
 
 const options = {
@@ -53,7 +53,7 @@ const options = {
       await fetch("https://beunique.live/users/reset-password", options)
         .then((res) => res.json())
         .then((resData) => {
-          console.log(resData)
+          alert(JSON.stringify(resData))
           // const res = resData.detail;
 
           // if (res.email) {
