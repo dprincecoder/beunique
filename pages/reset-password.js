@@ -6,8 +6,11 @@ import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const ResetPassword = () => {
+const router = useRouter();
+
   const [pwdData, setPwdData] = useState({
     password: "",
     confirm_password: "",
@@ -33,11 +36,19 @@ const ResetPassword = () => {
     } else {
       toast.success("Passwords match!");
       try {
-      const options = {
+      
+
+const token = router.query.token;
+
+console.log(token);
+
+
+const options = {
         method: "POST",
-        headers: { "Content-type": "application/json" },
+        headers: { "Content-type": "application/json", "Authorisation": `Bearer ${token}` },
         body: JSON.stringify(data),
       };
+
 
       await fetch("https://beunique.live/users/reset-password", options)
         .then((res) => res.json())
