@@ -186,7 +186,7 @@ export default function Home() {
         </section>
 
         <section className="w-[100%] bg-[#f2f4f7] overflow-hidden flex flex-col space-y-4 py-8 items-center justify-center sm2:flex-row sm2:flex-wrap sm2:justify-between sm2:px-6">
-          <section className="w-[90%] sm2:w-[48%]">
+          <section className="w-[90%] sm2:w-[45%]">
             <h3 className="font-semibold text-xl mb-3">
               Scared of missing out?
             </h3>
@@ -199,7 +199,7 @@ export default function Home() {
           <section className="w-[90%] sm2:w-[48%] flex justify-end">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="w-[100%] sm3:w-[90%] md3:w-[60%] flex flex-col items-center justify-center md:flex-row md:justify-between"
+              className="w-[100%] flex flex-col items-center justify-center md:flex-row md:justify-between"
             >
               <input
                 name="email"

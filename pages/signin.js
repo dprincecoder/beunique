@@ -149,6 +149,6 @@ export default Signin;
 export async function getServerSideProps({ req }) {
   const referringUrl = req.headers.referer ? req.headers.referer : null;
   return {
-    props: { referringUrl }, // will be passed to the page component as props
+    props: { referringUrl }, 
   };
 }

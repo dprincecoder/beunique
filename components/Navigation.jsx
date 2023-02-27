@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { SearchNormal1, Eye, Heart, Bag2, ProfileCircle } from "iconsax-react";
+import {
+  SearchNormal1,
+  Eye,
+  Heart,
+  Bag2,
+  ProfileCircle,
+  LogoutCurve,
+} from "iconsax-react";
 import Link from "next/link";
 import Logo from "@/public/logo.png";
 import { useAppContext } from "../context/AppContext";
@@ -10,8 +17,10 @@ import { Menu, Transition } from "@headlessui/react";
 const Navigation = () => {
   const router = useRouter();
 
-  const { isHomeSearchOpen, setIsHomeSearchOpen, userLoggedIn, logoutHandler } =
+  const { isHomeSearchOpen, setIsHomeSearchOpen, logoutHandler } =
     useAppContext();
+
+  const [loggedIn, setLoggedIn] = useState(true);
 
   const [searchInput, setSearchInput] = useState("");
 
@@ -21,8 +30,25 @@ const Navigation = () => {
   const currUrlArr = currUrlRaw.split("/");
   const currUrl = currUrlArr[1] ? currUrlArr[1] : null;
 
+  const [isToken, setIsToken] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
   useEffect(() => {
-    if (window !== undefined || window !== null) {
+    if (typeof window !== null || typeof window !== "undefined") {
+      if (router.route !== "" && router.isReady) {
+        if (window.localStorage.getItem("but")) {
+          setIsToken(true);
+
+          if (isToken) {
+            setUserLoggedIn(true);
+          }
+        }
+      }
+    }
+  }, [userLoggedIn, isToken, router.isReady, router.route]);
+
+  useEffect(() => {
+    if (typeof window !== undefined || typeof window !== null) {
       if (router.route) {
         setCategories([
           {
@@ -164,7 +190,7 @@ const Navigation = () => {
                 </Transition>
               </Menu>
 
-              {userLoggedIn ? (
+              {loggedIn && userLoggedIn ? (
                 <Menu
                   as="section"
                   className="relative inline-block align-middle text-left"
@@ -201,15 +227,17 @@ const Navigation = () => {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                              <button
-                                className={`${
-                                  active
-                                    ? "bg-slate-200 text-black"
-                                    : "text-[#344054]"
-                                } group flex w-full items-center rounded-md px-2 py-2 text-[14px]`}
-                              >
-                                Sign Up
-                              </button>
+                            <button
+                              type="button"
+                              class="p-2 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-full mt-1"
+                              onClick={() => {
+                                logoutHandler();
+                                router.reload(window.location.pathname);
+                              }}
+                            >
+                              <LogoutCurve size={20} className="mr-3" />
+                              Logout
+                            </button>
                           )}
                         </Menu.Item>
                       </section>

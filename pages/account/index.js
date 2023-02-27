@@ -7,15 +7,14 @@ import { useAppContext } from "../../context/AppContext";
 const Account = () => {
   const { userLoggedIn, isSidebarOpen, salesTimerOn } = useAppContext();
 
-  const [loggedIn, setLoggedIn] = useState(true)
-  
+  const [loggedIn, setLoggedIn] = useState(true);
+
   useEffect(() => {
     if (typeof window !== null || typeof window !== "undefined") {
       if (window.localStorage.getItem("but")) {
-        setLoggedIn(true)
+        setLoggedIn(true);
       } else {
-        setLoggedIn(false)
-
+        setLoggedIn(false);
       }
     }
   }, [loggedIn]);

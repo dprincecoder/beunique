@@ -23,8 +23,6 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
-
     try {
       const options = {
         method: "POST",
@@ -35,13 +33,13 @@ const Signup = () => {
       await fetch("https://beunique.live/users/create_users", options)
         .then((res) => res.json())
         .then((resData) => {
-          console.log(resData);
+          const res = resData.detail;
 
           if (res.includes("Account was successfully created")) {
             toast.success("Account was successfully created");
             router.push("/signin");
           } else {
-            toast.error(resData.detail);
+            toast.error(res);
           }
         });
     } catch (err) {
