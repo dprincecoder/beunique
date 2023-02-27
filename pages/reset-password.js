@@ -40,12 +40,10 @@ const router = useRouter();
 
 const token = router.query.token;
 
-alert(token);
-
 
 const options = {
         method: "PATCH",
-        headers: { "Content-type": "application/json", "Authorisation": `Bearer ${token}` },
+        headers: { "Content-type": "application/json", },
         body: JSON.stringify(data),
       };
 
@@ -54,15 +52,15 @@ const options = {
         .then((res) => res.json())
         .then((resData) => {
           alert(JSON.stringify(resData))
-          // const res = resData.detail;
+           const res = resData.detail;
 
-          // if (res.email) {
-          //   toast.success("Reset password email sent");
-          //   reset()
-          //   router.push("/forgot-password-sent")
-          // } else {
-          //   toast.error(res);
-          // }
+           if (res.email) {
+             toast.success("Password reset successful!");
+             reset()
+             router.push("/signin")
+           } else {
+             toast.error(res);
+           }
         });
     } catch (err) {
       console.log(err);
