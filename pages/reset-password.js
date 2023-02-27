@@ -44,7 +44,7 @@ alert(token);
 
 
 const options = {
-        method: "POST",
+        method: "PATCH",
         headers: { "Content-type": "application/json", "Authorisation": `Bearer ${token}` },
         body: JSON.stringify(data),
       };
