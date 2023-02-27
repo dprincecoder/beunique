@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 const ForgotPassword = () => {
   const router = useRouter();
@@ -13,12 +14,34 @@ const ForgotPassword = () => {
 
   const {
     register,
-    handleSubmit,
+    handleSubmit, reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    router.push("/forgot-password-sent");
+  const onSubmit = async (data) => {
+    try {
+      const options = {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(data),
+      };
+
+      await fetch("https://beunique.live/users/forgot-password", options)
+        .then((res) => res.json())
+        .then((resData) => {
+          const res = resData.detail;
+
+          if (res.email) {
+            toast.success("Reset password email sent");
+            reset()
+            router.push("/forgot-password-sent")
+          } else {
+            toast.error(res);
+          }
+        });
+    } catch (err) {
+      console.log(err);
+      // toast.error(err);
+    }
   };
   // console.log(errors);
 

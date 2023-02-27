@@ -27,7 +27,7 @@ const Signup = () => {
       const options = {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       };
 
       await fetch("https://beunique.live/users/create_users", options)

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
+import { toast } from "react-hot-toast";
 
 const ResetPassword = () => {
   const [pwdData, setPwdData] = useState({
@@ -22,10 +23,42 @@ const ResetPassword = () => {
 
   const {
     register,
-    handleSubmit,
+    handleSubmit, reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    if(data.password !== data.confirm_password) {
+      toast.error("Passwords do not match!")
+    } else {
+      toast.success("Passwords match!");
+      try {
+      const options = {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(data),
+      };
+
+      await fetch("https://beunique.live/users/reset-password", options)
+        .then((res) => res.json())
+        .then((resData) => {
+          console.log(resData)
+          // const res = resData.detail;
+
+          // if (res.email) {
+          //   toast.success("Reset password email sent");
+          //   reset()
+          //   router.push("/forgot-password-sent")
+          // } else {
+          //   toast.error(res);
+          // }
+        });
+    } catch (err) {
+      console.log(err);
+      // toast.error(err);
+    }
+    }
+  };
   // console.log(errors);
 
   return (
