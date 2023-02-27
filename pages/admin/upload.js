@@ -477,7 +477,7 @@ const AdminUpload = () => {
             </section>
           </>
         ) : (
-          <section className="w-full h-screen flex flex-col items-center justify-center">
+          <section className="w-full h-screen flex flex-col items-center justify-center text-center">
             <h1 className="font-anybody font-bold text-3xl text-[#344054]">
               Please login to access your account!
             </h1>
