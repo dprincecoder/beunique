@@ -51,13 +51,14 @@ const options = {
       await fetch(`https://beunique.live/users/reset-password?token=${token}`, options)
         .then((res) => res.json())
         .then((resData) => {
-          alert(JSON.stringify(resData))
            const res = resData.detail;
 
            if (res.email) {
              toast.success("Password reset successful!");
              reset()
              router.push("/signin")
+           } else if (res === "") {
+             toast.error("Old password is not allowed, please enter new ones...");
            } else {
              toast.error(res);
            }
