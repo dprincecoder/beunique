@@ -6,8 +6,11 @@ import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const ResetPassword = () => {
+  const router = useRouter();
+
   const [pwdData, setPwdData] = useState({
     password: "",
     confirm_password: "",
@@ -23,40 +26,44 @@ const ResetPassword = () => {
 
   const {
     register,
-    handleSubmit, reset,
+    handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
-    if(data.password !== data.confirm_password) {
-      toast.error("Passwords do not match!")
+
+    console.log(router.query);
+
+    if (data.password !== data.confirm_password) {
+      toast.error("Passwords do not match!");
     } else {
       toast.success("Passwords match!");
       try {
-      const options = {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(data),
-      };
+        const options = {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(data),
+        };
 
-      await fetch("https://beunique.live/users/reset-password", options)
-        .then((res) => res.json())
-        .then((resData) => {
-          console.log(resData)
-          // const res = resData.detail;
+        await fetch("https://beunique.live/users/reset-password", options)
+          .then((res) => res.json())
+          .then((resData) => {
+            console.log(resData);
+            // const res = resData.detail;
 
-          // if (res.email) {
-          //   toast.success("Reset password email sent");
-          //   reset()
-          //   router.push("/forgot-password-sent")
-          // } else {
-          //   toast.error(res);
-          // }
-        });
-    } catch (err) {
-      console.log(err);
-      // toast.error(err);
-    }
+            // if (res.email) {
+            //   toast.success("Reset password email sent");
+            //   reset()
+            //   router.push("/forgot-password-sent")
+            // } else {
+            //   toast.error(res);
+            // }
+          });
+      } catch (err) {
+        console.log(err);
+        // toast.error(err);
+      }
     }
   };
   // console.log(errors);
