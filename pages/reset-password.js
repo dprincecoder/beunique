@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 
 const ResetPassword = () => {
   const router = useRouter();
-
   const [pwdData, setPwdData] = useState({
     password: "",
     confirm_password: "",
@@ -40,25 +39,33 @@ const ResetPassword = () => {
     } else {
       toast.success("Passwords match!");
       try {
+        const token = router.query.token;
+
         const options = {
-          method: "POST",
+          method: "PATCH",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(data),
         };
 
-        await fetch("https://beunique.live/users/reset-password", options)
+        await fetch(
+          `https://beunique.live/users/reset-password?token=${token}`,
+          options
+        )
           .then((res) => res.json())
           .then((resData) => {
-            console.log(resData);
-            // const res = resData.detail;
+            const res = resData.detail;
 
-            // if (res.email) {
-            //   toast.success("Reset password email sent");
-            //   reset()
-            //   router.push("/forgot-password-sent")
-            // } else {
-            //   toast.error(res);
-            // }
+            if (res.email) {
+              toast.success("Password reset successful!");
+              reset();
+              router.push("/signin");
+            } else if (res === "") {
+              toast.error(
+                "Old password is not allowed, please enter new ones..."
+              );
+            } else {
+              toast.error(res);
+            }
           });
       } catch (err) {
         console.log(err);
