@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useAppContext } from "../context/AppContext";
 import { useRouter } from "next/router";
 // import { useCountdown } from "../hooks/useCountdown";
 
 const Countdown = ({ targetDate }) => {
   const router = useRouter();
 
-  const { setSalesTimerOn } = useAppContext();
+  // const { setSalesTimerOn } = useAppContext();
 
   /////////
   // const [days, hours, minutes, seconds] = useCountdown(targetDate);

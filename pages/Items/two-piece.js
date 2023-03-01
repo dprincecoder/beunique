@@ -3,14 +3,13 @@ import Head from "next/head";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import { useAppContext } from "../context/AppContext";
 import {
   Footer,
   Header,
   NewStockSlider,
   ProductCard,
   RadioButton,
-} from "../components";
+} from "../../components";
 import { ArrowRight2, ArrowDown2, Filter, TickCircle } from "iconsax-react";
 import { allProducts } from "@/data/allProducts";
 import { Listbox, Transition } from "@headlessui/react";
@@ -65,8 +64,7 @@ const sizes = [
   { id: 6, size: "xxl", selected: false },
 ];
 
-const Jumpsuit = () => {
-  const { isSidebarOpen, salesTimerOn } = useAppContext();
+const TwoPiece = () => {
 
   const [sortOption, setSortOption] = useState(sortOptions[0]);
   const [sortOptionsFt, setSortOptionsFt] = useState(sortOptions);
@@ -128,7 +126,7 @@ const Jumpsuit = () => {
   return (
     <>
       <Head>
-        <title>BeUnique | Jumpsuit</title>
+        <title>BeUnique | Two Piece</title>
         <meta
           name="description"
           content="The most unique and affordable ecommerce store for females"
@@ -147,13 +145,13 @@ const Jumpsuit = () => {
             </span>
             <ArrowRight2 variant="Linear" size={16} className="" />
             <span className="font-inter text-[14px] text-black font-medium">
-              <Link href="/jumpsuit">Jumpsuit</Link>
+              <Link href="/two-piece">Two Piece</Link>
             </span>
           </section>
 
           <section className="flex items-center justify-between w-full">
             <h2 className="font-anybody text-[30px] font-bold dark:text-black w-fit">
-              Jumpsuit
+              Two Piece
             </h2>
 
             <section
@@ -712,4 +710,4 @@ const Jumpsuit = () => {
   );
 };
 
-export default Jumpsuit;
+export default TwoPiece;
