@@ -65,7 +65,6 @@ const sizes = [
 ];
 
 const TwoPiece = () => {
-
   const [sortOption, setSortOption] = useState(sortOptions[0]);
   const [sortOptionsFt, setSortOptionsFt] = useState(sortOptions);
   const [priceRange, setPriceRange] = useState(null);
@@ -496,10 +495,9 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="sortBody"
-                    class="accordion-collapse collapse show border-none"
-                    space-y-2
+                    class="accordion-collapse collapse show border-none space-y-2
                     py-6
-                    bg-white
+                    bg-white"
                     data-bs-3a
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="sortHeader"
