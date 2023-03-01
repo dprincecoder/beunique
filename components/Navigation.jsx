@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 
 const Navigation = () => {
   const router = useRouter();
+  const { type } = router.query;
 
   const {token} = useSelector(state => state.auth)
 
@@ -41,49 +42,49 @@ const logoutHandler = () => {
           {
             id: 1,
             name: "New In",
-            slug: "/Items/new-in",
-            active: currUrl === "new-in" ? true : false,
+            slug: "/products?type=new-in",
+            active: type === "new-in" ? true : false,
           },
           {
             id: 2,
             name: "Short Dress",
-            slug: "/Items/short-dress",
-            active: currUrl === "short-dress" ? true : false,
+            slug: "/products?type=short-dress",
+            active: type === "short-dress" ? true : false,
           },
           {
             id: 3,
             name: "Long Dress",
-            slug: "/Items/long-dress",
-            active: currUrl === "long-dress" ? true : false,
+            slug: "/products?type=long-dress",
+            active: type === "long-dress" ? true : false,
           },
           {
             id: 4,
             name: "Two Piece",
-            slug: "/Items/two-piece",
-            active: currUrl === "two-piece" ? true : false,
+            slug: "/products?type=two-piece",
+            active: type === "two-piece" ? true : false,
           },
           {
             id: 5,
             name: "Gown",
-            slug: "/Items/gown",
-            active: currUrl === "gown" ? true : false,
+            slug: "/products?type=gown",
+            active: type === "gown" ? true : false,
           },
           {
             id: 6,
             name: "Jumpsuit",
-            slug: "/Items/jumpsuit",
-            active: currUrl === "jumpsuit" ? true : false,
+            slug: "/products?type=jumpsuit",
+            active: type === "jumpsuit" ? true : false,
           },
           {
             id: 7,
             name: "Playsuit",
-            slug: "/Items/playsuit",
-            active: currUrl === "playsuit" ? true : false,
+            slug: "/products?type=playsuit",
+            active: type === "playsuit" ? true : false,
           },
         ]);
       }
     }
-  }, [router.isReady, currUrl, router.route]);
+  }, [router.isReady, type, router.route]);
 
   // console.log(currUrl);
 

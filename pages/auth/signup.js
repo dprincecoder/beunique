@@ -20,6 +20,8 @@ const Signup = () => {
     formBody.append("email", email);
     formBody.append("password", password);
 
+    console.log(formBody)
+
     try {
       if (email !== "" && password !== "") {
         await SignUpApi(formBody);
@@ -27,7 +29,7 @@ const Signup = () => {
         router.push("/auth/signin");
       }
     } catch (err) {
-      // console.log(ErrorHandler(err));
+      console.log(ErrorHandler(err));
       const error = ErrorHandler(err);
       toast.error(error.message);
     }
