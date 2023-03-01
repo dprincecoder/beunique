@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import Logo from "@/public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head";
 import { Eye, EyeSlash } from "iconsax-react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
@@ -37,16 +35,6 @@ const Signup = () => {
 
   return (
     <>
-      <Head>
-        <title>BeUnique | Sign Up</title>
-        <meta
-          name="description"
-          content="The most unique and affordable ecommerce store for females"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <section className="w-screen h-auto block p-[16px] md:p-[40px] relative font-inter overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
         <section className="w-full sm2:w-[70%] md3:w-[40%] mt-[8vh] mx-auto flex flex-col items-center relative">
           <section className="w-fit">
