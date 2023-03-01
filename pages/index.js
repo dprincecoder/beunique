@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -47,18 +46,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>BeUnique | Unique & Affordable</title>
-        <meta
-          name="description"
-          content="The most unique and affordable ecommerce store for females"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header />
-
       <section className="w-full flex flex-col items-center justify-center p-0 m-0 z-30 font-inter scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
         {salesTimerOn && <SalesCountdown />}
 
@@ -218,7 +205,6 @@ export default function Home() {
         </section>
       </section>
 
-      <Footer />
     </>
   );
 }

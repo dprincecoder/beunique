@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 
 import Logo from "@/public/logo.png";
@@ -83,17 +82,7 @@ const AdminUpload = () => {
   };
   return (
     <>
-      <Head>
-        <title>BeUnique | Upload Product</title>
-        <meta
-          name="description"
-          content="The most unique and affordable ecommerce store for females"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <section className="min-w-[1200px] w-full h-full mx-auto block p-[16px] md:px-[40px] md:py-[20px] relative font-inter overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
+           <section className="min-w-[1200px] w-full h-full mx-auto block p-[16px] md:px-[40px] md:py-[20px] relative font-inter overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
         {token ? (
           <>
             <section className="w-[20%] min-h-full fixed top-0 left-0 flex flex-col items-start justify-start pl-[30px] pt-[30px] pb-[30px]">
