@@ -74,7 +74,7 @@ const AdminUpload = () => {
       const res = await AddProductApi(formData);
       if (res.status) {
         reset();
-        setsizes([])
+        setsizes([]);
         toast.success("Product uploaded successfully");
       }
     } catch (error) {

@@ -30,7 +30,7 @@ const Signup = () => {
       }
     } catch (err) {
       // console.log(ErrorHandler(err));
-      const error = ErrorHandler(err)
+      const error = ErrorHandler(err);
       toast.error(error.message);
     }
   };

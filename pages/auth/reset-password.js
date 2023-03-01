@@ -5,8 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { Eye } from "iconsax-react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const ResetPassword = () => {
+  const router = useRouter();
   const [pwdData, setPwdData] = useState({
     password: "",
     confirm_password: "",
@@ -23,9 +26,53 @@ const ResetPassword = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+
+    console.log(router.query);
+
+    if (data.password !== data.confirm_password) {
+      toast.error("Passwords do not match!");
+    } else {
+      toast.success("Passwords match!");
+      try {
+        const token = router.query.token;
+
+        const options = {
+          method: "PATCH",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(data),
+        };
+
+        await fetch(
+          `https://beunique.live/users/reset-password?token=${token}`,
+          options
+        )
+          .then((res) => res.json())
+          .then((resData) => {
+            const res = resData.detail;
+
+            if (res.email) {
+              toast.success("Password reset successful!");
+              reset();
+              router.push("/signin");
+            } else if (res === "") {
+              toast.error(
+                "Old password is not allowed, please enter new ones..."
+              );
+            } else {
+              toast.error(res);
+            }
+          });
+      } catch (err) {
+        console.log(err);
+        // toast.error(err);
+      }
+    }
+  };
   // console.log(errors);
 
   return (
