@@ -8,7 +8,7 @@ import { Footer } from ".";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const HeaderShow = !router.pathname.includes("/auth/");
+  const HeaderShow = !router.pathname.includes("/auth") && !router.pathname.includes("/admin");
 
   const useSessionStorage = (name) => {
     const [value, setValue] = useState("");

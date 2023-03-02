@@ -7,14 +7,13 @@ import {
   ShoppingCart,
   Setting2,
   LogoutCurve,
-  ArrowLeft,
-  ArrowRight,
   ClipboardExport,
   Filter,
 } from "iconsax-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import AuthError from "@/components/AuthError";
 
 const AdminOverview = () => {
   const router = useRouter();
@@ -101,7 +100,7 @@ const AdminOverview = () => {
                       Total Sales
                     </h4>
                     <h2 className="font-anybody font-medium text-[24px] text-[1d2939] mt-2">
-                      ₦{priceFormatter(234199)}
+                      ₦234199
                     </h2>
                   </section>
                   <section className="grid place-items-center w-full">
@@ -164,20 +163,7 @@ const AdminOverview = () => {
             </section>
           </>
         ) : (
-          <section className="w-full h-screen flex flex-col items-center justify-center text-center">
-            <h1 className="font-anybody font-bold text-3xl text-[#344054]">
-              Please login to access your account!
-            </h1>
-
-            <Link href="/signin">
-              <button
-                type="button"
-                className="px-2 py-2.5 mt-6 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] h-[42px]"
-              >
-                Login
-              </button>
-            </Link>
-          </section>
+          <AuthError />
         )}
       </section>
     </>

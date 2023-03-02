@@ -18,7 +18,7 @@ const Navigation = () => {
   const router = useRouter();
   const { type } = router.query;
 
-  const {token} = useSelector(state => state.auth)
+  const { token } = useSelector((state) => state.auth);
 
   const [searchInput, setSearchInput] = useState("");
 
@@ -28,12 +28,11 @@ const Navigation = () => {
   const currUrlArr = currUrlRaw.split("/");
   const currUrl = currUrlArr[1] ? currUrlArr[1] : null;
 
-
-const logoutHandler = () => {
-  localStorage.clear()
-  sessionStorage.clear()
-  router.push("/auth/signin")
-}
+  const logoutHandler = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    router.push("/auth/signin");
+  };
 
   useEffect(() => {
     if (typeof window !== undefined || typeof window !== null) {
