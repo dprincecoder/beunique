@@ -1,0 +1,35 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  height: 272px;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  padding: 40px;
+  overflow-y: scroll;
+}
+
+.title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 8px;
+}
+.cardleft {
+}
