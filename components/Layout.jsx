@@ -9,6 +9,7 @@ import { Footer } from ".";
 const Layout = ({ children }) => {
   const router = useRouter();
   const HeaderShow = !router.pathname.includes("/auth") && !router.pathname.includes("/admin");
+  const FooterShow = HeaderShow && !router.pathname.includes("/account")
 
   const useSessionStorage = (name) => {
     const [value, setValue] = useState("");
@@ -35,7 +36,7 @@ const Layout = ({ children }) => {
       <section className="bg-white dark:bg-white text-black dark:text-black w-[100%] min-w-[320px] overflow-hidden">
         {HeaderShow && <Header />}
         <main className="">{children}</main>
-        {HeaderShow && <Footer />}
+        {FooterShow && <Footer />}
       </section>
     </>
   );

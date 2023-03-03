@@ -45,7 +45,6 @@ const AdminUpload = () => {
   useEffect(() => {
     if (categories.length > 0) {
       setCategoryData(categories);
-      console.log(categories);
     }
   }, [categories]);
 
