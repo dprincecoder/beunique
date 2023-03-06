@@ -161,7 +161,7 @@ const NewIn = () => {
 
   return (
     <>
-      <section className="w-full bg-[red] flex flex-col items-center justify-center p-0 px-[16px] md:px-[0px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
+      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[0px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
         <section className="w-full mx-auto bg-white dark:bg-white">
           <section className="flex items-center justify-start my-4 space-x-2">
             <span className="font-inter text-[14px] text-[#34405]">

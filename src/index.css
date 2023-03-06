@@ -11,3 +11,38 @@
   padding: 0;
   margin: 0;
 }
+
+.account-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height, or 150% */
+
+  color: #000000;
+}
+
+.h3-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+
+  /* Grey/Grey800 */
+
+  color: #1d2939;
+}
+
+.p-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0.5rem 0;
+
+  color: #475467;
+}

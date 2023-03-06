@@ -109,7 +109,7 @@ const Navigation = () => {
         <section className="w-full mb-5 flex flex-row justify-between items-center">
           <section className="w-fit">
             <Link to="/">
-              <img src="logo.png" alt="BeUnique" width={165} height={33} />
+              <img src="/logo.png" alt="BeUnique" width={165} height={33} />
             </Link>
           </section>
 

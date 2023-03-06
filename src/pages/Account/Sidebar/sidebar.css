@@ -1,0 +1,124 @@
+.account-sidebar-wrap {
+  margin-top: 2px;
+  width: 234px;
+  height: max-content;
+  padding-right: 32px;
+  border-right: 1px solid #eaecf0;
+  padding-right: 32px;
+}
+
+.account-sidebar-header {
+  display: flex;
+  align-items: center;
+}
+@media screen and (min-width: 900px) {
+  .account-sidebar-header {
+    display: none !important;
+  }
+}
+
+.account-sidebar-header h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  margin-left: 1rem;
+}
+
+.account-sidebar {
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0px;
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 640px) {
+  .account-sidebar {
+    position: absolute;
+    left: -30em;
+    z-index: 5;
+    border-right: 1px solid #eaecf0;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+  }
+}
+.showSidebar .account-sidebar {
+  left: -4em !important;
+}
+
+.account-sidebar-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 202px;
+  height: 180px;
+}
+.account-sidebar-list-item {
+  padding: 8px;
+  display: flex;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.account-sidebar-list-item img {
+  margin-right: 16px;
+}
+
+.account-sidebar-list-item a {
+  font-family: "Inter" sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.isActive {
+  color: #fcfcfd;
+  background: #101828;
+}
+.isActive img {
+  filter: invert(1);
+}
+
+.hr {
+  width: 202px;
+  height: 0px;
+  margin: 3rem 0;
+
+  border: 1px solid #eaecf0;
+}
+
+.logout-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 48px 12px 8px;
+  gap: 16px;
+
+  width: 202px;
+  height: 48px;
+  cursor: pointer;
+  background: #fbe7e7;
+  border-radius: 8px;
+}
+
+.logout-btn button {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
