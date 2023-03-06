@@ -1,10 +1,10 @@
-import { allProducts } from "@/data/allProducts";
 import { Listbox, Transition } from "@headlessui/react";
 import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
 import React, { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { NewStockSlider, ProductCard, RadioButton } from "../../components";
+import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
+import { allProducts } from "../../../data/allProducts";
 
 const sortOptions = [
   {
@@ -56,7 +56,7 @@ const sizes = [
   { id: 6, size: "xxl", selected: false },
 ];
 
-const LongDress = () => {
+const Gown = () => {
   const [sortOption, setSortOption] = useState(sortOptions[0]);
   const [sortOptionsFt, setSortOptionsFt] = useState(sortOptions);
   const [priceRange, setPriceRange] = useState(null);
@@ -120,17 +120,17 @@ const LongDress = () => {
         <section className="w-full mx-auto bg-white dark:bg-white">
           <section className="flex items-center justify-start my-4 space-x-2">
             <span className="font-inter text-[14px] text-[#34405]">
-              <Link href="/">Home</Link>
+              <Link to="/">Home</Link>
             </span>
             <ArrowRight2 variant="Linear" size={16} className="" />
             <span className="font-inter text-[14px] text-black font-medium">
-              <Link href="/long-dress">Long Dress</Link>
+              <Link to="/gown">Gown</Link>
             </span>
           </section>
 
           <section className="flex items-center justify-between w-full">
             <h2 className="font-anybody text-[30px] font-bold dark:text-black w-fit">
-              Long Dress
+              Gown
             </h2>
 
             <section
@@ -687,4 +687,4 @@ const LongDress = () => {
   );
 };
 
-export default LongDress;
+export default Gown;

@@ -3,8 +3,8 @@ import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
 import React, { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { NewStockSlider, ProductCard, RadioButton } from "../../components";
-import { allProducts } from "../../data/allProducts";
+import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
+import { allProducts } from "../../../data/allProducts";
 
 const sortOptions = [
   {

@@ -1,4 +1,4 @@
-import { GetUserDetailsApi } from "@/redux/axios/apis/auth";
+import { GetUserDetailsApi } from "../../axios/apis/auth";
 import { dispatch } from "../../store";
 import { setToken, setUser } from "./authSlice";
 

@@ -3,8 +3,8 @@ import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
 import React, { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { NewStockSlider, ProductCard, RadioButton } from "../../components";
-import { allProducts } from "../../data/allProducts";
+import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
+import { allProducts } from "../../../data/allProducts";
 
 const sortOptions = [
   {
@@ -56,7 +56,7 @@ const sizes = [
   { id: 6, size: "xxl", selected: false },
 ];
 
-const ShortDress = () => {
+const Playsuit = () => {
   const [sortOption, setSortOption] = useState(sortOptions[0]);
   const [sortOptionsFt, setSortOptionsFt] = useState(sortOptions);
   const [priceRange, setPriceRange] = useState(null);
@@ -116,7 +116,7 @@ const ShortDress = () => {
 
   return (
     <>
-      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[40px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
+      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[40px] m-0 z-10 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
         <section className="w-full mx-auto bg-white dark:bg-white">
           <section className="flex items-center justify-start my-4 space-x-2">
             <span className="font-inter text-[14px] text-[#34405]">
@@ -124,13 +124,13 @@ const ShortDress = () => {
             </span>
             <ArrowRight2 variant="Linear" size={16} className="" />
             <span className="font-inter text-[14px] text-black font-medium">
-              <Link href="/short-dress">Short Dress</Link>
+              <Link href="/playsuit">Playsuit</Link>
             </span>
           </section>
 
           <section className="flex items-center justify-between w-full">
             <h2 className="font-anybody text-[30px] font-bold dark:text-black w-fit">
-              Short Dress
+              Playsuit
             </h2>
 
             <section
@@ -687,4 +687,4 @@ const ShortDress = () => {
   );
 };
 
-export default ShortDress;
+export default Playsuit;
