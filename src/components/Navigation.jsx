@@ -133,12 +133,12 @@ const Navigation = () => {
                 <SearchNormal1 size={20} className="" />
               </section>
               <section className="inline-block align-middle">
-                <Link to="/viewed-items">
+                <Link to="/auth/account?type=viewed-items">
                   <Eye size={20} className="" />
                 </Link>
               </section>
               <section className="inline-block align-middle">
-                <Link to="/saved-items">
+                <Link to="/auth/account?type=saved-items">
                   <Heart size={20} className="" />
                 </Link>
               </section>
@@ -201,7 +201,7 @@ const Navigation = () => {
                       <section className="px-2 py-1 ">
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to="/account">
+                            <Link to="/auth/account">
                               <button
                                 className={`${
                                   active

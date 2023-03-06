@@ -54,7 +54,7 @@ const ProductCard = ({ product }) => {
 
       <section className="relative">
         <img
-          src="page_imgs/main_hero5a.jpg"
+          src="new-assets/IMG_9728.webp"
           alt={product.name}
           width={273}
           height={440}

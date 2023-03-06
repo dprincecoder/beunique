@@ -13,15 +13,9 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async () => {
-    const formBody = new FormData();
-    formBody.append("email", email);
-    formBody.append("password", password);
-
-    console.log(formBody);
-
     try {
       if (email !== "" && password !== "") {
-        await SignUpApi(formBody);
+        await SignUpApi({ email: email, password: password });
         toast.success("Account was successfully created");
         router("/auth/signin");
       }
@@ -62,7 +56,7 @@ const Signup = () => {
                   type="email"
                   placeholder="Email"
                   name="email"
-                  valie={email}
+                  value={email}
                   className="w-full p-[16px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none bg-white"
                   onChange={(e) => setEmail(e.target.value)}
                 />
