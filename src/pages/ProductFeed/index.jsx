@@ -1,15 +1,15 @@
-import React, { useState, Fragment } from "react";
-import { useForm } from "react-hook-form";
-import Link from "next/link";
-import { NewStockSlider, ProductCard, RadioButton } from "../components";
-import { ArrowRight2, ArrowDown2, Filter } from "iconsax-react";
 import { allProducts } from "@/data/allProducts";
-import { Listbox, Transition } from "@headlessui/react";
-import { useRouter } from "next/router";
-import { sizes } from "@/data/sizes";
-import { sortOptions } from "@/data/sortOptions";
 import { priceRanges } from "@/data/priceRanges";
 import { ProductTypes } from "@/data/ProductTypes";
+import { sizes } from "@/data/sizes";
+import { sortOptions } from "@/data/sortOptions";
+import { Listbox, Transition } from "@headlessui/react";
+import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { Fragment, useState } from "react";
+import { useForm } from "react-hook-form";
+import { NewStockSlider, ProductCard, RadioButton } from "../../components";
 
 const Products = () => {
   const router = useRouter();
@@ -87,7 +87,7 @@ const Products = () => {
 
           <section className="flex items-center justify-between w-full">
             <h2 className="font-anybody text-[30px] font-bold dark:text-black w-fit">
-            {ProductTypes[type]}
+              {ProductTypes[type]}
             </h2>
 
             <section

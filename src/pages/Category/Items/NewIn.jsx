@@ -1,10 +1,10 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { NewStockSlider, ProductCard, RadioButton } from "../../components";
-import { allProducts } from "../../data/allProducts";
+import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
+import { allProducts } from "../../../data/allProducts";
 
 const sortOptions = [
   {
@@ -56,7 +56,7 @@ const sizes = [
   { id: 6, size: "xxl", selected: false },
 ];
 
-const TwoPiece = () => {
+const NewIn = () => {
   const [sortOption, setSortOption] = useState(sortOptions[0]);
   const [sortOptionsFt, setSortOptionsFt] = useState(sortOptions);
   const [priceRange, setPriceRange] = useState(null);
@@ -65,6 +65,40 @@ const TwoPiece = () => {
   const [sizesFt, setSizesFt] = useState(sizes);
 
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  // Template for fetching products from the database
+  // const [productState, setProductState] = useState({
+  //   products: [],
+  //   loading: true,
+  //   error: "",
+  // });
+
+  // const { products, loading, error } = productState;
+
+  // useEffect(() => {
+  //   const fetchNewProducts = async () => {
+  //     try {
+  //       const products = await fetch("url", options);
+  //       setProductState({ products, loading: false });
+  //     } catch (err) {
+  //       setProductState({ loading: false, error: err.message });
+  //     }
+  //   };
+  //   fetchNewProducts();
+  // }, []);
+
+  // Inside the component to be rendered
+
+  // {
+  //   loading ? (
+  //     <LoadingComponent />
+  //   ) : error ? (
+  //     <ErrorComponent />
+  //   ) : (
+  //     <section>list products here</section>
+  //   );
+  // }
+
+  // end
 
   const { register, handleSubmit } = useForm();
 
@@ -114,23 +148,34 @@ const TwoPiece = () => {
     setSize(sizes2.find((ft) => ft.selected === true));
   };
 
+  const [newinProducts, setNewinProducts] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== null || typeof window !== "undefined") {
+      if (newinProducts === null) {
+        const nips = allProducts.filter((ft) => ft.is_new === true);
+        setNewinProducts(nips);
+      }
+    }
+  }, []);
+
   return (
     <>
-      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[40px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
+      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[0px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
         <section className="w-full mx-auto bg-white dark:bg-white">
           <section className="flex items-center justify-start my-4 space-x-2">
             <span className="font-inter text-[14px] text-[#34405]">
-              <Link href="/">Home</Link>
+              <Link to="/">Home</Link>
             </span>
             <ArrowRight2 variant="Linear" size={16} className="" />
             <span className="font-inter text-[14px] text-black font-medium">
-              <Link href="/two-piece">Two Piece</Link>
+              <Link to="/new-in">New In</Link>
             </span>
           </section>
 
           <section className="flex items-center justify-between w-full">
             <h2 className="font-anybody text-[30px] font-bold dark:text-black w-fit">
-              Two Piece
+              New In
             </h2>
 
             <section
@@ -146,8 +191,8 @@ const TwoPiece = () => {
           </section>
         </section>
 
-        <section className="w-full mx-auto bg-white dark:bg-white text-black dark:text-black p-0 m-0 my-4">
-          <section className=" items-center justify-end space-x-2 p-2 hidden md:flex">
+        <section className="w-full mx-auto bg-white dark:bg-white text-black dark:text-black p-0 m-0 my-0">
+          <section className=" items-center justify-end space-x-2 p-0 hidden md:flex">
             <span className="text-[14px] text-[#101828] font-medium">
               Sort by
             </span>
@@ -224,14 +269,17 @@ const TwoPiece = () => {
               </section>
 
               <div
-                class="accordion accordion-flush border-none"
+                className="accordion accordion-flush border-none"
                 id="filterAccordion"
               >
-                <div class="accordion-item bg-white border-none block md:hidden">
-                  <h2 class="accordion-header mb-0 border-none" id="sortHeader">
+                <div className="accordion-item bg-white border-none block md:hidden">
+                  <h2
+                    className="accordion-header mb-0 border-none"
+                    id="sortHeader"
+                  >
                     <button
                       id="filterAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -262,10 +310,10 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="sortBody"
-                    class="accordion-collapse collapse show border-none"
+                    className="accordion-collapse collapse show border-none"
                     aria-labelledby="sortHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {sortOptionsFt
                         ? sortOptionsFt.map((option) => {
                             return (
@@ -293,14 +341,14 @@ const TwoPiece = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="priceRangeHeader"
                   >
                     <button
                       id="priceRangeBtn"
-                      class="
+                      className="
         
         relative
         flex
@@ -333,10 +381,10 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    class="accordion-collapse collapse show border-none border-0 outline-none"
+                    className="accordion-collapse collapse show border-none border-0 outline-none"
                     aria-labelledby="priceRangeHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {priceRanges2
                         ? priceRanges2.map((range) => {
                             return (
@@ -364,14 +412,14 @@ const TwoPiece = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="sizesHeader"
                   >
                     <button
                       id="sizesAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -402,10 +450,10 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="sizesBody"
-                    class="accordion-collapse collapse show border-none"
+                    className="accordion-collapse collapse show border-none"
                     aria-labelledby="sizesHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
+                    <div className="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
                       {sizesFt
                         ? sizesFt.map((size) =>
                             size.selected ? (
@@ -435,16 +483,19 @@ const TwoPiece = () => {
 
             <section className="w-full mx-auto md:w-[72%] lg2:w-[77%] flex flex-col items-center justify-center relative">
               <div
-                class={`accordion accordion-flush border-none md:hidden w-[70%] sm2:w-[50%] absolute top-[10px] left-[50%] md:top-[15px] max-h-screen md:left-[50%] -translate-x-[50%] space-y-2 py-6 bg-white duration-300 z-30 rounded-lg ${
+                className={`accordion accordion-flush border-none md:hidden w-[70%] sm2:w-[50%] absolute top-[10px] left-[50%] md:top-[15px] max-h-screen md:left-[50%] -translate-x-[50%] space-y-2 py-6 bg-white duration-300 z-30 rounded-lg ${
                   mobileFilterOpen ? "block" : "hidden"
                 }`}
                 id="filterAccordion2"
               >
-                <div class="accordion-item bg-white border-none block md:hidden">
-                  <h2 class="accordion-header mb-0 border-none" id="sortHeader">
+                <div className="accordion-item bg-white border-none block md:hidden">
+                  <h2
+                    className="accordion-header mb-0 border-none"
+                    id="sortHeader"
+                  >
                     <button
                       id="filterAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -475,14 +526,15 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="sortBody"
-                    class="accordion-collapse collapse show border-none space-y-2
+                    className="accordion-collapse collapse show border-none"
+                    space-y-2
                     py-6
-                    bg-white"
+                    bg-white
                     data-bs-3a
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="sortHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {sortOptionsFt
                         ? sortOptionsFt.map((option) => {
                             return (
@@ -510,14 +562,14 @@ const TwoPiece = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="priceRangeHeader"
                   >
                     <button
                       id="priceRangeBtn"
-                      class="
+                      className="
         
         relative
         flex
@@ -550,7 +602,7 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    class="accordion-collapse collapse border-none border-0 outline-none"
+                    className="accordion-collapse collapse border-none border-0 outline-none"
                     space-y-2
                     py-6
                     bg-white
@@ -558,7 +610,7 @@ const TwoPiece = () => {
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="priceRangeHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {priceRanges2
                         ? priceRanges2.map((range) => {
                             return (
@@ -586,14 +638,14 @@ const TwoPiece = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="sizesHeader"
                   >
                     <button
                       id="sizesAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -624,7 +676,7 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="sizesBody"
-                    class="accordion-collapse collapse border-none"
+                    className="accordion-collapse collapse border-none"
                     space-y-2
                     py-6
                     bg-white
@@ -632,7 +684,7 @@ const TwoPiece = () => {
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="sizesHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
+                    <div className="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
                       {sizesFt
                         ? sizesFt.map((size) =>
                             size.selected ? (
@@ -660,9 +712,9 @@ const TwoPiece = () => {
               </div>
 
               <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
-                {allProducts &&
-                  allProducts.length > 0 &&
-                  allProducts.map((prod, i) => (
+                {newinProducts &&
+                  newinProducts.length > 0 &&
+                  newinProducts.map((prod, i) => (
                     <ProductCard product={prod} key={i} />
                   ))}
               </section>
@@ -686,4 +738,4 @@ const TwoPiece = () => {
   );
 };
 
-export default TwoPiece;
+export default NewIn;

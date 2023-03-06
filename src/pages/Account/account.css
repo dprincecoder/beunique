@@ -1,0 +1,29 @@
+.account-page {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  margin: 1rem auto;
+}
+
+.two-grid-item {
+  display: flex;
+}
+
+.account-page-content {
+  width: 100%;
+  margin-left: 2rem;
+  padding-left: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .account-page {
+    padding: 0 1rem;
+  }
+  .two-grid-item {
+    flex-direction: column;
+  }
+  .account-page-content {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}

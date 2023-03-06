@@ -3,8 +3,8 @@ import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
 import React, { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { NewStockSlider, ProductCard, RadioButton } from "../../components";
-import { allProducts } from "../../data/allProducts";
+import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
+import { allProducts } from "../../../data/allProducts";
 
 const sortOptions = [
   {
@@ -56,7 +56,7 @@ const sizes = [
   { id: 6, size: "xxl", selected: false },
 ];
 
-const Gown = () => {
+const ShortDress = () => {
   const [sortOption, setSortOption] = useState(sortOptions[0]);
   const [sortOptionsFt, setSortOptionsFt] = useState(sortOptions);
   const [priceRange, setPriceRange] = useState(null);
@@ -124,13 +124,13 @@ const Gown = () => {
             </span>
             <ArrowRight2 variant="Linear" size={16} className="" />
             <span className="font-inter text-[14px] text-black font-medium">
-              <Link href="/gown">Gown</Link>
+              <Link href="/short-dress">Short Dress</Link>
             </span>
           </section>
 
           <section className="flex items-center justify-between w-full">
             <h2 className="font-anybody text-[30px] font-bold dark:text-black w-fit">
-              Gown
+              Short Dress
             </h2>
 
             <section
@@ -687,4 +687,4 @@ const Gown = () => {
   );
 };
 
-export default Gown;
+export default ShortDress;
