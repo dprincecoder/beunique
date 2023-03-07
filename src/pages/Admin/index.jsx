@@ -7,14 +7,13 @@ import {
   Setting2,
   ShoppingCart,
 } from "iconsax-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 import { useSelector } from "react-redux";
-import AuthError from "../../components";
+import { Link, useNavigate } from "react-router-dom";
+import AuthError from "../../components/AuthError";
 
 const AdminOverview = () => {
-  const router = useRouter();
+  const router = useNavigate();
   const { token } = useSelector((state) => state.auth);
 
   return (
@@ -24,9 +23,9 @@ const AdminOverview = () => {
           <>
             <section className="w-[20%] min-h-full fixed top-0 left-0 flex flex-col items-start justify-start pl-[30px] pt-[30px] pb-[30px]">
               <section className="w-fit flex items-end">
-                <Link href="/">
+                <Link to="/">
                   <img
-                    src="logo.png"
+                    src="/logo.png"
                     alt="BeUnique"
                     width={164}
                     height={32}
@@ -38,7 +37,7 @@ const AdminOverview = () => {
 
               <section className="w-full h-[500px] mt-10 flex flex-col items-start justify-between border-r-[1.5px] border-r-[#eaecf0]">
                 <section className="w-full h-[300px] flex flex-col space-y-3 pr-[30px]">
-                  <Link href="/admin">
+                  <Link to="/admin">
                     <button
                       type="button"
                       class="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
@@ -47,7 +46,7 @@ const AdminOverview = () => {
                       Overview
                     </button>
                   </Link>
-                  <Link href="admin/upload">
+                  <Link to="admin/upload">
                     <button
                       type="button"
                       class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
@@ -56,7 +55,7 @@ const AdminOverview = () => {
                       Upload
                     </button>
                   </Link>
-                  <Link href="admin/orders">
+                  <Link to="admin/orders">
                     <button
                       type="button"
                       class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
@@ -65,7 +64,7 @@ const AdminOverview = () => {
                       Orders
                     </button>
                   </Link>
-                  <Link href="admin/settings">
+                  <Link to="admin/settings">
                     <button
                       type="button"
                       class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
@@ -81,7 +80,7 @@ const AdminOverview = () => {
                   class="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                   onClick={() => {
                     logoutHandler();
-                    router.reload(window.location.pathname);
+                    window.location.reload(window.location.pathname);
                   }}
                 >
                   <LogoutCurve size={20} className="mr-3" />

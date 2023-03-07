@@ -109,9 +109,12 @@ const MyBag = () => {
               <p className="h3-title">Subtotal:</p>
               <h2 className="h1-title">₦{totalCost}</h2>
             </div>
-            <div className="bag-checkout-button">
+            <Link
+              to="/auth/checkout?next=contact-information"
+              className="bag-checkout-button"
+            >
               <button>Checkout</button>
-            </div>
+            </Link>
           </div>
           <div className="bag-express-payment">
             <p>Express payment options at checkout</p>

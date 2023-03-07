@@ -100,7 +100,7 @@ const Signin = () => {
               </label>
 
               <p className="font-inter text-[16px] text-[#344054] mt-4 mb-10 w-full text-right">
-                <Link href="/forgot-password">Forgot password</Link>
+                <Link href="/forgot-password">Forgot password ?</Link>
               </p>
               <button
                 onClick={() => onSubmit()}
