@@ -19,11 +19,11 @@ module.exports = {
       },
 
       backgroundImage: {
-        home_hero: "url('../public/page_imgs/main_hero.png')",
-        home_hero2: "url('../public/page_imgs/main_hero2.png')",
-        home_hero3: "url('../public/page_imgs/main_hero3.png')",
-        home_hero4a: "url('../public/page_imgs/main_hero4a.png')",
-        home_hero4b: "url('../public/page_imgs/main_hero4b.png')",
+        home_hero: "url('../public/new-assets/Main_header.webp')",
+        home_hero2: "url('../public/new-assets/body_1.webp')",
+        home_hero3: "url('../public/new-assets/body_2.webp')",
+        home_hero4a: "url('../public/new-assets/body_3A.webp')",
+        home_hero4b: "url('../public/new-assets/body_3B.webp')",
       },
 
       screens: {

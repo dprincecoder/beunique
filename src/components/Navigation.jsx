@@ -10,6 +10,7 @@ import {
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import MyBagMini from "./myBagMini";
 
 const Navigation = () => {
   const router = useNavigate();
@@ -25,6 +26,7 @@ const Navigation = () => {
   const [route, setRoute] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [categories, setCategories] = useState(null);
+  const { cart } = useSelector((state) => state.cartItems);
 
   // const currUrlRaw = router.route;
   // const currUrlArr = currUrlRaw.split("/");
@@ -34,6 +36,14 @@ const Navigation = () => {
     localStorage.clear();
     sessionStorage.clear();
     router("/auth/signin");
+  };
+
+  const getTotalQuantity = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.quantity;
+    });
+    return total;
   };
 
   useEffect(() => {
@@ -133,12 +143,12 @@ const Navigation = () => {
                 <SearchNormal1 size={20} className="" />
               </section>
               <section className="inline-block align-middle">
-                <Link to="/viewed-items">
+                <Link to="/auth/account?type=viewed-items">
                   <Eye size={20} className="" />
                 </Link>
               </section>
               <section className="inline-block align-middle">
-                <Link to="/saved-items">
+                <Link to="/auth/account?type=saved-items">
                   <Heart size={20} className="" />
                 </Link>
               </section>
@@ -150,7 +160,7 @@ const Navigation = () => {
                 <Menu.Button className="p-0 m-0 mt-1 relative">
                   <Bag2 size={25} className="" />
                   <span className="absolute bottom-[-8px] right-[-8px] bg-black text-white w-[20px] h-[20px] rounded-full grid place-items-center text-[12px]">
-                    3
+                    {getTotalQuantity() || 0}
                   </span>
                 </Menu.Button>
 
@@ -168,9 +178,17 @@ const Navigation = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <section
-                            className={`text-[#344054] group flex w-full items-center justify-center rounded-md px-2 py-12 text-[16px]`}
+                            className={`text-[#344054] z-[4] group flex w-full items-center justify-center rounded-md px-2 py-12 text-[16px]`}
                           >
-                            loading bag items...
+                            {getTotalQuantity() > 0 ? (
+                              <section className="w-full">
+                                <MyBagMini />
+                              </section>
+                            ) : (
+                              <section className="w-full">
+                                Your bag is empty, Go shopping
+                              </section>
+                            )}
                           </section>
                         )}
                       </Menu.Item>
@@ -201,7 +219,7 @@ const Navigation = () => {
                       <section className="px-2 py-1 ">
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to="/account">
+                            <Link to="/auth/account">
                               <button
                                 className={`${
                                   active

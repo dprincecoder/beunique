@@ -1,6 +1,9 @@
 import { Bag2, Heart } from "iconsax-react";
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import { MdClose } from "react-icons/md";
+import { addToCart } from "../redux/features/cart/cartslice";
+import { dispatch } from "../redux/store";
 
 const sizes = [
   { id: 1, size: "xs", selected: false, disabled: false },
@@ -23,8 +26,6 @@ const ProductCard = ({ product }) => {
   const sizes2 = [...sizes];
 
   const handleSize = (sizeId, productId) => {
-    console.log(sizeId);
-    console.log(productId);
     for (let x = 0; x < sizes2.length; x++) {
       sizes2[x].selected = false;
 
@@ -39,22 +40,31 @@ const ProductCard = ({ product }) => {
   };
 
   const handleSelectSizeOpen = (productIdx) => {
-    console.log(productIdx);
-
     setSelectSizeOpen({ productId: productIdx, isSelectSizeOpen: true });
+  };
+
+  const addToBag = (prod) => {
+    const item = {
+      ...prod,
+      selectedSize: size.size,
+    };
+
+    console.log(item);
+    dispatch(addToCart(item));
+    toast.success(`${prod.name} added to cart!`);
   };
 
   return (
     <section className="w-[195px] h-[382px] md:w-[273px] md:h-[534px] relative inline-block group duration-300 bg-white mt-4">
       {product.is_new && (
-        <span className="font-inter text-[#fcfcfd] bg-black rounded-full px-3 py-1 text-[12px] md:text-[14px] absolute top-[8px] left-[8px] z-50">
+        <span className="font-inter text-[#fcfcfd] bg-black rounded-full px-3 py-1 text-[12px] md:text-[14px] absolute top-[8px] left-[8px] z-[3]">
           New!
         </span>
       )}
 
       <section className="relative">
         <img
-          src="page_imgs/main_hero5a.jpg"
+          src="new-assets/IMG_9728.webp"
           alt={product.name}
           width={273}
           height={440}
@@ -138,7 +148,10 @@ const ProductCard = ({ product }) => {
               : "No sizes"}
           </section>
 
-          <button className="bg-black rounded-lg font-inter text-[14px] text-white px-5 py-2 w-full block mx-auto cursor-pointer duration-300">
+          <button
+            onClick={() => addToBag(product)}
+            className="bg-black rounded-lg font-inter text-[14px] text-white px-5 py-2 w-full block mx-auto cursor-pointer duration-300"
+          >
             Add to bag
           </button>
         </section>
