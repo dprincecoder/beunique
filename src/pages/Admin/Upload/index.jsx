@@ -120,7 +120,7 @@ const AdminUpload = () => {
                       Overview
                     </button>
                   </Link>
-                  <Link to="admin/upload">
+                  <Link to="/admin/upload">
                     <button
                       type="button"
                       className=" px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
@@ -129,7 +129,7 @@ const AdminUpload = () => {
                       Upload
                     </button>
                   </Link>
-                  <Link to="admin/orders">
+                  <Link to="/admin/orders">
                     <button
                       type="button"
                       className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
@@ -138,7 +138,7 @@ const AdminUpload = () => {
                       Orders
                     </button>
                   </Link>
-                  <Link to="admin/settings">
+                  <Link to="/admin/settings">
                     <button
                       type="button"
                       class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
