@@ -1,7 +1,4 @@
-import {
-  AddProductApi,
-  GetProductCategoriesApi,
-} from "@/redux/axios/apis/admin";
+import { AddProductApi, GetProductCategoriesApi } from "../../axios/apis/admin";
 import { dispatch } from "../../store";
 import { setCategories } from "./adminSlice";
 

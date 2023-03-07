@@ -46,7 +46,7 @@ const AdminOverview = () => {
                       Overview
                     </button>
                   </Link>
-                  <Link to="admin/upload">
+                  <Link to="upload">
                     <button
                       type="button"
                       class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
