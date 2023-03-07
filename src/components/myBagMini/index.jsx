@@ -2,12 +2,17 @@ import React from "react";
 import { GrFormClose } from "react-icons/gr";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeItem } from "../../redux/features/cart/cartslice";
+import { dispatch } from "../../redux/store";
 import "./mybagMini.css";
 
 const MyBagMini = () => {
   const { cart } = useSelector((state) => state.cartItems);
   const fiveItems = cart.slice(0, 5);
 
+  const handleRemove = (item) => {
+    dispatch(removeItem(item));
+  };
   return (
     <section className="my-bag-mini">
       {cart.length > 0 && (
@@ -20,12 +25,15 @@ const MyBagMini = () => {
               <div className="my-bag-mini__item__info">
                 <h3 className="h3-title">{item.name}</h3>
                 <div className="remove">
-                  <GrFormClose className="remove-item" />
+                  <GrFormClose
+                    className="remove-item"
+                    onClick={() => handleRemove(item.id)}
+                  />
                 </div>
               </div>
             </div>
           ))}
-          <Link to="/cart" className="my-bag-mini__link">
+          <Link to="/my-bag" className="my-bag-mini__link">
             View Bag
           </Link>
         </div>

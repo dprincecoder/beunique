@@ -186,7 +186,7 @@ const Navigation = () => {
                               </section>
                             ) : (
                               <section className="w-full">
-                                Your bag is empty
+                                Your bag is empty, Go shopping
                               </section>
                             )}
                           </section>
