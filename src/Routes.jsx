@@ -1,5 +1,6 @@
 import { Route, Routes as Switch } from "react-router-dom";
 import Account from "./pages/Account";
+import AdminOverview from "./pages/Admin";
 import Category from "./pages/Category";
 import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
@@ -14,8 +15,9 @@ const Routes = () => {
       <Route exact path="/auth/signup" element={<SignUp />} />
       <Route exact path="/products" element={<Category />} />
       <Route exact path="/auth/account" element={<Account />} />
-      <Route path="/my-bag" element={<MyBag />} />
-      <Route path="/auth/checkout" element={<Checkout />} />
+      <Route exact path="/my-bag" element={<MyBag />} />
+      <Route exact path="/auth/checkout" element={<Checkout />} />
+      <Route exact path="/admin" element={<AdminOverview />} />
     </Switch>
   );
 };
