@@ -4,9 +4,9 @@ import "./button.css";
 
 const Button = ({ to, text }) => {
   return (
-    <Link to={to} className="button-wrap">
-      <button className="button">{text}</button>
-    </Link>
+    <div className="button-wrap">
+      <Link to={to}>{text}</Link>
+    </div>
   );
 };
 

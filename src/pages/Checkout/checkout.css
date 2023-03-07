@@ -1,0 +1,23 @@
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 80px;
+}
+
+.checkout-process {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.checkout .left-side {
+  width: 450px;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-right {
+    display: none;
+  }
+}

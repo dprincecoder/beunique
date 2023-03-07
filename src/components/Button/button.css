@@ -3,29 +3,15 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px 160px;
+  padding: 12px;
   gap: 8px;
 
-  width: 100%;
+  width: 100% !important;
   height: 52px;
   color: #f2f4f7;
   background: #000000;
   border-radius: 8px;
   border: 1px solid #000000;
   margin: 20px 0;
-}
-
-.button-wrap button {
-  background: transparent;
-  outline: 0;
-  border: 0;
-}
-
-.button-wrap:hover {
-  background-color: transparent;
-}
-
-.button-wrap button:hover {
-  cursor: pointer;
-  color: #000000;
+  text-align: center;
 }

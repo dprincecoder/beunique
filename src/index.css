@@ -34,6 +34,17 @@
   color: #000000;
 }
 
+.h1-title2 {
+  font-family: "Anybody";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  /* identical to box height, or 127% */
+
+  color: #000000;
+}
+
 .h3-title {
   font-family: "Inter";
   font-style: normal;
@@ -56,4 +67,14 @@
   margin: 0.5rem 0;
 
   color: #475467;
+}
+
+.hr-all {
+  width: 100%;
+  height: 0px;
+  border: 1px solid #e5e7eb;
+}
+
+.text-muted {
+  color: #98a2b3;
 }
