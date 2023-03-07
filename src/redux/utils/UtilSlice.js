@@ -4,9 +4,10 @@ const initialState = {
   response: {
     message: null,
     type: "",
-    title:""
+    title: "",
   },
   isLoading: false,
+  searchQuery: "",
 };
 
 const UtilSlice = createSlice({
@@ -23,9 +24,12 @@ const UtilSlice = createSlice({
         type: action.payload.type,
       };
     },
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
   },
 });
 
-export const { setLoading, createResponse } = UtilSlice.actions;
+export const { setLoading, createResponse, setSearchQuery } = UtilSlice.actions;
 
 export default UtilSlice.reducer;
