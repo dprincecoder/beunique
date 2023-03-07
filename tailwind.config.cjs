@@ -19,11 +19,11 @@ module.exports = {
       },
 
       backgroundImage: {
-        home_hero: "url('../public/new-assets/Main_header.webp')",
-        home_hero2: "url('../public/new-assets/body_1.webp')",
-        home_hero3: "url('../public/new-assets/body_2.webp')",
-        home_hero4a: "url('../public/new-assets/body_3A.webp')",
-        home_hero4b: "url('../public/new-assets/body_3B.webp')",
+        home_hero: "url('/new-assets/Main_header.webp')",
+        home_hero2: "url('/new-assets/body_1.webp')",
+        home_hero3: "url('/new-assets/body_2.webp')",
+        home_hero4a: "url('/new-assets/body_3A.webp')",
+        home_hero4b: "url('/new-assets/body_3B.webp')",
       },
 
       screens: {
