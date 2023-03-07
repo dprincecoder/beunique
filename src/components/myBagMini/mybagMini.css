@@ -1,0 +1,44 @@
+.my-bag-mini__item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.my-bag-mini__item__image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.my-bag-mini__item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.my-bag-mini__item__info {
+  display: flex;
+  align-items: center;
+}
+
+.my-bag-mini__item__info h3 {
+  font-size: 14px;
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+.remove-item {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+}
+
+.my-bag-mini__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  background: #000;
+  padding: 10px;
+}
