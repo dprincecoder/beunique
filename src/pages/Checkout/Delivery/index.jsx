@@ -38,6 +38,7 @@ const Delivery = () => {
 
   return (
     <div className="delivery custom-container">
+      <h1 className="h1-title text-center">Checkout</h1>
       <div className="grid-container">
         <div className="left-side">
           <div className="head-contact-info">

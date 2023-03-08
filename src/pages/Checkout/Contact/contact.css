@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.contact h1 {
+  text-align: center;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1.5fr 1fr;

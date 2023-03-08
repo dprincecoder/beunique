@@ -22,7 +22,7 @@ const Payment = () => {
   };
   return (
     <div className="payment custom-container">
-      <h1 className="h1-title">Checkout</h1>
+      <h1 className="h1-title text-center">Checkout</h1>
       <div className="grid-container">
         <div className="left-side">
           <div className="head-contact-info">
