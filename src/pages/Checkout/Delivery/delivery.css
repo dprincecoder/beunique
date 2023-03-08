@@ -43,3 +43,9 @@
   gap: 1rem;
   margin-top: 2rem;
 }
+
+.btn-hold {
+  display: flex;
+  /* align-items: center; */
+  margin-bottom: 1rem;
+}

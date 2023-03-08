@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "./rightsidecart.css";
 
-const RightSideCart = () => {
+const RightSideCart = ({ deliverytitle }) => {
   const { cart } = useSelector((state) => state.cartItems);
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -21,7 +21,10 @@ const RightSideCart = () => {
         </div>
         <div className="bag-items">
           <p className="p-title">Delivery</p>
-          <h2 className="h3-title">Calculated at next stage</h2>
+          <h2 className="h3-title">
+            {" "}
+            {deliverytitle ? deliverytitle : "Calculated at next stage"}
+          </h2>
         </div>
         <div className="bag-subtotal">
           <p className="h3-title">Total:</p>

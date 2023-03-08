@@ -13,12 +13,6 @@ const Delivery = () => {
   const contactData = JSON.parse(localStorage.getItem("contact"));
   const [deliveryMethod, setDeliveryMethod] = useState("pickupDelivery");
   const [pickupStation, setPickupStation] = useState("lagos");
-  const [deliveryAddressLag, setDeliveryAddressLag] = useState(
-    "Address: 47, Beunique street, off lekki epe express way, Lekki, Lagos, Nigeria"
-  );
-  const [deliveryAddressAbj, setDeliveryAddressAbj] = useState(
-    "Address: 47, Beunique street, off lekki epe express way, Lekki, Abuja, Nigeria"
-  );
 
   const handleDeliveryChange = (event) => {
     setDeliveryMethod(event.target.value);
@@ -95,20 +89,34 @@ const Delivery = () => {
               <div className="select-pickup">
                 <p className="p-title">Select pick up station</p>
                 <div className="radio-btns">
-                  <ButtonRadio
-                    state="Lagos"
-                    value="lagos"
-                    address={deliveryAddressLag}
-                    onChecked={pickupStation === "lagos"}
-                    getCheckedEl={(e) => handlePickupChange(e)}
-                  />
-                  <ButtonRadio
-                    state="Abuja"
-                    value="abuja"
-                    address={deliveryAddressAbj}
-                    onChecked={pickupStation === "abuja"}
-                    getCheckedEl={(e) => handlePickupChange(e)}
-                  />
+                  <div className="btn-hold">
+                    <ButtonRadio
+                      value="lagos"
+                      onChecked={pickupStation === "lagos"}
+                      getCheckedEl={(e) => handlePickupChange(e)}
+                    />
+                    <div className="radio-info">
+                      <h3 className="h3-title">Lagos</h3>
+                      <p className="p-title">
+                        Address: 47, Beunique street, off lekki epe express way,
+                        Lekki, Lagos, Nigeria
+                      </p>
+                    </div>
+                  </div>
+                  <div className="btn-hold">
+                    <ButtonRadio
+                      value="abuja"
+                      onChecked={pickupStation === "abuja"}
+                      getCheckedEl={(e) => handlePickupChange(e)}
+                    />
+                    <div className="radio-info">
+                      <h3 className="h3-title">Abuja</h3>
+                      <p className="p-title">
+                        Address: 47, Beunique street, off lekki epe express way,
+                        Lekki, Abuja, Nigeria
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <Button
@@ -125,7 +133,7 @@ const Delivery = () => {
           </div>
         </div>
         <div className="right-side">
-          <RightSideCart />
+          <RightSideCart deliverytitle="₦0.00" />
         </div>
       </div>
     </div>

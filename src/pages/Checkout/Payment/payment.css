@@ -1,0 +1,43 @@
+.payment-container {
+  margin-top: 2rem;
+}
+
+.payment-options {
+  margin: 2rem 0;
+}
+
+.card-checked {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-checked h3 {
+  margin-left: 1rem;
+}
+
+.card-available {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.card-available .master-card {
+  margin: 0 1rem;
+}
+
+.online-pay img {
+  width: 154.68px;
+  height: 40px;
+  margin-left: 1rem;
+}
+
+.agreement-input {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.agreement-input input {
+  margin-right: 1rem;
+}
