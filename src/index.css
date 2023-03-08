@@ -78,3 +78,26 @@
 .text-muted {
   color: #98a2b3;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .account-title {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .h1-title {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .h1-title2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .h3-title {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .p-title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}

@@ -1,12 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { setSearchQuery } from "../../redux/utils/UtilSlice";
 
-const InputField = ({ name, type, placeholder, inputValue, id, className }) => {
-  const dispatch = useDispatch;
-  const getSearchValue = (e) => {
-    dispatch(setSearchQuery(e.target.value));
-  };
+const InputField = ({
+  name,
+  getValue,
+  type,
+  placeholder,
+  inputValue,
+  id,
+  className,
+  required,
+}) => {
   return (
     <section
       className={`w-full my-5 flex flex-col items-center space-y-6 ${className}`}
@@ -22,8 +25,9 @@ const InputField = ({ name, type, placeholder, inputValue, id, className }) => {
             value={inputValue}
             id={id}
             name={name}
+            required={required}
             className="w-full p-[10px] rounded-lg placeholder:text-[16px] placeholder:text-[#344054] font-medium outline-none border-none bg-white"
-            onChange={(e) => getSearchValue(e)}
+            onChange={(e) => getValue(e)}
           />
         </label>
       </div>
