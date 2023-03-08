@@ -25,3 +25,21 @@
   font-size: 16px;
   line-height: 24px;
 }
+
+.delivery-method {
+  margin-top: 2rem;
+}
+
+.inputs-radio {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.select-pickup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}

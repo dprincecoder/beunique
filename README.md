@@ -11,3 +11,7 @@
 ## api docs link:
 
 (api docs)[https://beunique.live/docs#/users/create_user_users_create_users_post]
+
+## Live link:
+
+(beunique)[https://beunique-nu.vercel.app/]
