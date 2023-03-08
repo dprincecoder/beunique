@@ -5,9 +5,7 @@ import Header from "./Header";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const HeaderShow =
-    !location.pathname.includes("/auth") &&
-    !location.pathname.includes("/admin");
+  const HeaderShow = !location.pathname.includes("/admin");
 
   const useSessionStorage = (name) => {
     const [value, setValue] = useState("");

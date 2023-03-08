@@ -2,11 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./button.css";
 
-const Button = ({ to, text }) => {
+const Button = ({ to, text, type }) => {
   return (
-    <Link to={to} className="button-wrap">
-      <button className="button">{text}</button>
-    </Link>
+    <>
+      {to ? (
+        <Link className="button-wrap" to={to}>
+          {text}
+        </Link>
+      ) : (
+        <button className="button-wrap" type={type}>
+          {text}
+        </button>
+      )}
+    </>
   );
 };
 

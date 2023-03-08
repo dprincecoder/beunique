@@ -9,7 +9,7 @@ const Footer = () => {
       <section className="w-full flex flex-col items-start sm:items-center">
         <section className="w-fit my-6">
           <Link href="/">
-            <img src="logo_white.png" alt="BeUnique" width={176} height={29} />
+            <img src="/logo_white.png" alt="BeUnique" width={176} height={29} />
           </Link>
         </section>
         <section className="w-full flex flex-row flex-wrap sm:space-x-8 pb-10 border-b-2 border-[#ACB2BE] items-center justify-center">

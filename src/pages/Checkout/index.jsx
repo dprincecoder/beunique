@@ -1,8 +1,10 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import "./checkout.css";
 import Contact from "./Contact";
 import Delivery from "./Delivery";
 import Payment from "./Payment";
+import RightSideCart from "./RightsideCart";
 
 const Checkout = () => {
   const location = useLocation();
@@ -22,10 +24,12 @@ const Checkout = () => {
   };
   return (
     <div className="checkout">
-      <h1 className="h1-title">Checkout</h1>
+      <h1 className="h1-title2">Checkout</h1>
       <div className="checkout-process">
         <div className="left-side">{componentToRender()}</div>
-        <div className="right-side"></div>
+        <div className="contact-right">
+          <RightSideCart />
+        </div>
       </div>
     </div>
   );
