@@ -16,7 +16,7 @@
   background: #f5f7fa;
 }
 
-/* .radio-wrap {
+.radio-wrap {
   position: relative;
   display: inline-block;
   width: 20px;
@@ -29,6 +29,7 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+  overflow: hidden;
 }
 
 .radio-wrap input[type="radio"] {
@@ -53,4 +54,10 @@
 
 .radio-wrap input[type="radio"]:checked + label {
   background: #101828;
-} */
+}
+
+@media screen and (max-width: 768px) {
+  .input-radio {
+    padding: 12px 8px;
+  }
+}
