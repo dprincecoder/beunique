@@ -43,7 +43,7 @@ const Payment = () => {
               <div className="info">
                 <h3 className="h1-title">DELIVERY METHOD</h3>
                 <p className="p-title">
-                  Pickup Station {deliveryData.pickupStation}
+                  Pickup Station - {deliveryData.pickupStation}
                 </p>
               </div>
             </div>
