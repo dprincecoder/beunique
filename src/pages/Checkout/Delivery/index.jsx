@@ -7,7 +7,7 @@ import "./delivery.css";
 const Delivery = () => {
   const jsonData = JSON.parse(localStorage.getItem("contact"));
   return (
-    <div className="delivery container">
+    <div className="delivery custom-container">
       <div className="grid-container">
         <div className="left-side">
           <div className="head-contact-info">
