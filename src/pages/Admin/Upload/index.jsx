@@ -131,7 +131,7 @@ const AdminUpload = () => {
               </section>
 
               <section className="w-full h-[500px] mt-10 flex flex-col items-start justify-between border-r-[1.5px] border-r-[#eaecf0]">
-                <section className="w-full h-[300px] flex flex-col space-y-3 pr-[30px]">
+                <section className="w-full h-[max-content] flex flex-col space-y-3 pr-[30px]">
                   <Link to="/admin">
                     <button
                       type="button"
