@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
-import InputField from "../../../components/InputField";
 import ButtonRadio from "../../../components/Radios/ButtonRadio";
 import RightSideCart from "../RightsideCart";
 import checkedSvg from "./assets/checked.svg";
 import flutterwavePng from "./assets/flutterwave.png";
-import masterSvg from "./assets/master.svg";
 import paystackPng from "./assets/paystack.png";
-import verveSvg from "./assets/verve.svg";
-import visaSvg from "./assets/visa.svg";
 import "./payment.css";
 
 const Payment = () => {
@@ -69,7 +65,7 @@ const Payment = () => {
           <form className="payment-container">
             <h1 className="h1-title">Payment Method</h1>
             <div className="payment-options">
-              <div className="payment-option credit-card">
+              {/* <div className="payment-option credit-card">
                 <div className="card-checked">
                   <ButtonRadio
                     value="creditCard"
@@ -84,8 +80,8 @@ const Payment = () => {
                   <img src={masterSvg} alt="master" className="master-card" />
                   <img src={verveSvg} alt="verve" />
                 </div>
-              </div>
-              <div className="payment-option">
+              </div> */}
+              {/* <div className="payment-option">
                 <InputField
                   type="number"
                   name="card-number"
@@ -105,7 +101,7 @@ const Payment = () => {
                   />
                   <InputField name="cvv" type="number" placeholder="CVV" />
                 </div>
-              </div>
+              </div> */}
               <div className="payment-option">
                 <div className="card-checked online-pay">
                   <ButtonRadio
@@ -126,7 +122,7 @@ const Payment = () => {
               </div>
             </div>
             <div className="agreement">
-              <div className="agreement-input">
+              {/* <div className="agreement-input">
                 <input
                   type="checkbox"
                   name="agree"
@@ -136,7 +132,7 @@ const Payment = () => {
                 <p className="p-title">
                   Save my Information for a faster checkout
                 </p>
-              </div>
+              </div> */}
               <p className="h3-title">
                 By submitting your order, you agree to our{" "}
                 <Link to="/terms" className="underline">
