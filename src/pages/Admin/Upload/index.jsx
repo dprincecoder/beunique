@@ -26,6 +26,7 @@ const AdminUpload = () => {
   const { categories } = useSelector((state) => state.admin);
 
   const [categoryData, setCategoryData] = useState([]);
+  const [previewImages, setPreviewImages] = useState([]);
 
   const [sizes, setsizes] = useState([]);
 
@@ -43,7 +44,6 @@ const AdminUpload = () => {
   useEffect(() => {
     if (categories.length > 0) {
       setCategoryData(categories);
-      console.log(categories);
     }
   }, [categories]);
 
@@ -54,6 +54,27 @@ const AdminUpload = () => {
     setError,
     formState: { errors },
   } = useForm();
+
+  const getImages = (e) => {
+    const files = e.target.files;
+    const previewFiles = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+
+      if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+        continue;
+      }
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onloadend = () => {
+        previewFiles.push({ name: file.name, src: reader.result });
+        setPreviewImages([...previewFiles]);
+      };
+    }
+  };
 
   const onSubmit = async (data) => {
     data.sizes = sizes;
@@ -110,11 +131,11 @@ const AdminUpload = () => {
               </section>
 
               <section className="w-full h-[500px] mt-10 flex flex-col items-start justify-between border-r-[1.5px] border-r-[#eaecf0]">
-                <section className="w-full h-[300px] flex flex-col space-y-3 pr-[30px]">
+                <section className="w-full h-[max-content] flex flex-col space-y-3 pr-[30px]">
                   <Link to="/admin">
                     <button
                       type="button"
-                      class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                      className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                     >
                       <I3Dcube size={20} className="mr-3" />
                       Overview
@@ -141,7 +162,7 @@ const AdminUpload = () => {
                   <Link to="/admin/settings">
                     <button
                       type="button"
-                      class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                      className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                     >
                       <Setting2 size={20} className="mr-3" />
                       Settings
@@ -151,7 +172,7 @@ const AdminUpload = () => {
 
                 <button
                   type="button"
-                  class="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                  className="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                   onClick={() => {
                     logoutHandler();
                   }}
@@ -192,11 +213,14 @@ const AdminUpload = () => {
                           {...register("product_image", { required: true })}
                           className="cursor-pointer relative w-[150px] h-[42px] z-20 flex items-center justify-center opacity-0 px-2 py-2.5"
                           multiple
+                          onChange={(e) => {
+                            getImages(e);
+                          }}
                         />
 
                         <button
                           type="button"
-                          class="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] h-[42px] absolute top-0 left-0 z-10"
+                          className="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] h-[42px] absolute top-0 left-0 z-10"
                         >
                           Upload
                         </button>
@@ -213,6 +237,15 @@ const AdminUpload = () => {
                       and tells easily what your product is? <br />
                       Make your product images count!
                     </p>
+                    {previewImages.map((file, index) => (
+                      <div
+                        key={index}
+                        className="mb-2 mt-2 font-inter text-[14px] text-[#667085]"
+                      >
+                        <img src={file.src} alt={file.name} height={100} />
+                        <div>{file.name}</div>
+                      </div>
+                    ))}
                   </section>
                 </section>
 
@@ -435,7 +468,7 @@ const AdminUpload = () => {
                       <section className="w-full flex items-centerjustify-center space-x-5">
                         <button
                           type="reset"
-                          class="px-2 py-2.5 bg-white text-[#101828] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] outline-none border-[1px] border-[#d0d5dd]"
+                          className="px-2 py-2.5 bg-white text-[#101828] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] outline-none border-[1px] border-[#d0d5dd]"
                           onClick={reset}
                         >
                           Reset
@@ -443,7 +476,7 @@ const AdminUpload = () => {
 
                         <button
                           type="submit"
-                          class="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px]"
+                          className="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px]"
                         >
                           Upload
                         </button>
