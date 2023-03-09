@@ -50,7 +50,7 @@ const Delivery = () => {
               </div>
             </div>
             <div className="change-btn">
-              <Link to="/checkout?next=contact-information">Change</Link>
+              <Link to="/auth/checkout?next=contact-information">Change</Link>
             </div>
           </div>
           <div className="hr-all" />
@@ -63,7 +63,7 @@ const Delivery = () => {
               </div>
             </div>
             <div className="change-btn">
-              <Link to="/checkout?next=contact-information">Change</Link>
+              <Link to="/auth/checkout?next=contact-information">Change</Link>
             </div>
           </div>
           <div className="hr-all" />
