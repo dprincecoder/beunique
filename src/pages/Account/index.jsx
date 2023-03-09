@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Navigation } from "../../components";
 import "./account.css";
 import AccountOverview from "./AccountOverview";
 import AddressBook from "./AddressBook";
@@ -33,7 +32,6 @@ const Account = () => {
 
   return (
     <>
-      <Navigation />
       <section className="account-page two-grid-item">
         <Sidebar />
         <div className="account-page-content">{pagetoRender()}</div>
