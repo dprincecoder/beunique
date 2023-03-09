@@ -76,8 +76,6 @@ const AdminUpload = () => {
     }
   };
 
-  console.log(previewImages);
-
   const onSubmit = async (data) => {
     data.sizes = sizes;
 
