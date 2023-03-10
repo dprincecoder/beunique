@@ -69,6 +69,10 @@
   margin-bottom: 20px;
 }
 
+.order-items h1 {
+  margin: 1rem 0;
+}
+
 .order-items::-webkit-scrollbar {
   width: 0px;
 }
@@ -77,11 +81,13 @@
   /* padding: 20px; */
   width: 100%;
   display: flex;
+  margin-bottom: 20px;
 }
 
 .order-item-img {
   width: 157px;
   height: 157px;
+  margin-right: 10px;
 }
 
 .order-item-img img {
@@ -146,7 +152,7 @@
     height: 100%;
   }
   .order-item {
-    flex-direction: column;
+    /* flex-direction: column; */
   }
   .order-item-img {
     width: 100%;
@@ -155,5 +161,6 @@
   .order-item-details {
     margin-left: 0;
     margin-top: 1rem;
+    flex-direction: column;
   }
 }

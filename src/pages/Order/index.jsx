@@ -7,7 +7,7 @@ const Order = () => {
   const { cart } = useSelector((state) => state.cartItems);
   return (
     <div className="order">
-      <h1 className="h1-title text-center">Order Successful </h1>
+      <h1 className="h1-title text-center size-big">Order Successful </h1>
       <div className="order-container">
         <div className="order-txt">
           <p className="p-title text-center">
