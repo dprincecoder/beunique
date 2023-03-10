@@ -18,7 +18,7 @@ const Payment = () => {
   };
   return (
     <div className="payment custom-container">
-      <h1 className="h1-title text-center">Checkout</h1>
+      <h1 className="h1-title text-center center-mobile size-big">Checkout</h1>
       <div className="grid-container">
         <div className="left-side">
           <div className="head-contact-info">
@@ -63,7 +63,7 @@ const Payment = () => {
           </div>
           <div className="hr-all" />
           <form className="payment-container">
-            <h1 className="h1-title">Payment Method</h1>
+            <h1 className="h1-title size-big">Payment Method</h1>
             <div className="payment-options">
               {/* <div className="payment-option credit-card">
                 <div className="card-checked">
@@ -122,7 +122,7 @@ const Payment = () => {
               </div>
             </div>
             <div className="agreement">
-              {/* <div className="agreement-input">
+              <div className="agreement-input">
                 <input
                   type="checkbox"
                   name="agree"
@@ -132,7 +132,7 @@ const Payment = () => {
                 <p className="p-title">
                   Save my Information for a faster checkout
                 </p>
-              </div> */}
+              </div>
               <p className="h3-title">
                 By submitting your order, you agree to our{" "}
                 <Link to="/terms" className="underline">

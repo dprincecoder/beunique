@@ -24,12 +24,11 @@
 }
 
 .h1-title {
-  font-family: "Inter";
+  font-family: "Anybody";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 30px;
-  /* identical to box height, or 150% */
+  font-size: 18px;
+  line-height: 28px;
 
   color: #000000;
 }
@@ -46,9 +45,9 @@
 }
 
 .h3-title {
-  font-family: "Inter";
+  font-family: "Anybody";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 18px;
   line-height: 28px;
   /* identical to box height, or 156% */
@@ -60,13 +59,21 @@
 
 .p-title {
   font-family: "Inter";
+  font-size: 16px;
+  margin: 0.5rem 0;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  margin: 0.5rem 0;
+  /* identical to box height, or 143% */
 
-  color: #475467;
+  /* Grey/Grey500 */
+
+  color: #667085;
+}
+
+.size-big {
+  font-size: 24px;
 }
 
 .hr-all {
@@ -77,6 +84,38 @@
 
 .text-muted {
   color: #98a2b3;
+}
+
+@media screen and (max-width: 767px) {
+  .account-title {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .h1-title {
+    font-size: 18px;
+    line-height: 26px;
+    text-align: left !important;
+  }
+  .h1-title2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .h3-title {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    text-align: left !important;
+  }
+  .p-title {
+    /* font-size: 12px; */
+    line-height: 16px;
+  }
+  .center-mobile {
+    text-align: center !important;
+  }
+  .size-big {
+    font-size: 24px;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -95,9 +134,13 @@
   .h3-title {
     font-size: 16px;
     line-height: 26px;
+    font-weight: 700;
   }
   .p-title {
     font-size: 14px;
     line-height: 18px;
+  }
+  .center-mobile {
+    text-align: center !important;
   }
 }

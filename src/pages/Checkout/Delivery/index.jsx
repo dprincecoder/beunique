@@ -38,7 +38,7 @@ const Delivery = () => {
 
   return (
     <div className="delivery custom-container">
-      <h1 className="h1-title text-center">Checkout</h1>
+      <h1 className="h1-title text-center center-mobile size-big">Checkout</h1>
       <div className="grid-container">
         <div className="left-side">
           <div className="head-contact-info">
@@ -69,7 +69,7 @@ const Delivery = () => {
           <div className="hr-all" />
           <div className="delivery-method">
             <form onSubmit={handleSubmit}>
-              <h3 className="h1-title">Delivery Method</h3>
+              <h3 className="h1-title size-big">Delivery Method</h3>
               <div className="inputs-radio">
                 <InputRadio
                   title="Door Delivery"
@@ -124,7 +124,7 @@ const Delivery = () => {
                 // onClick={handleSubmission}
                 type="submit"
                 // to="/auth/checkout?next=delivery-information"
-                text="Continue to Delivery"
+                text="Continue to Payment"
               />
             </form>
             <div className="hr-all" />

@@ -80,11 +80,13 @@ const Contact = () => {
   };
   return (
     <div className="contact">
-      <h1 className="h1-title">Checkout</h1>
+      <h1 className="h1-title center-mobile size-big">Checkout</h1>
       <div className="grid-container">
         <div className="left-side">
           <div className="bag-express-payment w-[300px]">
-            <h3 className="h3-title text-center">Express checkout</h3>
+            <h3 className="h3-title text-center center-mobile">
+              Express checkout
+            </h3>
             <div className="bag-payment-options">
               <div className="bag-payment-option">
                 <img src={paystackPng} alt="paystack" />
