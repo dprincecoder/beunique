@@ -6,8 +6,11 @@ const Security = () => {
   const [startEdit1, setStartEdit1] = React.useState(false);
   const [startEdit2, setStartEdit2] = React.useState(false);
 
-  const handleCancel = () => {
+  const handleCancel1 = () => {
     setStartEdit1(false);
+  };
+  const handleCancel2 = () => {
+    setStartEdit2(false);
   };
   return (
     <div className="security-page">
@@ -50,7 +53,7 @@ const Security = () => {
         </div>
         {startEdit1 && (
           <div className="security-cta-btns">
-            <button className="btn-cancel" onClick={handleCancel}>
+            <button className="btn-cancel" onClick={handleCancel1}>
               Cancel
             </button>
             <button className="btn-save">Save</button>
@@ -60,7 +63,13 @@ const Security = () => {
       <div className="security-auth">
         <div className="security-cta">
           <h2 className="h2-title">Authentication</h2>
-          {!startEdit2 && <img src={EditIcon} alt="edit" />}
+          {!startEdit2 && (
+            <img
+              src={EditIcon}
+              alt="edit"
+              onClick={() => setStartEdit2(true)}
+            />
+          )}
         </div>
         <div className="security-inputs">
           <div className="security-input">
@@ -84,7 +93,9 @@ const Security = () => {
         </div>
         {startEdit2 && (
           <div className="security-cta-btns">
-            <button className="btn-cancel">Cancel</button>
+            <button className="btn-cancel" onClick={handleCancel2}>
+              Cancel
+            </button>
             <button className="btn-save">Save</button>
           </div>
         )}
