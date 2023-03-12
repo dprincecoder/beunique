@@ -1,0 +1,177 @@
+.account-viewedItems-page {
+  width: 100%;
+  margin-left: 2rem;
+  padding: 0 2rem 2rem 0;
+}
+
+.account-viewedItems-page h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #101828;
+}
+
+.account-viewedItems {
+  display: flex;
+  /* align-items: center; */
+  width: 100%;
+}
+
+.account-viewedItems-items {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.account-viewedItems-item-img {
+  width: 200px;
+  height: 160px;
+  margin-right: 1rem;
+}
+
+.account-viewedItems-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.account-viewedItems-item-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account-viewedItems-item-info h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+
+  /* Grey/Grey900 */
+
+  color: #101828;
+}
+
+.account-viewedItems-item-price {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+
+  /* Grey/Grey900 */
+
+  color: #101828;
+}
+
+.account-viewedItems-item-status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  gap: 8px;
+  padding: 1rem;
+  width: 80px;
+  height: 36px;
+
+  /* Foundation /Green/green-1 */
+
+  border-radius: 56px;
+}
+
+.order-delivered {
+  background: #e6f4ea;
+}
+
+.order-delivered p {
+  color: #2f855a;
+}
+
+.order-failed {
+  background: #fbe7e7;
+}
+
+.order-failed p {
+  color: #950d0b;
+}
+
+.order-for-delivery {
+  background: #fdf8e8;
+}
+
+.order-out-of-stock p {
+  color: #a88011;
+}
+
+.account-viewedItems-link {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  width: 100%;
+}
+
+.account-viewedItems-link a {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* Grey/Grey800 */
+
+  color: #1d2939;
+}
+
+.account-viewedItems-link a:hover {
+  color: #2f855a;
+}
+
+@media screen and (max-width: 768px) {
+  .account-viewedItems-page {
+    margin-left: 0;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .account-viewedItems-page h1 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .account-viewItems {
+    width: 100%;
+  }
+
+  .account-viewedItems-item-img {
+    width: 350px;
+    height: 200px;
+    margin-bottom: 1rem;
+  }
+
+  .account-viewedItems-item-info {
+    width: 100%;
+  }
+
+  .account-viewedItems-item-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .account-viewedItems-item-price {
+    font-size: 1rem;
+  }
+
+  .account-viewedItems-item-status {
+    padding: 10px;
+  }
+
+  .account-viewedItems-link {
+    width: 100%;
+    display: none;
+  }
+}
