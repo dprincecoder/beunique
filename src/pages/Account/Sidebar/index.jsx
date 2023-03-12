@@ -87,7 +87,7 @@ const Sidebar = () => {
     >
       <div className="account-sidebar-header">
         <RxHamburgerMenu onClick={() => setToggleSidebar(!toggleSidebar)} />
-        <h3 className="account-sidebar-header-title">My Account</h3>
+        <h3 className="account-sidebar-header-title">My Profile</h3>
       </div>
       <section className="account-sidebar">
         <ul className="account-sidebar-list">
