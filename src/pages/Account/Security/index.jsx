@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import EditIcon from "./assets/edit-pen.svg";
+import eye from "./assets/eye.svg";
 import "./security.css";
 
 const Security = () => {
-  const [startEdit1, setStartEdit1] = React.useState(false);
-  const [startEdit2, setStartEdit2] = React.useState(false);
+  const [startEdit1, setStartEdit1] = useState(false);
+  const [startEdit2, setStartEdit2] = useState(false);
+  const [typeOf, setTypeOf] = useState(false);
 
   const handleCancel1 = () => {
     setStartEdit1(false);
@@ -36,6 +38,7 @@ const Security = () => {
             <input
               type="text"
               name="email"
+              autoComplete="off"
               id="email"
               value="Beunique@gmail.com"
             />
@@ -46,6 +49,7 @@ const Security = () => {
           <input
             type="number"
             value="+234-803-784-789"
+            autoComplete="off"
             placeholder="+234-803-784-789"
             name="number"
             id="numer"
@@ -74,12 +78,16 @@ const Security = () => {
         <div className="security-inputs">
           <div className="security-input">
             <label htmlFor="name">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value="*************"
-            />
+            <div style={{ display: "flex", width: "100%" }}>
+              <input
+                autoComplete="off"
+                type={typeOf ? "text" : "password"}
+                name="password"
+                id="password"
+                value="*************"
+              />
+              <img src={eye} alt="" onClick={() => setTypeOf(!typeOf)} />
+            </div>
           </div>
           <div className="security-input">
             <label htmlFor="email">Email</label>
@@ -87,6 +95,7 @@ const Security = () => {
               type="text"
               name="email"
               id="email"
+              autoComplete="off"
               value="Beunique@gmail.com"
             />
           </div>
