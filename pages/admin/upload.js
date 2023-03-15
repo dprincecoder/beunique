@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
 
-import Logo from "@/public/logo.png";
-import {
-  I3Dcube,
-  DocumentUpload,
-  ShoppingCart,
-  Setting2,
-  LogoutCurve,
-  CloudAdd,
-} from "iconsax-react";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import Multiselect from "multiselect-react-dropdown";
-import { MdClose } from "react-icons/md";
-import Router from "next/router";
-import { useSelector } from "react-redux";
 import AuthError from "@/components/AuthError";
+import Logo from "@/public/logo.png";
 import { AddProductApi } from "@/redux/axios/apis/admin";
-import { toast } from "react-hot-toast";
 import ErrorHandler from "@/redux/axios/Utils/ErrorHandler";
-import { dispatch } from "@/redux/store";
 import { GetCategories } from "@/redux/features/admin/services";
+import { dispatch } from "@/redux/store";
+import {
+  CloudAdd,
+  DocumentUpload,
+  I3Dcube,
+  LogoutCurve,
+  Setting2,
+  ShoppingCart,
+} from "iconsax-react";
+import Multiselect from "multiselect-react-dropdown";
+import Link from "next/link";
+import Router from "next/router";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { MdClose } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const AdminUpload = () => {
   const { token } = useSelector((state) => state.auth);
@@ -115,7 +115,7 @@ const AdminUpload = () => {
                   <Link href="/admin">
                     <button
                       type="button"
-                      class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                      className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                     >
                       <I3Dcube size={20} className="mr-3" />
                       Overview
@@ -142,7 +142,7 @@ const AdminUpload = () => {
                   <Link href="admin/settings">
                     <button
                       type="button"
-                      class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                      className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                     >
                       <Setting2 size={20} className="mr-3" />
                       Settings
@@ -152,7 +152,7 @@ const AdminUpload = () => {
 
                 <button
                   type="button"
-                  class="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                  className="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                   onClick={() => {
                     logoutHandler();
                   }}
@@ -197,7 +197,7 @@ const AdminUpload = () => {
 
                         <button
                           type="button"
-                          class="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] h-[42px] absolute top-0 left-0 z-10"
+                          className="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] h-[42px] absolute top-0 left-0 z-10"
                         >
                           Upload
                         </button>
@@ -436,7 +436,7 @@ const AdminUpload = () => {
                       <section className="w-full flex items-centerjustify-center space-x-5">
                         <button
                           type="reset"
-                          class="px-2 py-2.5 bg-white text-[#101828] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] outline-none border-[1px] border-[#d0d5dd]"
+                          className="px-2 py-2.5 bg-white text-[#101828] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px] outline-none border-[1px] border-[#d0d5dd]"
                           onClick={reset}
                         >
                           Reset
@@ -444,7 +444,7 @@ const AdminUpload = () => {
 
                         <button
                           type="submit"
-                          class="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px]"
+                          className="px-2 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex items-center justify-center w-[150px]"
                         >
                           Upload
                         </button>

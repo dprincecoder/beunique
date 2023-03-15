@@ -1,10 +1,15 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
-import { allProducts } from "../../../data/allProducts";
+import {
+  Loader,
+  NewStockSlider,
+  ProductCard,
+  RadioButton,
+} from "../../../components";
 
 const sortOptions = [
   {
@@ -113,6 +118,14 @@ const Jumpsuit = () => {
 
     setSize(sizes2.find((ft) => ft.selected === true));
   };
+  const [jumpsuit, setJumpsuit] = useState([]);
+  const { products, status, error } = useSelector((state) => state.slider);
+  // console.log(products);
+  useEffect(() => {
+    const nips = products.filter((ft) => ft.category_slug === "jumpsuit");
+    console.log(nips);
+    setJumpsuit(nips);
+  }, []);
 
   return (
     <>
@@ -120,11 +133,11 @@ const Jumpsuit = () => {
         <section className="w-full mx-auto bg-white dark:bg-white">
           <section className="flex items-center justify-start my-4 space-x-2">
             <span className="font-inter text-[14px] text-[#34405]">
-              <Link href="/">Home</Link>
+              <Link to="/">Home</Link>
             </span>
             <ArrowRight2 variant="Linear" size={16} className="" />
             <span className="font-inter text-[14px] text-black font-medium">
-              <Link href="/jumpsuit">Jumpsuit</Link>
+              <Link to="/jumpsuit">Jumpsuit</Link>
             </span>
           </section>
 
@@ -224,14 +237,17 @@ const Jumpsuit = () => {
               </section>
 
               <div
-                class="accordion accordion-flush border-none"
+                className="accordion accordion-flush border-none"
                 id="filterAccordion"
               >
-                <div class="accordion-item bg-white border-none block md:hidden">
-                  <h2 class="accordion-header mb-0 border-none" id="sortHeader">
+                <div className="accordion-item bg-white border-none block md:hidden">
+                  <h2
+                    className="accordion-header mb-0 border-none"
+                    id="sortHeader"
+                  >
                     <button
                       id="filterAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -262,10 +278,10 @@ const Jumpsuit = () => {
                   </h2>
                   <div
                     id="sortBody"
-                    class="accordion-collapse collapse show border-none"
+                    className="accordion-collapse collapse show border-none"
                     aria-labelledby="sortHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {sortOptionsFt
                         ? sortOptionsFt.map((option) => {
                             return (
@@ -293,14 +309,14 @@ const Jumpsuit = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="priceRangeHeader"
                   >
                     <button
                       id="priceRangeBtn"
-                      class="
+                      className="
         
         relative
         flex
@@ -333,10 +349,10 @@ const Jumpsuit = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    class="accordion-collapse collapse show border-none border-0 outline-none"
+                    className="accordion-collapse collapse show border-none border-0 outline-none"
                     aria-labelledby="priceRangeHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {priceRanges2
                         ? priceRanges2.map((range) => {
                             return (
@@ -364,14 +380,14 @@ const Jumpsuit = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="sizesHeader"
                   >
                     <button
                       id="sizesAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -402,10 +418,10 @@ const Jumpsuit = () => {
                   </h2>
                   <div
                     id="sizesBody"
-                    class="accordion-collapse collapse show border-none"
+                    className="accordion-collapse collapse show border-none"
                     aria-labelledby="sizesHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
+                    <div className="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
                       {sizesFt
                         ? sizesFt.map((size) =>
                             size.selected ? (
@@ -435,16 +451,19 @@ const Jumpsuit = () => {
 
             <section className="w-full mx-auto md:w-[72%] lg2:w-[77%] flex flex-col items-center justify-center relative">
               <div
-                class={`accordion accordion-flush border-none md:hidden w-[70%] sm2:w-[50%] absolute top-[10px] left-[50%] md:top-[15px] max-h-screen md:left-[50%] -translate-x-[50%] space-y-2 py-6 bg-white duration-300 z-30 rounded-lg ${
+                className={`accordion accordion-flush border-none md:hidden w-[70%] sm2:w-[50%] absolute top-[10px] left-[50%] md:top-[15px] max-h-screen md:left-[50%] -translate-x-[50%] space-y-2 py-6 bg-white duration-300 z-30 rounded-lg ${
                   mobileFilterOpen ? "block" : "hidden"
                 }`}
                 id="filterAccordion2"
               >
-                <div class="accordion-item bg-white border-none block md:hidden">
-                  <h2 class="accordion-header mb-0 border-none" id="sortHeader">
+                <div className="accordion-item bg-white border-none block md:hidden">
+                  <h2
+                    className="accordion-header mb-0 border-none"
+                    id="sortHeader"
+                  >
                     <button
                       id="filterAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -475,7 +494,7 @@ const Jumpsuit = () => {
                   </h2>
                   <div
                     id="sortBody"
-                    class="accordion-collapse collapse show border-none"
+                    className="accordion-collapse collapse show border-none"
                     space-y-2
                     py-6
                     bg-white
@@ -483,7 +502,7 @@ const Jumpsuit = () => {
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="sortHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {sortOptionsFt
                         ? sortOptionsFt.map((option) => {
                             return (
@@ -511,14 +530,14 @@ const Jumpsuit = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="priceRangeHeader"
                   >
                     <button
                       id="priceRangeBtn"
-                      class="
+                      className="
         
         relative
         flex
@@ -551,7 +570,7 @@ const Jumpsuit = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    class="accordion-collapse collapse border-none border-0 outline-none"
+                    className="accordion-collapse border-none border-0 outline-none"
                     space-y-2
                     py-6
                     bg-white
@@ -559,7 +578,7 @@ const Jumpsuit = () => {
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="priceRangeHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {priceRanges2
                         ? priceRanges2.map((range) => {
                             return (
@@ -587,14 +606,14 @@ const Jumpsuit = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="sizesHeader"
                   >
                     <button
                       id="sizesAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -625,7 +644,7 @@ const Jumpsuit = () => {
                   </h2>
                   <div
                     id="sizesBody"
-                    class="accordion-collapse collapse border-none"
+                    className="accordion-collapse collapse border-none"
                     space-y-2
                     py-6
                     bg-white
@@ -633,7 +652,7 @@ const Jumpsuit = () => {
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="sizesHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
+                    <div className="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
                       {sizesFt
                         ? sizesFt.map((size) =>
                             size.selected ? (
@@ -660,17 +679,30 @@ const Jumpsuit = () => {
                 </div>
               </div>
 
-              <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
-                {allProducts &&
-                  allProducts.length > 0 &&
-                  allProducts.map((prod, i) => (
-                    <ProductCard product={prod} key={i} />
-                  ))}
-              </section>
-
-              <section className="bg-red-300 w-full p-1 text-center">
-                Pagination
-              </section>
+              {status === "loading" ? (
+                <Loader />
+              ) : (
+                <>
+                  <section className="w-full grid grid-cols-3 gap-4">
+                    {jumpsuit.length > 0 ? (
+                      jumpsuit.map((prod, i) => (
+                        <ProductCard product={prod} key={i} />
+                      ))
+                    ) : (
+                      <section className="w-full flex items-center justify-center">
+                        <h2 className="text-[24px] font-anybody font-semibold text-center mb-3">
+                          No Products in this category
+                        </h2>
+                      </section>
+                    )}
+                  </section>
+                </>
+              )}
+              {jumpsuit.length > 5 && (
+                <section className="bg-red-300 w-full p-1 text-center">
+                  Pagination
+                </section>
+              )}
             </section>
           </section>
         </section>

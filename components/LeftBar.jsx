@@ -1,14 +1,14 @@
-import React from "react";
-import Image from "next/image";
 import Logo from "@/public/logo.png";
 import {
-  I3Dcube,
   DocumentUpload,
-  ShoppingCart,
-  Setting2,
+  I3Dcube,
   LogoutCurve,
+  Setting2,
+  ShoppingCart,
 } from "iconsax-react";
+import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 const LeftBar = () => {
   return (
@@ -31,7 +31,7 @@ const LeftBar = () => {
           <Link href="/admin">
             <button
               type="button"
-              class="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+              className="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
             >
               <I3Dcube size={20} className="mr-3" />
               Overview
@@ -40,7 +40,7 @@ const LeftBar = () => {
           <Link href="admin/upload">
             <button
               type="button"
-              class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+              className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
             >
               <DocumentUpload size={20} className="mr-3" />
               Upload
@@ -49,7 +49,7 @@ const LeftBar = () => {
           <Link href="admin/orders">
             <button
               type="button"
-              class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+              className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
             >
               <ShoppingCart size={20} className="mr-3" />
               Orders
@@ -58,7 +58,7 @@ const LeftBar = () => {
           <Link href="admin/settings">
             <button
               type="button"
-              class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+              className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
             >
               <Setting2 size={20} className="mr-3" />
               Settings
@@ -68,7 +68,7 @@ const LeftBar = () => {
 
         <button
           type="button"
-          class="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+          className="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
           onClick={() => {
             logoutHandler();
             router.reload(window.location.pathname);

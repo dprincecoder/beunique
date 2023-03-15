@@ -8,47 +8,42 @@ import {
   SearchNormal1,
 } from "iconsax-react";
 import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import MyBagMini from "./myBagMini";
+import {
+  toggleBagIsClosed,
+  toggleBagIsOpen,
+} from "../redux/features/bag/bagSlice";
+import BagDropdown from "./BagDopdown";
 
 const Navigation = () => {
-  const router = useNavigate();
   const location = useLocation();
-  // const { type } = router.query;
-  const { token } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { pathname } = location;
   const currUrlArr = pathname.split("/");
   const queryParams = new URLSearchParams(location.search);
   const type = queryParams.get("type");
+  const { bag, bagIsOpen, bagIsClosed } = useSelector((state) => state.bag);
 
-  const [isReady, setIsReady] = useState(false);
-  const [route, setRoute] = useState("");
+  const { token } = useSelector((state) => state.auth);
+
   const [searchInput, setSearchInput] = useState("");
-  const [categories, setCategories] = useState(null);
-  const { cart } = useSelector((state) => state.cartItems);
 
-  // const currUrlRaw = router.route;
-  // const currUrlArr = currUrlRaw.split("/");
+  const [categories, setCategories] = useState(null);
+
+  const currUrlRaw = location.pathname;
   const currUrl = currUrlArr[1] ? currUrlArr[1] : null;
 
   const logoutHandler = () => {
     localStorage.clear();
     sessionStorage.clear();
-    router("/auth/signin");
-  };
-
-  const getTotalQuantity = () => {
-    let total = 0;
-    cart.forEach((item) => {
-      total += item.quantity;
-    });
-    return total;
+    navigate("/auth/signin");
   };
 
   useEffect(() => {
     if (typeof window !== undefined || typeof window !== null) {
-      if (pathname) {
+      if (location.pathname) {
         setCategories([
           {
             id: 1,
@@ -95,15 +90,7 @@ const Navigation = () => {
         ]);
       }
     }
-  }, [location]);
-
-  // console.log(currUrl);
-
-  // const handleChange = (e) => {
-  //   setSearchInput({
-  //     [e.target.id]: e.target.value.trim(),
-  //   });
-  // };
+  }, [location.state, type, location.pathname]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -124,7 +111,7 @@ const Navigation = () => {
           </section>
 
           <section className="w-fit md:w-[70%] md2:w-[60%] flex flex-row items-center justify-between">
-            <section className="w-[60%] text-[#667085] rounded-full border-[1px] border-[#667085] flex-row p-1 font-inter hidden md:flex bg-[#f2f4f7]">
+            <section className="w-[60%] md:w-[57%] text-[#667085] rounded-full border-[1px] border-[#667085] flex-row p-1 font-inter hidden md:flex bg-[#f2f4f7]">
               <SearchNormal1 size={25} className="" />
               <form onSubmit={() => handleSubmit()} className="w-[85%] ">
                 <input
@@ -138,64 +125,47 @@ const Navigation = () => {
               </form>
             </section>
 
-            <section className="w-fit block space-x-4 sm:space-x-8">
+            <section className="w-fit block space-x-4 sm:space-x-6 lg:space-x-8">
               <section className="inline-block md:hidden align-middle">
                 <SearchNormal1 size={20} className="" />
               </section>
               <section className="inline-block align-middle">
-                <Link to="/auth/account?type=viewed-items">
+                <Link to="/viewed-items">
                   <Eye size={20} className="" />
                 </Link>
               </section>
               <section className="inline-block align-middle">
-                <Link to="/auth/account?type=saved-items">
+                <Link to="/saved-items">
                   <Heart size={20} className="" />
                 </Link>
               </section>
 
-              <Menu
-                as="section"
-                className="relative inline-block align-middle text-left"
+              <section
+                className="relative inline-block align-middle text-left "
+                id="outer_bag_container"
               >
-                <Menu.Button className="p-0 m-0 mt-1 relative">
-                  <Bag2 size={25} className="" />
-                  <span className="absolute bottom-[-8px] right-[-8px] bg-black text-white w-[20px] h-[20px] rounded-full grid place-items-center text-[12px]">
-                    {getTotalQuantity() || 0}
-                  </span>
-                </Menu.Button>
-
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
+                <section
+                  className="p-0 m-0 mt-1 relative select-none"
+                  id="inner_bag_container"
+                  onClick={() => {
+                    dispatch(toggleBagIsOpen(bagIsOpen));
+                    dispatch(toggleBagIsClosed(bagIsClosed));
+                  }}
                 >
-                  <Menu.Items className="absolute -right-[55px] mt-3 w-[350px] origin-center divide-y divide-gray-600 rounded-md bg-white shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <section className="px-2 py-1 ">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <section
-                            className={`text-[#344054] z-[4] group flex w-full items-center justify-center rounded-md px-2 py-12 text-[16px]`}
-                          >
-                            {getTotalQuantity() > 0 ? (
-                              <section className="w-full">
-                                <MyBagMini />
-                              </section>
-                            ) : (
-                              <section className="w-full">
-                                Your bag is empty, Go shopping
-                              </section>
-                            )}
-                          </section>
-                        )}
-                      </Menu.Item>
-                    </section>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
+                  <Bag2 size={25} className="" id="inner_bag_container_icon" />
+
+                  {bag.length > 0 && (
+                    <span
+                      className="absolute bottom-[-8px] right-[-8px] bg-black text-white w-[20px] h-[20px] rounded-full grid place-items-center text-[12px] select-none"
+                      id="inner_bag_container_amt"
+                    >
+                      {bag.length}
+                    </span>
+                  )}
+                </section>
+
+                <BagDropdown />
+              </section>
 
               {token ? (
                 <Menu
@@ -219,7 +189,7 @@ const Navigation = () => {
                       <section className="px-2 py-1 ">
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to="/auth/account">
+                            <Link to="/account">
                               <button
                                 className={`${
                                   active
@@ -236,7 +206,7 @@ const Navigation = () => {
                           {({ active }) => (
                             <button
                               type="button"
-                              class="p-2 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-full mt-1"
+                              className="p-2 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-full mt-1"
                               onClick={() => {
                                 logoutHandler();
                                 router.reload(window.location.pathname);

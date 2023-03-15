@@ -1,12 +1,15 @@
 import { Eye } from "iconsax-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useLocation, useNavigate } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const ResetPassword = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
+  const router = useLocation();
+  const query = new URLSearchParams(router.search);
+  const token = query.get("token");
   const [pwdData, setPwdData] = useState({
     password: "",
     confirm_password: "",
@@ -27,17 +30,11 @@ const ResetPassword = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
-
-    console.log(router.query);
-
     if (data.password !== data.confirm_password) {
       toast.error("Passwords do not match!");
     } else {
       toast.success("Passwords match!");
       try {
-        const token = router.query.token;
-
         const options = {
           method: "PATCH",
           headers: { "Content-type": "application/json" },
@@ -55,7 +52,7 @@ const ResetPassword = () => {
             if (res.email) {
               toast.success("Password reset successful!");
               reset();
-              router.push("/signin");
+              navigate("/signin");
             } else if (res === "") {
               toast.error(
                 "Old password is not allowed, please enter new ones..."
