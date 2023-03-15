@@ -53,7 +53,9 @@ const AlsoLikeSlider = ({ rp }) => {
           >
             {rpItems &&
               rpItems.length > 0 &&
-              rpItems.map((slide, i) => <ProductCard item={slide} key={i} />)}
+              rpItems.map((slide, i) => (
+                <ProductCard product={slide} key={i} />
+              ))}
           </section>
         </>
       ) : (

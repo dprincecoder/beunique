@@ -1,10 +1,11 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
-import { allProducts } from "../../../data/allProducts";
+import Loader from "../../../components/Loader";
 
 const sortOptions = [
   {
@@ -113,6 +114,14 @@ const Playsuit = () => {
 
     setSize(sizes2.find((ft) => ft.selected === true));
   };
+  const [playsuit, setPlaysuit] = useState([]);
+  const { products, status, error } = useSelector((state) => state.slider);
+  useEffect(() => {
+    if (playsuit === null) {
+      const nips = products.filter((ft) => ft.category_slug === "playsuit");
+      setPlaysuit(nips);
+    }
+  }, []);
 
   return (
     <>
@@ -557,7 +566,7 @@ const Playsuit = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    className="accordion-collapse collapse border-none border-0 outline-none"
+                    className="accordion-collapse border-none border-0 outline-none"
                     space-y-2
                     py-6
                     bg-white
@@ -666,17 +675,31 @@ const Playsuit = () => {
                 </div>
               </div>
 
-              <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
-                {allProducts &&
-                  allProducts.length > 0 &&
-                  allProducts.map((prod, i) => (
-                    <ProductCard product={prod} key={i} />
-                  ))}
-              </section>
+              {status === "loading" ? (
+                <Loader />
+              ) : (
+                <>
+                  <section className="w-full grid grid-cols-3 gap-4">
+                    {playsuit.length > 0 ? (
+                      playsuit.map((prod, i) => (
+                        <ProductCard product={prod} key={i} />
+                      ))
+                    ) : (
+                      <section className="w-full flex items-center justify-center">
+                        <h2 className="text-[24px] font-anybody font-semibold text-center mb-3">
+                          No Products in this category
+                        </h2>
+                      </section>
+                    )}
+                  </section>
+                </>
+              )}
 
-              <section className="bg-red-300 w-full p-1 text-center">
-                Pagination
-              </section>
+              {playsuit.length > 5 && (
+                <section className="bg-red-300 w-full p-1 text-center">
+                  Pagination
+                </section>
+              )}
             </section>
           </section>
         </section>

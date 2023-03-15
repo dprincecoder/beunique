@@ -671,7 +671,7 @@ const Products = () => {
                         className="w-[48%] md2:w-[32%] lg2:w-[22%]"
                         key={i}
                       >
-                        <ProductCard item={prod} />
+                        <ProductCard product={prod} />
                       </section>
                     ))}
                 </section>

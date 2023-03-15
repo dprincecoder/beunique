@@ -1,10 +1,11 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
-import { allProducts } from "../../../data/allProducts";
+import Loader from "../../../components/Loader";
 
 const sortOptions = [
   {
@@ -113,7 +114,14 @@ const TwoPiece = () => {
 
     setSize(sizes2.find((ft) => ft.selected === true));
   };
-
+  const [twoPiece, setgown] = useState([]);
+  const { products, status, error } = useSelector((state) => state.slider);
+  useEffect(() => {
+    const nips = products.filter((ft) => ft.category_slug === "two-piece");
+    console.log(nips);
+    setgown(nips);
+  }, []);
+  console.log(priceRanges2);
   return (
     <>
       <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[40px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
@@ -185,7 +193,7 @@ const TwoPiece = () => {
                         >
                           {({ active }) => {
                             return (
-                              <section className="flex items-center justify-start space-x-2">
+                              <div className="flex items-center justify-start space-x-2">
                                 {sortOption.id === optionIdx + 1 ? (
                                   <RadioButton active={true} size={0} />
                                 ) : (
@@ -201,7 +209,7 @@ const TwoPiece = () => {
                                 >
                                   {option.option}
                                 </span>
-                              </section>
+                              </div>
                             );
                           }}
                         </Listbox.Option>
@@ -269,10 +277,10 @@ const TwoPiece = () => {
                     aria-labelledby="sortHeader"
                   >
                     <div className="accordion-body py-4 px-5 border-none space-y-4">
-                      {sortOptionsFt
+                      {sortOptionsFt.length > 0
                         ? sortOptionsFt.map((option) => {
                             return (
-                              <section
+                              <div
                                 className="flex items-center justify-start space-x-2 cursor-pointer"
                                 key={option.id}
                               >
@@ -288,7 +296,7 @@ const TwoPiece = () => {
                                 >
                                   {option.option}
                                 </span>
-                              </section>
+                              </div>
                             );
                           })
                         : "No Sorting"}
@@ -340,10 +348,10 @@ const TwoPiece = () => {
                     aria-labelledby="priceRangeHeader"
                   >
                     <div className="accordion-body py-4 px-5 border-none space-y-4">
-                      {priceRanges2
+                      {priceRanges2.length > 0
                         ? priceRanges2.map((range) => {
                             return (
-                              <section
+                              <div
                                 className="flex items-center justify-start space-x-2 cursor-pointer"
                                 key={range.id}
                               >
@@ -359,7 +367,7 @@ const TwoPiece = () => {
                                 >
                                   {range.range}
                                 </span>
-                              </section>
+                              </div>
                             );
                           })
                         : "No Price Range"}
@@ -409,24 +417,24 @@ const TwoPiece = () => {
                     aria-labelledby="sizesHeader"
                   >
                     <div className="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
-                      {sizesFt
+                      {sizesFt.length > 0
                         ? sizesFt.map((size) =>
                             size.selected ? (
-                              <section
+                              <div
                                 className="grid place-items-center  cursor-pointer text-[16px] font-medium w-[56px] h-[46px] bg-[#101828] text-[#fcfcfd] rounded-lg"
                                 key={size.id}
                                 onClick={() => handleSize(size.id)}
                               >
                                 {size.size}
-                              </section>
+                              </div>
                             ) : (
-                              <section
+                              <div
                                 className="grid place-items-center border-[1px] border-[#d0d5dd] cursor-pointer text-[16px] font-medium w-[56px] h-[46px] bg-white rounded-lg"
                                 key={size.id}
                                 onClick={() => handleSize(size.id)}
                               >
                                 {size.size}
-                              </section>
+                              </div>
                             )
                           )
                         : "No Sizes"}
@@ -665,17 +673,31 @@ const TwoPiece = () => {
                 </div>
               </div>
 
-              <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
-                {allProducts &&
-                  allProducts.length > 0 &&
-                  allProducts.map((prod, i) => (
-                    <ProductCard product={prod} key={i} />
-                  ))}
-              </section>
+              {status === "loading" ? (
+                <Loader />
+              ) : (
+                <>
+                  <section className="w-full grid grid-cols-3 gap-4">
+                    {twoPiece.length > 0 ? (
+                      twoPiece.map((prod, i) => (
+                        <ProductCard product={prod} key={i} />
+                      ))
+                    ) : (
+                      <section className="w-full flex items-center justify-center">
+                        <h2 className="text-[24px] font-anybody font-semibold text-center mb-3">
+                          No Products in this category
+                        </h2>
+                      </section>
+                    )}
+                  </section>
+                </>
+              )}
 
-              <section className="bg-red-300 w-full p-1 text-center">
-                Pagination
-              </section>
+              {twoPiece.length > 5 && (
+                <section className="bg-red-300 w-full p-1 text-center">
+                  Pagination
+                </section>
+              )}
             </section>
           </section>
         </section>

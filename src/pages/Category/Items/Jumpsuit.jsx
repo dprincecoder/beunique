@@ -1,10 +1,15 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
-import { allProducts } from "../../../data/allProducts";
+import {
+  Loader,
+  NewStockSlider,
+  ProductCard,
+  RadioButton,
+} from "../../../components";
 
 const sortOptions = [
   {
@@ -113,6 +118,14 @@ const Jumpsuit = () => {
 
     setSize(sizes2.find((ft) => ft.selected === true));
   };
+  const [jumpsuit, setJumpsuit] = useState([]);
+  const { products, status, error } = useSelector((state) => state.slider);
+  // console.log(products);
+  useEffect(() => {
+    const nips = products.filter((ft) => ft.category_slug === "jumpsuit");
+    console.log(nips);
+    setJumpsuit(nips);
+  }, []);
 
   return (
     <>
@@ -557,7 +570,7 @@ const Jumpsuit = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    className="accordion-collapse collapse border-none border-0 outline-none"
+                    className="accordion-collapse border-none border-0 outline-none"
                     space-y-2
                     py-6
                     bg-white
@@ -666,17 +679,30 @@ const Jumpsuit = () => {
                 </div>
               </div>
 
-              <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
-                {allProducts &&
-                  allProducts.length > 0 &&
-                  allProducts.map((prod, i) => (
-                    <ProductCard product={prod} key={i} />
-                  ))}
-              </section>
-
-              <section className="bg-red-300 w-full p-1 text-center">
-                Pagination
-              </section>
+              {status === "loading" ? (
+                <Loader />
+              ) : (
+                <>
+                  <section className="w-full grid grid-cols-3 gap-4">
+                    {jumpsuit.length > 0 ? (
+                      jumpsuit.map((prod, i) => (
+                        <ProductCard product={prod} key={i} />
+                      ))
+                    ) : (
+                      <section className="w-full flex items-center justify-center">
+                        <h2 className="text-[24px] font-anybody font-semibold text-center mb-3">
+                          No Products in this category
+                        </h2>
+                      </section>
+                    )}
+                  </section>
+                </>
+              )}
+              {jumpsuit.length > 5 && (
+                <section className="bg-red-300 w-full p-1 text-center">
+                  Pagination
+                </section>
+              )}
             </section>
           </section>
         </section>
