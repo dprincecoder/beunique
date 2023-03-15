@@ -1,10 +1,10 @@
 export { default as Announcements } from "./Announcements";
 export { default as AnnouncementSlider } from "./AnnouncementSlider";
-export { default as AuthError } from "./AuthError";
 export { default as Countdown } from "./Countdown";
 export { default as Footer } from "./Footer";
 export { default as Header } from "./Header";
 export { default as Layout } from "./Layout";
+export { default as Loader } from "./Loader";
 export { default as Navigation } from "./Navigation";
 export { default as NewStockSlider } from "./NewStockSlider";
 export { default as ProductCard } from "./ProductCard";

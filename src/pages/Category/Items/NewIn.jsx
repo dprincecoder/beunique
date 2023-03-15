@@ -2,9 +2,11 @@ import { Listbox, Transition } from "@headlessui/react";
 import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
 import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { NewStockSlider, ProductCard, RadioButton } from "../../../components";
-import { allProducts } from "../../../data/allProducts";
+import Loader from "../../../components/Loader";
 
 const sortOptions = [
   {
@@ -65,40 +67,7 @@ const NewIn = () => {
   const [sizesFt, setSizesFt] = useState(sizes);
 
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
-  // Template for fetching products from the database
-  // const [productState, setProductState] = useState({
-  //   products: [],
-  //   loading: true,
-  //   error: "",
-  // });
-
-  // const { products, loading, error } = productState;
-
-  // useEffect(() => {
-  //   const fetchNewProducts = async () => {
-  //     try {
-  //       const products = await fetch("url", options);
-  //       setProductState({ products, loading: false });
-  //     } catch (err) {
-  //       setProductState({ loading: false, error: err.message });
-  //     }
-  //   };
-  //   fetchNewProducts();
-  // }, []);
-
-  // Inside the component to be rendered
-
-  // {
-  //   loading ? (
-  //     <LoadingComponent />
-  //   ) : error ? (
-  //     <ErrorComponent />
-  //   ) : (
-  //     <section>list products here</section>
-  //   );
-  // }
-
-  // end
+  const { products, status, error } = useSelector((state) => state.slider);
 
   const { register, handleSubmit } = useForm();
 
@@ -148,20 +117,18 @@ const NewIn = () => {
     setSize(sizes2.find((ft) => ft.selected === true));
   };
 
-  const [newinProducts, setNewinProducts] = useState(null);
+  const [newinProducts, setNewinProducts] = useState([]);
 
   useEffect(() => {
-    if (typeof window !== null || typeof window !== "undefined") {
-      if (newinProducts === null) {
-        const nips = allProducts.filter((ft) => ft.is_new === true);
-        setNewinProducts(nips);
-      }
-    }
-  }, []);
+    const nips = products.filter((ft) => ft.new_stock === true);
+    setNewinProducts(nips);
+    if (error)
+      toast.error("An error occured while fetching products. Please try again");
+  }, [products, error]);
 
   return (
     <>
-      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[0px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
+      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[40px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
         <section className="w-full mx-auto bg-white dark:bg-white">
           <section className="flex items-center justify-start my-4 space-x-2">
             <span className="font-inter text-[14px] text-[#34405]">
@@ -191,8 +158,8 @@ const NewIn = () => {
           </section>
         </section>
 
-        <section className="w-full mx-auto bg-white dark:bg-white text-black dark:text-black p-0 m-0 my-0">
-          <section className=" items-center justify-end space-x-2 p-0 hidden md:flex">
+        <section className="w-full mx-auto bg-white dark:bg-white text-black dark:text-black p-0 m-0 my-2">
+          <section className=" items-center justify-end space-x-2 p-2 hidden md:flex">
             <span className="text-[14px] text-[#101828] font-medium">
               Sort by
             </span>
@@ -602,7 +569,7 @@ const NewIn = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    className="accordion-collapse collapse border-none border-0 outline-none"
+                    className="accordion-collapse border-none border-0 outline-none"
                     space-y-2
                     py-6
                     bg-white
@@ -711,17 +678,31 @@ const NewIn = () => {
                 </div>
               </div>
 
-              <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
-                {newinProducts &&
-                  newinProducts.length > 0 &&
-                  newinProducts.map((prod, i) => (
-                    <ProductCard product={prod} key={i} />
-                  ))}
-              </section>
+              {status === "loading" ? (
+                <Loader />
+              ) : (
+                <>
+                  <section className="w-full grid grid-cols-3 gap-4">
+                    {newinProducts.length > 0 ? (
+                      newinProducts.map((prod, i) => (
+                        <ProductCard product={prod} key={i} />
+                      ))
+                    ) : (
+                      <section className="w-full flex items-center justify-center">
+                        <h2 className="text-[24px] font-anybody font-semibold text-center mb-3">
+                          No Products in this category
+                        </h2>
+                      </section>
+                    )}
+                  </section>
+                </>
+              )}
 
-              <section className="bg-red-300 w-full p-1 text-center">
-                Pagination
-              </section>
+              {newinProducts.length > 5 && (
+                <section className="bg-red-300 w-full p-1 text-center">
+                  Pagination
+                </section>
+              )}
             </section>
           </section>
         </section>

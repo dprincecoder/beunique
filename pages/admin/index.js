@@ -1,20 +1,9 @@
-import React from "react";
-import Image from "next/image";
-import Logo from "@/public/logo.png";
-import {
-  I3Dcube,
-  DocumentUpload,
-  ShoppingCart,
-  Setting2,
-  LogoutCurve,
-  ClipboardExport,
-  Filter,
-} from "iconsax-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
 import AuthError from "@/components/AuthError";
 import LeftBar from "@/components/LeftBar";
+import { ClipboardExport, Filter } from "iconsax-react";
+import { useRouter } from "next/router";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const AdminOverview = () => {
   const router = useRouter();
@@ -72,7 +61,7 @@ const AdminOverview = () => {
                     <section className="flex items-center">
                       <button
                         type="button"
-                        class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center border-[1px] border-[#eaecf0] mr-4"
+                        className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center border-[1px] border-[#eaecf0] mr-4"
                         onClick={() => alert("Exporting list...")}
                       >
                         <ClipboardExport size={20} className="mr-3" />
@@ -80,7 +69,7 @@ const AdminOverview = () => {
                       </button>
                       <button
                         type="button"
-                        class="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center"
+                        className="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center"
                         onClick={() => alert("Filtering stock...")}
                       >
                         <Filter size={20} className="mr-3" />

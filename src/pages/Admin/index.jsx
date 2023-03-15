@@ -40,7 +40,7 @@ const AdminOverview = () => {
                   <Link to="/admin">
                     <button
                       type="button"
-                      class="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                      className="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                     >
                       <I3Dcube size={20} className="mr-3" />
                       Overview
@@ -49,7 +49,7 @@ const AdminOverview = () => {
                   <Link to="upload">
                     <button
                       type="button"
-                      class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                      className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                     >
                       <DocumentUpload size={20} className="mr-3" />
                       Upload
@@ -58,7 +58,7 @@ const AdminOverview = () => {
                   <Link to="admin/orders">
                     <button
                       type="button"
-                      class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                      className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                     >
                       <ShoppingCart size={20} className="mr-3" />
                       Orders
@@ -67,7 +67,7 @@ const AdminOverview = () => {
                   <Link to="admin/settings">
                     <button
                       type="button"
-                      class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                      className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                     >
                       <Setting2 size={20} className="mr-3" />
                       Settings
@@ -77,7 +77,7 @@ const AdminOverview = () => {
 
                 <button
                   type="button"
-                  class="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
+                  className="px-6 py-2.5 bg-[#fbe7e7] text-[#d2120f] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center w-[200px]"
                   onClick={() => {
                     logoutHandler();
                     window.location.reload(window.location.pathname);
@@ -134,7 +134,7 @@ const AdminOverview = () => {
                     <section className="flex items-center">
                       <button
                         type="button"
-                        class="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center border-[1px] border-[#eaecf0] mr-4"
+                        className="px-6 py-2.5 text-[#101828] hover:bg-[#101828] hover:text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center border-[1px] border-[#eaecf0] mr-4"
                         onClick={() => alert("Exporting list...")}
                       >
                         <ClipboardExport size={20} className="mr-3" />
@@ -142,7 +142,7 @@ const AdminOverview = () => {
                       </button>
                       <button
                         type="button"
-                        class="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center"
+                        className="px-6 py-2.5 bg-[#101828] text-[#fcfcfd] font-medium hover:font-semibold text-[14px] rounded-lg focus:outline-none focus:ring-0 transition duration-300 ease-in-out flex align-center"
                         onClick={() => alert("Filtering stock...")}
                       >
                         <Filter size={20} className="mr-3" />

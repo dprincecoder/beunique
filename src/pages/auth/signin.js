@@ -1,4 +1,3 @@
-import { EmailSignIn } from "@/redux/features/auth/services";
 import { Eye, EyeSlash } from "iconsax-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -6,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { SignInApi } from "../../redux/axios/apis/auth";
 import ErrorHandler from "../../redux/axios/Utils/ErrorHandler";
+import { EmailSignIn } from "../../redux/features/auth/services";
 import { dispatch } from "../../redux/store";
 
 const Signin = () => {
@@ -43,7 +43,7 @@ const Signin = () => {
       <section className="w-screen h-auto block p-[16px] md:p-[40px] relative font-inter overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
         <section className="w-full sm2:w-[70%] md3:w-[40%] mt-[8vh] mx-auto flex flex-col items-center relative">
           <section className="w-fit">
-            <Link href="/">
+            <Link to="/">
               <img
                 src="logo.png"
                 alt="BeUnique"
@@ -101,7 +101,7 @@ const Signin = () => {
               </label>
 
               <p className="font-inter text-[16px] text-[#344054] mt-4 mb-10 w-full text-right">
-                <Link href="/forgot-password">Forgot password</Link>
+                <Link to="/forgot-password">Forgot password</Link>
               </p>
               <button
                 onClick={() => onSubmit()}
@@ -116,7 +116,7 @@ const Signin = () => {
             <p className="font-inter text-[16px] text-[#344054]">
               Don&apos;t have an account?{" "}
               <span className="font-bold">
-                <Link href="/auth/signup">Create account</Link>
+                <Link to="/auth/signup">Create account</Link>
               </span>
             </p>
           </section>

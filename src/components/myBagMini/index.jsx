@@ -2,7 +2,7 @@ import React from "react";
 import { GrFormClose } from "react-icons/gr";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeItem } from "../../redux/features/cart/cartslice";
+import { removeItem } from "../../redux/features/bag/bagSlice";
 import { dispatch } from "../../redux/store";
 import "./mybagMini.css";
 

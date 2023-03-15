@@ -1,19 +1,22 @@
-import { allProducts } from "@/data/allProducts";
-import { priceRanges } from "@/data/priceRanges";
-import { ProductTypes } from "@/data/ProductTypes";
-import { sizes } from "@/data/sizes";
-import { sortOptions } from "@/data/sortOptions";
 import { Listbox, Transition } from "@headlessui/react";
 import { ArrowDown2, ArrowRight2, Filter } from "iconsax-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NewStockSlider, ProductCard, RadioButton } from "../../components";
+import { priceRanges } from "../../data/priceRanges";
+import { ProductTypes } from "../../data/ProductTypes";
+import { sizes } from "../../data/sizes";
+import { sortOptions } from "../../data/sortOptions";
+
+import axios from "axios";
 
 const Products = () => {
-  const router = useRouter();
-  const { type } = router.query;
+  const router = useLocation();
+  const navigate = useNavigate();
+  const queryParams = new URLSearchParams(router.search);
+  const type = queryParams.get("type");
+  console.log(type);
   const [sortOption, setSortOption] = useState(sortOptions[0]);
   const [sortOptionsFt, setSortOptionsFt] = useState(sortOptions);
   const [priceRange, setPriceRange] = useState(null);
@@ -70,6 +73,34 @@ const Products = () => {
 
     setSize(sizes2.find((ft) => ft.selected === true));
   };
+
+  const [pageTitle, setPageTitle] = useState(null);
+  const [products, setProducts] = useState([{ items: null, isLoading: true }]);
+
+  const GetProductsApi = async () => {
+    try {
+      const res = await axios.get(
+        `https://beunique.live/users/get_dress/${type}`
+      );
+      console.log(res.data.detail);
+      setProducts({ ...products, items: res.data.detail, isLoading: false });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(products);
+  useEffect(() => {
+    if (type) {
+      const typeArr = type.split("-");
+      for (let i = 0; i < typeArr.length; i++) {
+        typeArr[i] = typeArr[i].charAt(0).toUpperCase() + typeArr[i].slice(1);
+      }
+      const title = typeArr.join(" ");
+      setPageTitle(title);
+
+      GetProductsApi();
+    }
+  }, [type, products.isLoading]);
 
   return (
     <>
@@ -181,14 +212,18 @@ const Products = () => {
               </section>
 
               <div
-                class="accordion accordion-flush border-none"
+                className="accordion accordion-flush border-none"
                 id="filterAccordion"
               >
-                <div class="accordion-item bg-white border-none block md:hidden">
-                  <h2 class="accordion-header mb-0 border-none" id="sortHeader">
+                <div className="accordion-item bg-white border-none block md:hidden">
+                  <h2
+                    className="accordion-header mb-0 border-none"
+                    id="sortHeader"
+                  >
                     <button
                       id="filterAccordionBtn"
-                      class="
+                      className="
+
         relative
         flex
         items-center
@@ -219,10 +254,10 @@ const Products = () => {
                   </h2>
                   <div
                     id="sortBody"
-                    class="accordion-collapse collapse show border-none"
+                    className="accordion-collapse collapse show border-none"
                     aria-labelledby="sortHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {sortOptionsFt
                         ? sortOptionsFt.map((option) => {
                             return (
@@ -250,15 +285,14 @@ const Products = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="priceRangeHeader"
                   >
                     <button
                       id="priceRangeBtn"
-                      class="
-        
+                      className="
         relative
         flex
         items-center
@@ -290,10 +324,10 @@ const Products = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    class="accordion-collapse collapse show border-none border-0 outline-none"
+                    className="accordion-collapse collapse show border-none border-0 outline-none"
                     aria-labelledby="priceRangeHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {priceRanges2
                         ? priceRanges2.map((range) => {
                             return (
@@ -321,14 +355,14 @@ const Products = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="sizesHeader"
                   >
                     <button
                       id="sizesAccordionBtn"
-                      class="
+                      className="
         relative
         flex
         items-center
@@ -359,10 +393,10 @@ const Products = () => {
                   </h2>
                   <div
                     id="sizesBody"
-                    class="accordion-collapse collapse show border-none"
+                    className="accordion-collapse collapse show border-none"
                     aria-labelledby="sizesHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
+                    <div className="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
                       {sizesFt
                         ? sizesFt.map((size) =>
                             size.selected ? (
@@ -392,16 +426,20 @@ const Products = () => {
 
             <section className="w-full mx-auto md:w-[72%] lg2:w-[77%] flex flex-col items-center justify-center relative">
               <div
-                class={`accordion accordion-flush border-none md:hidden w-[70%] sm2:w-[50%] absolute top-[10px] left-[50%] md:top-[15px] max-h-screen md:left-[50%] -translate-x-[50%] space-y-2 py-6 bg-white duration-300 z-30 rounded-lg ${
+                className={`accordion accordion-flush border-none md:hidden w-[70%] sm2:w-[50%] absolute top-[10px] left-[50%] md:top-[15px] max-h-screen md:left-[50%] -translate-x-[50%] space-y-2 py-6 bg-white duration-300 z-30 rounded-lg ${
                   mobileFilterOpen ? "block" : "hidden"
                 }`}
                 id="filterAccordion2"
               >
-                <div class="accordion-item bg-white border-none block md:hidden">
-                  <h2 class="accordion-header mb-0 border-none" id="sortHeader">
+                <div className="accordion-item bg-white border-none block md:hidden">
+                  <h2
+                    className="accordion-header mb-0 border-none"
+                    id="sortHeader"
+                  >
                     <button
                       id="filterAccordionBtn"
-                      class="
+                      className="
+
         relative
         flex
         items-center
@@ -432,7 +470,7 @@ const Products = () => {
                   </h2>
                   <div
                     id="sortBody"
-                    class="accordion-collapse collapse show border-none"
+                    className="accordion-collapse collapse show border-none"
                     space-y-2
                     py-6
                     bg-white
@@ -440,7 +478,7 @@ const Products = () => {
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="sortHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {sortOptionsFt
                         ? sortOptionsFt.map((option) => {
                             return (
@@ -468,15 +506,15 @@ const Products = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="priceRangeHeader"
                   >
                     <button
                       id="priceRangeBtn"
-                      class="
-        
+                      className="
+
         relative
         flex
         items-center
@@ -508,7 +546,7 @@ const Products = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    class="accordion-collapse collapse border-none border-0 outline-none"
+                    className="accordion-collapse collapse border-none border-0 outline-none"
                     space-y-2
                     py-6
                     bg-white
@@ -516,7 +554,7 @@ const Products = () => {
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="priceRangeHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none space-y-4">
+                    <div className="accordion-body py-4 px-5 border-none space-y-4">
                       {priceRanges2
                         ? priceRanges2.map((range) => {
                             return (
@@ -544,14 +582,15 @@ const Products = () => {
                   </div>
                 </div>
 
-                <div class="accordion-item bg-white border-none">
+                <div className="accordion-item bg-white border-none">
                   <h2
-                    class="accordion-header mb-0 border-none"
+                    className="accordion-header mb-0 border-none"
                     id="sizesHeader"
                   >
                     <button
                       id="sizesAccordionBtn"
-                      class="
+                      className="
+
         relative
         flex
         items-center
@@ -582,7 +621,7 @@ const Products = () => {
                   </h2>
                   <div
                     id="sizesBody"
-                    class="accordion-collapse collapse border-none"
+                    className="accordion-collapse collapse border-none"
                     space-y-2
                     py-6
                     bg-white
@@ -590,7 +629,7 @@ const Products = () => {
                     rounded-lgrent="#filterAccordion2"
                     aria-labelledby="sizesHeader"
                   >
-                    <div class="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
+                    <div className="accordion-body py-4 px-5 border-none w-fit grid grid-cols-3 gap-4">
                       {sizesFt
                         ? sizesFt.map((size) =>
                             size.selected ? (
@@ -617,13 +656,26 @@ const Products = () => {
                 </div>
               </div>
 
-              <section className="w-full flex flex-row flex-wrap items-start justify-center space-x-2 gap-0">
-                {allProducts &&
-                  allProducts.length > 0 &&
-                  allProducts.map((prod, i) => (
-                    <ProductCard product={prod} key={i} />
-                  ))}
-              </section>
+              {products.isLoading ? (
+                <section className="w-full flex items-center justify-center mb-8">
+                  <h3 className="font-anybody text-lg text-center">
+                    loading...
+                  </h3>
+                </section>
+              ) : (
+                <section className="w-full flex flex-wrap items-start justify-start gap-[10px] lg2:gap-[20px]">
+                  {products.items &&
+                    products.items.length > 0 &&
+                    products.items.map((prod, i) => (
+                      <section
+                        className="w-[48%] md2:w-[32%] lg2:w-[22%]"
+                        key={i}
+                      >
+                        <ProductCard product={prod} />
+                      </section>
+                    ))}
+                </section>
+              )}
 
               <section className="bg-red-300 w-full p-1 text-center">
                 Pagination
