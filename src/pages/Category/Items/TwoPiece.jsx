@@ -564,7 +564,7 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="priceRangeBody"
-                    className="accordion-collapse collapse border-none border-0 outline-none"
+                    className="accordion-collapse border-none border-0 outline-none"
                     space-y-2
                     py-6
                     bg-white
@@ -638,7 +638,7 @@ const TwoPiece = () => {
                   </h2>
                   <div
                     id="sizesBody"
-                    className="accordion-collapse collapse border-none"
+                    className="accordion-collapse border-none"
                     space-y-2
                     py-6
                     bg-white
