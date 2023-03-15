@@ -65,6 +65,7 @@ const NewIn = () => {
   const [sizesFt, setSizesFt] = useState(sizes);
 
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
   // Template for fetching products from the database
   // const [productState, setProductState] = useState({
   //   products: [],
@@ -161,7 +162,7 @@ const NewIn = () => {
 
   return (
     <>
-      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[0px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
+      <section className="w-full flex flex-col items-center justify-center p-0 px-[16px] md:px-[40px] m-0 z-30 font-inter scrollbar scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-corner-red-500 scrollbar-w-4 scrollbar-track-rounded-md scrollbar-thumb-rounded-md scrollbar-corner-rounded-md">
         <section className="w-full mx-auto bg-white dark:bg-white">
           <section className="flex items-center justify-start my-4 space-x-2">
             <span className="font-inter text-[14px] text-[#34405]">
@@ -191,8 +192,8 @@ const NewIn = () => {
           </section>
         </section>
 
-        <section className="w-full mx-auto bg-white dark:bg-white text-black dark:text-black p-0 m-0 my-0">
-          <section className=" items-center justify-end space-x-2 p-0 hidden md:flex">
+        <section className="w-full mx-auto bg-white dark:bg-white text-black dark:text-black p-0 m-0 my-2">
+          <section className=" items-center justify-end space-x-2 p-2 hidden md:flex">
             <span className="text-[14px] text-[#101828] font-medium">
               Sort by
             </span>

@@ -37,7 +37,7 @@ const Signup = () => {
       <section className="w-screen h-auto block p-[16px] md:p-[40px] relative font-inter overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-track-[#ACB2BE] scrollbar-thumb-black scrollbar-track-rounded-md scrollbar-thumb-rounded-md">
         <section className="w-full sm2:w-[70%] md3:w-[40%] mt-[8vh] mx-auto flex flex-col items-center relative">
           <section className="w-fit">
-            <Link href="/">
+            <Link to="/">
               <img
                 src="logo.png"
                 alt="BeUnique"
@@ -119,7 +119,7 @@ const Signup = () => {
             <p className="font-inter text-[16px] text-[#344054]">
               Already have an account?{" "}
               <span className="font-bold">
-                <Link href="/auth/signin">Sign In</Link>
+                <Link to="/auth/signin">Sign In</Link>
               </span>
             </p>
           </section>
