@@ -1,0 +1,59 @@
+.stockTableWrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.stockTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.stockTable th,
+.stockTable td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.stockTable th {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #101828;
+}
+
+.stockTable td {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #344054;
+}
+
+.oddRow {
+  background: #f9fafb;
+}
+
+@media (max-width: 768px) {
+  .stockTable {
+    font-size: 0.8rem;
+  }
+
+  .stockTable th,
+  .stockTable td {
+    padding: 0.5rem;
+  }
+
+  .stockTable th {
+    font-size: 0.9rem;
+  }
+
+  .stockTable td:first-of-type::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+}

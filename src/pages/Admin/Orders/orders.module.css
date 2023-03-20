@@ -1,0 +1,67 @@
+.tableContainer {
+  margin: 20px;
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table th,
+td {
+  text-align: left;
+  padding: 16px 0px 16px 8px;
+  /* border-bottom: 1px solid #ddd; */
+}
+
+.table td {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  /* Grey/Grey700 */
+
+  color: #344054;
+}
+
+.table th {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  /* Grey/Grey900 */
+
+  color: #101828;
+}
+
+.oddRow {
+  background-color: #f9fafb;
+}
+
+.Delivered {
+  background-color: #e8fbee;
+  color: #12953f;
+}
+
+.OutForDelivery {
+  background-color: #fdf8e8;
+  color: #a88011;
+}
+
+.Canceled {
+  background-color: #fbe7e7;
+  color: #d2120f;
+}
+
+.orderStatus {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding: 4px 8px;
+}
